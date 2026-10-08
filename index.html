@@ -7,21 +7,22 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Mazhar_Ali كنب وستائر وسجاد وإضاءة وديكور. السويس، مصر.">
 <title>Mazhar_Ali</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E4A47'/%3E%3Cpath d='M16 52V30a16 16 0 0 1 32 0v22' fill='none' stroke='%23B98A34' stroke-width='4'/%3E%3Ccircle cx='32' cy='30' r='5' fill='%23B98A34'/%3E%3C/svg%3E">
+<link rel="icon" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--teal:#0E4A47;--teal2:#0A3836;--brass:#C79A4B;--bone:#F5F6F3;--stone:#E3E8E4;--sage:#CFDBD5;--ink:#172321;--mute:#55655F;--sale:#B8503A;--ok:#2B7A4B;--line:#D5DDD8;--surface:#ffffff;--surface2:#eef4f1;--site-bg-img:none;--tx:#0E4A47;--on-brand:#ffffff;--on-accent:#1b1407;--brand-rgb:14,74,71;--brand2-rgb:10,56,54}
-:root[data-theme="dark"]{--teal:#4FB3A3;--teal2:#0A3836;--brass:#DDB05C;--bone:#101917;--stone:#182422;--sage:#22322d;--ink:#EAF1EE;--mute:#9FB2AC;--sale:#FF8A73;--ok:#5FCB93;--line:#2B3A36;--surface:#182422;--surface2:#16302b}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--teal:#4FB3A3;--teal2:#0A3836;--brass:#DDB05C;--bone:#101917;--stone:#182422;--sage:#22322d;--ink:#EAF1EE;--mute:#9FB2AC;--sale:#FF8A73;--ok:#5FCB93;--line:#2B3A36;--surface:#182422;--surface2:#16302b}}
+:root{--teal:#111214;--teal2:#000000;--brass:#8A7B6C;--bone:#F6F5F3;--stone:#ECE9E5;--sage:#DED8D0;--ink:#161514;--mute:#605A53;--sale:#A5473C;--ok:#2F6B4F;--line:#DFDAD3;--surface:#ffffff;--surface2:#eef0f2;--site-bg-img:none;--tx:#111214;--on-brand:#ffffff;--on-accent:#ffffff;--brand-rgb:17,18,20;--brand2-rgb:0,0,0}
+:root[data-theme="dark"]{--teal:#2A2826;--teal2:#000000;--brass:#B3A390;--bone:#15130F;--stone:#1d1b18;--sage:#29261f;--ink:#F3F1ED;--mute:#B2A89C;--sale:#E07A6E;--ok:#6FCB9B;--line:#332F28;--surface:#1d1b18;--surface2:#242019}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--teal:#2A2826;--teal2:#000000;--brass:#B3A390;--bone:#15130F;--stone:#1d1b18;--sage:#29261f;--ink:#F3F1ED;--mute:#B2A89C;--sale:#E07A6E;--ok:#6FCB9B;--line:#332F28;--surface:#1d1b18;--surface2:#242019}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;font:400 16px/1.75 'Tajawal','Segoe UI',Tahoma,sans-serif;color:var(--ink);background-color:var(--bone);background-image:linear-gradient(rgba(245,246,243,.93),rgba(245,246,243,.93)),var(--site-bg-img);background-size:cover;background-attachment:fixed;background-position:center;min-height:100vh;display:flex;flex-direction:column;transition:background-color .2s,color .2s}
 :root[data-theme="dark"] body{background-image:linear-gradient(rgba(16,25,23,.92),rgba(16,25,23,.92)),var(--site-bg-img)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body{background-image:linear-gradient(rgba(16,25,23,.92),rgba(16,25,23,.92)),var(--site-bg-img)}}
 main{flex:1}
-h1,h2,h3,.brandname{font-family:'Reem Kufi','Tajawal',sans-serif;line-height:1.35;margin:0;font-weight:700}
+h1,h2,h3,.brandname{font-family:'Tajawal',sans-serif;line-height:1.35;margin:0;font-weight:700}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
 img,svg{display:block;max-width:100%}
@@ -39,8 +40,12 @@ img,svg{display:block;max-width:100%}
 .btn-sm{min-height:36px;padding:0 12px;font-size:14px;border-radius:8px}
 .btn-block{width:100%}
 .ico{width:20px;height:20px;flex:none}
-.notice{background:var(--teal2);color:var(--on-brand);font-size:14px}
-.notice .wrap{display:flex;gap:8px;align-items:center;justify-content:center;padding:6px 0;text-align:center}
+.notice{background:#ffffff;color:#2F6B4F;font-size:14px;border-bottom:1px solid var(--line);overflow:hidden}
+.ticker{display:flex;white-space:nowrap;width:max-content;animation:tickerScroll 26s linear infinite}
+.ticker span{display:inline-flex;align-items:center;gap:10px;padding:8px 36px;font-weight:700;flex:none}
+.ticker span::before{content:"•";color:var(--brass);font-weight:900}
+@keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.notice:hover .ticker{animation-play-state:paused}
 header.top{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
 .bar{display:flex;align-items:center;gap:16px;padding:10px 0}
 .brand{display:flex;align-items:center;gap:10px;flex:none}
@@ -75,7 +80,7 @@ header.top{background:var(--surface);border-bottom:1px solid var(--line);positio
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .arch{position:relative;justify-self:center;width:min(100%,400px);aspect-ratio:480/560;border-radius:999px 999px 0 0;overflow:hidden;border:6px solid var(--brass);border-bottom:0;background:var(--sage)}
 .arch svg{width:100%;height:100%}
-.promo{position:absolute;inset-block-start:26%;inset-inline-start:-4px;z-index:2;width:104px;height:104px;border-radius:50%;background:var(--brass);color:var(--on-accent);display:grid;place-items:center;text-align:center;font:700 15px/1.25 'Reem Kufi',sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-8deg)}
+.promo{position:absolute;inset-block-start:26%;inset-inline-start:-4px;z-index:2;width:104px;height:104px;border-radius:50%;background:var(--brass);color:var(--on-accent);display:grid;place-items:center;text-align:center;font:700 15px/1.25 'Tajawal',sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-8deg)}
 .promo b{display:block;font-size:30px;line-height:1}
 .archwrap{position:relative;justify-self:center;width:min(100%,400px)}
 .trust{background:var(--surface);border-bottom:1px solid var(--line)}
@@ -161,7 +166,7 @@ label.f small{font-weight:400;color:var(--mute)}
 .legal p{margin:0 0 12px}
 footer.ft{background:var(--teal2);color:#c9dbd6;margin-top:40px}
 .ft .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:28px;padding:40px 0 24px}
-.ft h4{font:700 17px 'Reem Kufi',sans-serif;color:#fff;margin:0 0 10px}
+.ft h4{font:700 17px 'Tajawal',sans-serif;color:#fff;margin:0 0 10px}
 .ft ul{list-style:none;margin:0;padding:0}.ft li{margin:6px 0}
 .ft a:hover{color:#fff;text-decoration:underline}
 .ft .cp{border-top:1px solid rgba(255,255,255,.14);padding:16px 0;text-align:center;font-size:14px}
@@ -180,7 +185,8 @@ footer.ft{background:var(--teal2);color:#c9dbd6;margin-top:40px}
 .shield svg{color:var(--ok);flex:none}
 .or{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:14px;margin:14px 0}
 .or::before,.or::after{content:"";flex:1;border-top:1px solid var(--line)}
-.soc-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:46px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);font-weight:700;cursor:pointer;margin-bottom:8px}
+.soc-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);font-weight:700;cursor:pointer;margin-bottom:10px;transition:box-shadow .15s,border-color .15s}
+.soc-btn.google:hover{box-shadow:0 8px 20px -12px rgba(0,0,0,.35);border-color:var(--teal)}
 .soc-btn:hover{background:var(--bone)}
 .soc-btn svg{width:22px;height:22px}
 .link{background:none;border:0;color:var(--tx);text-decoration:underline;cursor:pointer;padding:0;font-weight:500}
@@ -194,6 +200,14 @@ footer.ft{background:var(--teal2);color:#c9dbd6;margin-top:40px}
 .scroll{overflow-x:auto}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pv{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid var(--line);margin-bottom:8px;background:var(--stone)}
+.imggrid{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.imgslot{position:relative;width:84px;height:84px;border-radius:10px;overflow:hidden;border:1px solid var(--line);flex:none}
+.imgslot img{width:100%;height:100%;object-fit:cover;display:block}
+.imgrm{position:absolute;top:3px;inset-inline-end:3px;width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;cursor:pointer;font-size:14px;line-height:1;padding:0}
+.gthumbs{display:flex;gap:8px;margin-top:10px}
+.gthumb{width:64px;height:64px;border-radius:10px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;flex:none;background:var(--stone)}
+.gthumb.on{border-color:var(--tx)}
+.gthumb img{width:100%;height:100%;object-fit:cover;display:block}
 @media (max-width:900px){
  .hero-in{grid-template-columns:1fr;padding-top:32px}.hero-txt{padding-bottom:0}.arch,.archwrap{margin-top:8px}
  .pd,.two{grid-template-columns:1fr}.ft .cols{grid-template-columns:1fr 1fr}
@@ -345,6 +359,27 @@ const EN=new Map(Object.entries({
 'اضغط زر "إرسال الفاتورة على واتساب" لإتمام الطلب':'Tap "Send invoice on WhatsApp" to complete your order',
 'الصفحة غير موجودة':'Page not found','—':'—',
 'الوضع الليلي':'Dark mode','تفعيل الوضع النهاري':'Switch to light mode','تفعيل الوضع الليلي':'Switch to dark mode',
+'لوحة التحكم':'Dashboard','دخول الإدارة':'Admin sign-in','رقم الواتساب':'WhatsApp number','الرقم السري (4 أرقام)':'4-digit PIN','بيانات الدخول غير صحيحة.':'Incorrect sign-in details.',
+'المنتجات':'Products','الأقسام':'Categories','بيانات المتجر':'Store Settings','الصفحات القانونية':'Legal Pages','الطلبات':'Orders',
+'منتج جديد':'New product','تعديل':'Edit','حذف':'Delete','السعر (ج.م)':'Price (EGP)','قبل الخصم':'Before discount','إجراءات':'Actions','المصدر':'Source',
+'دروبشيبنج':'Drop-shipping','مخزننا':'Our stock','اسم قسم جديد (عربي)':'New category name (Arabic)','— بدون (قسم رئيسي) —':'— None (top-level) —','إضافة':'Add',
+'الاسم':'Name','English':'English','خلفية القسم':'Section background','فرعي من':'Sub-category of','إنشاء حساب جديد':'Create a new account',
+'تم حفظ اسم القسم':'Category name saved','تم حفظ الاسم الإنجليزي':'English name saved','تم حفظ خلفية القسم':'Section background saved','تمت إضافة القسم':'Category added','تم حذف القسم':'Category deleted',
+'هذا القسم به منتجات. انقلها أو احذفها أولًا.':'This category has products in it. Move or delete them first.','هذا القسم له أقسام فرعية. احذفها أولًا.':'This category has sub-categories. Delete them first.','حذف القسم؟':'Delete this category?',
+'تم حفظ المنتج':'Product saved','تم حذف المنتج':'Product deleted','أدخل اسم المنتج.':'Enter the product name.','أدخل سعرًا صحيحًا.':'Enter a valid price.',
+'متوفر في مخزننا':'In our own stock','دروبشيبنج (مورد خارجي)':'Drop-shipping (external supplier)','نتحكم بالكمية ونحدد المخزون بأنفسنا.':'We control quantity and manage stock ourselves.',
+'يُشحن من مورد شريك عند وصول الطلب؛ لا يُعرض له نفاد مخزون.':'Ships from a partner supplier once ordered; never shown as out of stock.',
+'المتاح بالمخزون':'Stock on hand','اسم المورّد':'Supplier name','رابط المنتج عند المورّد':'Supplier product link','مدة التوصيل لهذا المنتج':'Delivery time for this product',
+'صورة المنتج':'Product image','اسم المنتج (عربي)':'Product name (Arabic)','الوصف (عربي)':'Description (Arabic)','مصدر المنتج':'Product source',
+'رسم بديل عند عدم وجود صورة':'Placeholder illustration (if no photo)','لون الرسم البديل':'Placeholder color','حفظ المنتج':'Save product',
+'اللون الأساسي':'Primary color','لون التمييز':'Accent color','حفظ التغييرات':'Save changes','حفظ الصفحات':'Save pages',
+'اسم المتجر':'Store name','العبارة التعريفية (عربي)':'Tagline (Arabic)','العنوان (عربي)':'Address (Arabic)','رابط صفحة فيسبوك':'Facebook page link','رابط حساب إنستجرام':'Instagram account link',
+'رسوم الشحن (ج.م)':'Shipping fee (EGP)','مدة التوصيل الافتراضية':'Default delivery time','منتجات مخزننا':'Our own-stock items','منتجات الدروبشيبنج':'Drop-shipped items',
+'الصور والواجهة':'Images & Homepage','صورة واجهة الرئيسية':'Homepage hero image','خلفية الموقع العامة':'Overall site background','خلفية رأس صفحة المنتجات':'Products page header background','خلفية السلة وتتبع الطلبات':'Cart & order-tracking background',
+'أيقونة المتجر الرئيسية':'Main store icon','شعار جهة التصميم':'Design credit logo','نص جهة التصميم':'Design credit text','حفظ بيانات المتجر':'Save store settings',
+'تم حفظ بيانات المتجر':'Store settings saved','تم حفظ الصفحات':'Pages saved',
+'مرحبًا بك في لوحة التحكم':'Welcome to the dashboard','خروج الإدارة':'Exit admin','النسخة المحلية':'Local version',
+'تحميل المنتجات والأقسام الافتراضية':'Load default products & categories','تم تحميل البيانات الافتراضية':'Default data loaded',
 }));
 const ENP=[
  [/^نتائج البحث عن "(.*)"$/,q=>`Search results for "${q}"`],
@@ -377,7 +412,7 @@ const lum=h=>{const [r,g,b]=hex2(h).map(v=>{v/=255;return v<=.03928?v/12.92:Math
 const assetPath=(v,def)=>{v=String(v||'').trim();if(!v)return def;if(/^(https?:)?\/\//.test(v)||v.includes('/'))return v;return 'images/'+v};
 function applyBrand(){
   const s=S.settings,root=document.documentElement.style,ok=c=>/^#[0-9a-fA-F]{6}$/.test(c||'');
-  const P=ok(s.colorPrimary)?s.colorPrimary:'#0E4A47',A=ok(s.colorAccent)?s.colorAccent:'#C79A4B',dark=curTheme()==='dark';
+  const P=ok(s.colorPrimary)?s.colorPrimary:'#111214',A=ok(s.colorAccent)?s.colorAccent:'#8A7B6C',dark=curTheme()==='dark';
   const bg=dark?mix(P,'#ffffff',.22):P,bg2=mix(bg,'#000000',.38),tx=dark?mix(P,'#ffffff',.62):P,ac=dark?mix(A,'#ffffff',.12):A;
   root.setProperty('--teal',bg);root.setProperty('--teal2',bg2);root.setProperty('--tx',tx);root.setProperty('--brass',ac);
   root.setProperty('--on-brand',lum(bg)>.42?'#101418':'#ffffff');root.setProperty('--on-accent',lum(ac)>.35?'#1b1407':'#ffffff');
@@ -448,13 +483,18 @@ function art(type,c){
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="${bg}"/>${wall?'':`<rect y="250" width="400" height="50" fill="${fl}"/>`}${S[type]||S.sofa}</svg>`;
 }
 const artUri=(t,c)=>'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(art(t,c));
-const imgOf=p=>safeImg(p.img)?p.img:artUri(p.type,p.color);
+const imgOf=p=>{const g=(p.imgs||[]).find(safeImg);if(g)return g;return safeImg(p.img)?p.img:artUri(p.type,p.color)};
+const imgsOf=p=>{const g=(p.imgs||[]).filter(safeImg);return g.length?g:[imgOf(p)]};
 
 /* ===== البيانات الافتراضية (أسعار أمثلة قابلة للتعديل من لوحة التحكم) ===== */
 const P=(id,cat,name,name_en,price,old,type,color,desc,desc_en,src)=>({id,cat,name,name_en,price,old,type,color,desc,desc_en,stock:src==='drop'?null:10,img:'',src:src||'own',supplier:'',supplierUrl:'',lead:''});
 const DEF={
-  settings:{name:'Mazhar_Ali',name_en:'Mazhar_Ali',tagline:'ديكور ومفروشات لكل ركن في بيتك',tagline_en:'Décor and furnishings for every corner of your home',address:'مصر – السويس – الأربعين – شارع الجيش',address_en:'Al-Arbaeen St, Suez, Egypt',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0,leadOwn:'2-4',leadDrop:'7-14',heroImg:'images/hero-banner.jpg',heroTitle:'',heroTitle_en:'',heroSubtitle:'',heroSubtitle_en:'',siteBg:'images/hero-background.jpg',shopBg:'images/shop-header-bg.jpg',cartBg:'images/cart-bg.jpg',storeIcon:'images/logo.png',designLogo:'images/design-credit.png',designCredit:'تصميم وادي المدينة',colorPrimary:'#0E4A47',colorAccent:'#C79A4B'},
-  cats:[['c1','كنب وركنات','Sofas & Corner Units'],['c2','غرف النوم','Bedroom'],['c3','الستائر','Curtains'],['c4','السجاد','Rugs'],['c5','الإضاءة','Lighting'],['c6','المفروشات ومفارش السرير','Bedding & Linens'],['c7','ديكور الحائط والمرايا','Wall Décor & Mirrors'],['c8','الطاولات ووحدات التلفزيون','Tables & TV Units'],['c9','التحف والإكسسوارات','Décor & Accessories']].map(([id,name,name_en],i)=>({id,name,name_en,ord:i})),
+  settings:{name:'عابدين',name_en:'Abdeen',tagline:'سوق واحد لكل ما تحتاجه بيتك وعائلتك',tagline_en:'One marketplace for everything your home and family need',address:'مصر – السويس – الأربعين – شارع الجيش',address_en:'Al-Arbaeen St, Suez, Egypt',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0,leadOwn:'2-4',leadDrop:'7-14',heroImg:'images/hero-banner.jpg',heroTitle:'',heroTitle_en:'',heroSubtitle:'',heroSubtitle_en:'',siteBg:'images/hero-background.jpg',shopBg:'images/shop-header-bg.jpg',cartBg:'images/cart-bg.jpg',storeIcon:'images/logo.png',designLogo:'images/design-credit.png',designCredit:'تصميم وادي المدينة',colorPrimary:'#111214',colorAccent:'#8A7B6C'},
+  cats:[
+    ['c0','مفروشات وديكور','Home & Decor',null],
+    ['c1','كنب وركنات','Sofas & Corner Units','c0'],['c2','غرف النوم','Bedroom','c0'],['c3','الستائر','Curtains','c0'],['c4','السجاد','Rugs','c0'],['c5','الإضاءة','Lighting','c0'],['c6','المفروشات ومفارش السرير','Bedding & Linens','c0'],['c7','ديكور الحائط والمرايا','Wall Décor & Mirrors','c0'],['c8','الطاولات ووحدات التلفزيون','Tables & TV Units','c0'],['c9','التحف والإكسسوارات','Décor & Accessories','c0'],
+    ['c10','أطفال وبيبي','Kids & Baby',null],['c11','موضة','Fashion',null],['c12','جمال','Beauty',null],['c13','المنزل','Home',null],['c14','المطبخ','Kitchen',null]
+  ].map(([id,name,name_en,parent],i)=>({id,name,name_en,parent:parent||null,bg:'',ord:i})),
   products:[
     P('p1','c1','كنبة ثلاثية مقاعد – قطيفة','3-Seat Velvet Sofa',18500,22000,'sofa','#0E4A47','كنبة ثلاثية المقاعد بتصميم عصري وجلسة مريحة، مناسبة لغرف المعيشة والاستقبال.','A 3-seat sofa with a modern design and comfortable seating, ideal for living and reception rooms.'),
     P('p2','c1','ركنة حرف L – 5 مقاعد','L-Shaped Corner Sofa – 5 Seats',34900,39500,'corner','#55655F','ركنة واسعة تناسب العائلة الكبيرة وتوفر مساحة جلوس مريحة.','A spacious corner sofa that suits larger families and offers comfortable seating room.'),
@@ -487,9 +527,9 @@ const DEF={
   ],
   pages:{
 about:`# من نحن
-Mazhar_Ali متجر متخصص في ديكور المنازل والمفروشات، ومقره السويس – الأربعين – شارع الجيش.
+عابدين سوق إلكتروني واحد لكل ما يحتاجه بيتك وعائلتك، ومقره السويس – الأربعين – شارع الجيش.
 
-نوفر الكنب والركنات وغرف النوم والستائر والسجاد والإضاءة ومفارش السرير وديكور الحائط والتحف، بأسعار واضحة وخصومات على أصناف مختارة.
+نوفر المفروشات والديكور، ومستلزمات الأطفال والبيبي، والموضة، والجمال، وأدوات المنزل والمطبخ، بأسعار واضحة وخصومات على أصناف مختارة.
 
 معظم المنتجات متوفرة في مخزننا الخاص ونجهزها للشحن مباشرة، وبعض الأصناف (يُشار إليها بوضوح على صفحة المنتج) تصل عبر موردين شركاء ونعرضها بنفس مستوى الوضوح في السعر والمواصفات ومدة التوصيل.
 
@@ -500,9 +540,9 @@ Mazhar_Ali متجر متخصص في ديكور المنازل والمفروشا
 واتساب: 01021776980
 البريد الإلكتروني: city89229@gmail.com`,
 about_en:`# About Us
-Mazhar_Ali is a home décor and furnishings store based in Al-Arbaeen St, Suez, Egypt.
+Abdeen is a single online marketplace for everything your home and family need, based in Al-Arbaeen St, Suez, Egypt.
 
-We offer sofas, corner units, bedroom furniture, curtains, rugs, lighting, bedding, wall décor and accessories, with clear pricing and discounts on selected items.
+We offer home furnishings and décor, kids & baby essentials, fashion, beauty, and home & kitchen goods, with clear pricing and discounts on selected items.
 
 Most products are held in our own stock and dispatched directly. Some items (clearly marked on the product page) ship from partner suppliers, and we show the same clarity for their price, specifications and delivery time.
 
@@ -712,7 +752,12 @@ function loadLocal(){
 const persist=()=>{if(!FB)store.set('wd_data',{settings:S.settings,pages:S.pages,cats:S.cats,products:S.products})};
 const DEN={p:{},c:{}};
 const cn=c=>!c?'':(LANG==='en'?(c.name_en||DEN.c[c.id]||c.name):c.name)||'';
-const catName=id=>cn(S.cats.find(c=>c.id===id));
+const catById=id=>S.cats.find(c=>c.id===id);
+const catName=id=>cn(catById(id));
+const topCats=()=>S.cats.filter(c=>!c.parent).sort((a,b)=>a.ord-b.ord);
+const childCats=id=>S.cats.filter(c=>c.parent===id).sort((a,b)=>a.ord-b.ord);
+const catMatch=(productCat,filterCat)=>{if(!filterCat)return true;if(productCat===filterCat)return true;const pc=catById(productCat);return !!pc&&pc.parent===filterCat};
+const catBg=id=>{const c=catById(id);if(!c)return'';if(c.bg)return c.bg;return c.parent?catBg(c.parent):''};
 const pn=p=>LANG==='en'?(p.name_en||(DEN.p[p.id]||{}).n||p.name):p.name;
 const pdsc=p=>LANG==='en'?(p.desc_en||(DEN.p[p.id]||{}).d||p.desc):p.desc;
 const sv=k=>LANG==='en'&&S.settings[k+'_en']?S.settings[k+'_en']:S.settings[k];
@@ -880,7 +925,11 @@ function renderHeader(){
   const cat=(new URLSearchParams((location.hash.split('?')[1])||'')).get('c');
   const icon=assetPath(s.storeIcon,'images/logo.png'),dLogo=assetPath(s.designLogo,'images/design-credit.png'),dTxt=s.designCredit||'تصميم وادي المدينة';
   $('#hdr').innerHTML=trHTML(`
-  <div class="notice"><div class="wrap">${IC.shield}<span>بياناتك محمية – اتصال مشفر، ولا نشارك بياناتك مع أي طرف</span></div></div>
+  <div class="notice"><div class="ticker">${[0,1].map(()=>[
+      `<span>${esc(L(`أهلاً بكم في متجركم ${s.name}`,`Welcome to your store, ${s.name_en||s.name}`))}</span>`,
+      `<span>${esc(L('تسوق وكأنك على الأرض','Shop with total ease'))}</span>`,
+      `<span>${esc(L('اختيارات بعناية من أجلكم','Carefully chosen, just for you'))}</span>`
+    ].join('')).join('')}</div></div>
   <header class="top"><div class="wrap bar">
     <a class="brand" href="#/" aria-label="${esc(s.name)} – الرئيسية"><img class="brand-icon" src="${esc(icon)}" alt=""><span><span class="brandname">${esc(s.name)}</span><span class="credit"><img src="${esc(dLogo)}" alt="" onerror="this.style.display='none'">${esc(dTxt)}</span></span></a>
     <form class="search" data-form="search" role="search"><input type="text" name="q" placeholder="ابحث عن كنب، ستائر، سجاد…" aria-label="بحث" autocomplete="off"><button type="submit" aria-label="بحث">${IC.search}</button></form>
@@ -896,7 +945,7 @@ function renderHeader(){
       </nav>`:''}
     </div>
   </div>
-  <div class="catbar"><div class="wrap"><a href="#/" class="home-lnk" aria-label="الرئيسية">${IC.home}</a><a href="#/shop" class="${r==='#/shop'&&!cat?'on':''}">كل المنتجات</a>${S.cats.map(c=>`<a href="#/shop?c=${esc(c.id)}" class="${cat===c.id?'on':''}">${esc(cn(c))}</a>`).join('')}</div></div></header>`);
+  <div class="catbar"><div class="wrap"><a href="#/" class="home-lnk" aria-label="الرئيسية">${IC.home}</a><a href="#/shop" class="${r==='#/shop'&&!cat?'on':''}">كل المنتجات</a>${topCats().map(c=>`<a href="#/shop?c=${esc(c.id)}" class="${cat===c.id?'on':''}">${esc(cn(c))}</a>`).join('')}</div></div></header>`);
 }
 function renderFooter(){
   const s=S.settings,r=(location.hash.split('?')[0]||'#/'),n=cartCount();
@@ -918,7 +967,7 @@ function renderFooter(){
 /* ===== الصفحات ===== */
 function vHome(){
   const md=maxDisc(),deals=S.products.filter(p=>disc(p)>0).sort((a,b)=>disc(b)-disc(a)).slice(0,8),s=S.settings;
-  const tiles=S.cats.map(c=>{const p=S.products.find(x=>x.cat===c.id);return `<a class="tile" href="#/shop?c=${esc(c.id)}">${p?`<img src="${imgOf(p)}" alt="" loading="lazy">`:''}<span>${esc(cn(c))}</span></a>`}).join('');
+  const tiles=topCats().map(c=>{const p=S.products.find(x=>catMatch(x.cat,c.id));return `<a class="tile" href="#/shop?c=${esc(c.id)}">${p?`<img src="${imgOf(p)}" alt="" loading="lazy">`:''}<span>${esc(cn(c))}</span></a>`}).join('');
   const hT=LANG==='en'?(s.heroTitle_en||'Make your home more beautiful,\nat prices that suit you'):(s.heroTitle||'خلّي بيتك أجمل\nبأسعار تناسبك');
   const hS=LANG==='en'?(s.heroSubtitle_en||`Sofas, curtains, rugs, lighting and décor for every corner of your home${md?', with discounts on selected items':''}.`):(s.heroSubtitle||`كنب وستائر وسجاد وإضاءة وديكور لكل ركن في البيت${md?'، مع خصومات على أصناف مختارة':''}.`);
   return `<section class="hero"><div class="wrap hero-in">
@@ -938,22 +987,26 @@ function vHome(){
 }
 function vShop(q){
   let list=S.products.slice();const c=q.c,term=(q.q||'').trim().toLowerCase(),sort=q.s||'';
-  if(c)list=list.filter(p=>p.cat===c);
+  if(c)list=list.filter(p=>catMatch(p.cat,c));
   if(term)list=list.filter(p=>[p.name,p.name_en,(DEN.p[p.id]||{}).n,p.desc,pdsc(p),catName(p.cat)].join(' ').toLowerCase().includes(term));
   if(sort==='asc')list.sort((a,b)=>a.price-b.price);else if(sort==='desc')list.sort((a,b)=>b.price-a.price);else if(sort==='disc')list=list.filter(p=>disc(p)>0).sort((a,b)=>disc(b)-disc(a));
   const url=(o)=>'#/shop?'+new URLSearchParams(Object.fromEntries(Object.entries({c,q:q.q,s:sort,...o}).filter(([,v])=>v))).toString();
-  const title=c?catName(c):(term?`نتائج البحث عن "${q.q}"`:'كل المنتجات');
-  return pageBanner(assetPath(S.settings.shopBg,'images/shop-header-bg.jpg'),title)+`<div class="wrap" style="padding:20px 0 8px">
-  <div class="filters"><a class="chip ${!c?'on':''}" href="${url({c:''})}">الكل</a>${S.cats.map(k=>`<a class="chip ${c===k.id?'on':''}" href="${url({c:k.id})}">${esc(cn(k))}</a>`).join('')}
+  const curCat=c?catById(c):null,title=curCat?cn(curCat):(term?`نتائج البحث عن "${q.q}"`:'كل المنتجات');
+  const kids=curCat&&!curCat.parent?childCats(curCat.id):[];
+  const bannerImg=curCat?(catBg(curCat.id)||assetPath(S.settings.shopBg,'images/shop-header-bg.jpg')):assetPath(S.settings.shopBg,'images/shop-header-bg.jpg');
+  return pageBanner(bannerImg,title)+`<div class="wrap" style="padding:20px 0 8px">
+  <div class="filters"><a class="chip ${!c?'on':''}" href="${url({c:''})}">الكل</a>${topCats().map(k=>`<a class="chip ${c===k.id?'on':''}" href="${url({c:k.id})}">${esc(cn(k))}</a>`).join('')}
   <label style="margin-inline-start:auto">الترتيب <select data-sort aria-label="الترتيب"><option value="">الأحدث</option><option value="asc" ${sort==='asc'?'selected':''}>الأقل سعرًا</option><option value="desc" ${sort==='desc'?'selected':''}>الأعلى سعرًا</option><option value="disc" ${sort==='disc'?'selected':''}>الأعلى خصمًا</option></select></label></div>
+  ${kids.length?`<div class="filters">${kids.map(k=>`<a class="chip ${c===k.id?'on':''}" href="${url({c:k.id})}">${esc(cn(k))}</a>`).join('')}</div>`:''}
   ${list.length?`<div class="grid">${list.map(card).join('')}</div>`:`<div class="empty">${IC.search.replace('class="ico"','class="ico" style="width:48px;height:48px;margin:0 auto 12px;color:var(--brass)"')}<p>لا توجد منتجات مطابقة. جرّب قسمًا آخر أو كلمة بحث مختلفة.</p></div>`}</div>`;
 }
 function vProduct(id){
   const p=S.products.find(x=>x.id===id);
   if(!p)return `<div class="wrap empty"><p>المنتج غير موجود.</p><a class="btn btn-teal" href="#/shop">تصفح المنتجات</a></div>`;
   const d=disc(p),rel=S.products.filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,4),ld=daysTxt(leadOf(p));
+  const gal=imgsOf(p);
   return `<div class="wrap"><div class="crumbs"><a href="#/">الرئيسية</a> / <a href="#/shop?c=${esc(p.cat)}">${esc(catName(p.cat))}</a></div>
-  <div class="pd"><div class="pic"><img src="${imgOf(p)}" alt="${esc(pn(p))}"></div>
+  <div class="pd"><div><div class="pic"><img id="pdMain" src="${gal[0]}" alt="${esc(pn(p))}"></div>${gal.length>1?`<div class="gthumbs">${gal.map((im,i)=>`<button type="button" class="gthumb ${i===0?'on':''}" data-act="swapImg" data-id="${esc(im)}" aria-label="${L('صورة','Image')} ${i+1}"><img src="${im}" alt=""></button>`).join('')}</div>`:''}</div>
   <div><h1>${esc(pn(p))}</h1><div class="price" style="margin:12px 0"><b>${egp(p.price)}</b>${p.old>p.price?`<s>${egp(p.old)}</s><span class="sale" style="position:static">وفّر ${nf.format(d)}%</span>`:''}</div>
   <p>${esc(pdsc(p))}</p>
   <p style="color:${outOf(p)?'var(--sale)':'var(--ok)'};font-weight:700;margin-bottom:6px">${outOf(p)?'غير متوفر حاليًا':'متوفر'}</p>
@@ -1042,8 +1095,22 @@ function vAdmin(q){
     <div class="scroll"><table class="tbl"><thead><tr><th></th><th>الاسم</th><th>القسم</th><th>المصدر</th><th>السعر (ج.م)</th><th>قبل الخصم</th><th>إجراءات</th></tr></thead><tbody>${S.products.map(p=>`<tr><td><img class="th" src="${imgOf(p)}" alt=""></td><td>${esc(p.name)}</td><td>${esc(catName(p.cat))}</td><td>${isDrop(p)?'<span class="src drop">دروبشيبنج</span>':'<span class="src own">مخزننا</span>'}</td><td><input type="number" min="0" step="1" value="${+p.price}" data-pf="price" data-id="${esc(p.id)}" aria-label="السعر"></td><td><input type="number" min="0" step="1" value="${+p.old||0}" data-pf="old" data-id="${esc(p.id)}" aria-label="السعر قبل الخصم"></td><td style="white-space:nowrap"><button class="btn btn-line btn-sm" data-act="prodEdit" data-id="${esc(p.id)}">تعديل</button> <button class="btn btn-danger btn-sm" data-act="prodDel" data-id="${esc(p.id)}">حذف</button></td></tr>`).join('')}</tbody></table></div>
     <p style="color:var(--mute);font-size:14px">لعرض خصم: اكتب السعر الحالي في "السعر" والسعر الأعلى في "قبل الخصم" وسيظهر الخصم تلقائيًا. غيّر الأسعار مباشرة من الجدول. لتغيير المصدر (مخزننا / دروبشيبنج) افتح "تعديل".</p>`;
   }else if(t==='cats'){
-    body=`<div class="sh"><h2 style="font-size:22px">الأقسام</h2></div><form class="panel" data-form="cat" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px"><input type="text" name="name" placeholder="اسم قسم جديد" required maxlength="60" style="flex:1;min-width:200px"><button class="btn btn-brass" type="submit">إضافة قسم</button></form>
-    <div class="scroll"><table class="tbl"><tbody>${S.cats.map(c=>`<tr><td><input type="text" value="${esc(c.name)}" data-cf="${esc(c.id)}" aria-label="اسم القسم" maxlength="60"></td><td>${nf.format(S.products.filter(p=>p.cat===c.id).length)} منتج</td><td><button class="btn btn-danger btn-sm" data-act="catDel" data-id="${esc(c.id)}">حذف</button></td></tr>`).join('')}</tbody></table></div><p style="color:var(--mute);font-size:14px">لا يمكن حذف قسم به منتجات؛ انقل منتجاته أو احذفها أولًا. لتغيير الاسم عدّله في الخانة واضغط خارجها. لتعريب الاسم الإنجليزي افتح تعديل أي منتج بهذا القسم لاحقًا (اسم القسم الإنجليزي يُدار من الكود حاليًا).</p>`;
+    const topOpts=topCats().map(k=>`<option value="${esc(k.id)}">${esc(k.name)}</option>`).join('');
+    const rows=[];
+    topCats().forEach(top=>{
+      rows.push(`<tr style="background:var(--surface2)"><td colspan="2"><input type="text" value="${esc(top.name)}" data-cf="${esc(top.id)}" aria-label="اسم القسم" maxlength="60" style="font-weight:700"></td><td><input type="text" value="${esc(top.name_en||'')}" data-cfen="${esc(top.id)}" placeholder="English name" dir="ltr" style="text-align:right"></td><td><input type="text" value="${esc(top.bg||'')}" data-cbg="${esc(top.id)}" placeholder="images/section-bg.jpg" dir="ltr" style="text-align:right"></td><td>${nf.format(S.products.filter(p=>catMatch(p.cat,top.id)).length)} منتج</td><td><button class="btn btn-danger btn-sm" data-act="catDel" data-id="${esc(top.id)}">حذف</button></td></tr>`);
+      childCats(top.id).forEach(c=>{
+        rows.push(`<tr><td style="padding-inline-start:28px">↳ <input type="text" value="${esc(c.name)}" data-cf="${esc(c.id)}" aria-label="اسم القسم الفرعي" maxlength="60"></td><td><input type="text" value="${esc(c.name_en||'')}" data-cfen="${esc(c.id)}" placeholder="English name" dir="ltr" style="text-align:right"></td><td colspan="2" style="color:var(--mute);font-size:13px">فرعي من ${esc(top.name)}</td><td>${nf.format(S.products.filter(p=>p.cat===c.id).length)} منتج</td><td><button class="btn btn-danger btn-sm" data-act="catDel" data-id="${esc(c.id)}">حذف</button></td></tr>`);
+      });
+    });
+    body=`<div class="sh"><h2 style="font-size:22px">الأقسام</h2></div>
+    <form class="panel" data-form="cat" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+    <input type="text" name="name" placeholder="اسم قسم جديد (عربي)" required maxlength="60" style="flex:1;min-width:160px">
+    <input type="text" name="name_en" placeholder="English name (optional)" maxlength="60" dir="ltr" style="flex:1;min-width:160px;text-align:right">
+    <select name="parent" style="min-width:200px"><option value="">— بدون (قسم رئيسي) —</option>${topOpts}</select>
+    <button class="btn btn-brass" type="submit">إضافة</button></form>
+    <div class="scroll"><table class="tbl"><thead><tr><th>الاسم</th><th>English</th><th>خلفية القسم</th><th>المنتجات</th><th></th></tr></thead><tbody>${rows.join('')}</tbody></table></div>
+    <p style="color:var(--mute);font-size:14px">الأقسام الرئيسية (بلا قسم أب) تظهر في شريط التصنيفات وبلاطات الصفحة الرئيسية، ولها خلفية خاصة تظهر عند تصفحها. الأقسام الفرعية تظهر كخيارات إضافية داخل قسمها الرئيسي فقط. لا يمكن حذف قسم به منتجات أو أقسام فرعية؛ انقلها أو احذفها أولًا.</p>`;
   }else if(t==='store'){
     const s=S.settings;
     body=`<form class="panel" data-form="store"><h2 style="font-size:22px;margin-bottom:12px">بيانات المتجر</h2>
@@ -1078,12 +1145,20 @@ function vAdmin(q){
   <div class="adm-tabs">${tabs.map(([k,n])=>`<a class="chip ${t===k?'on':''}" href="#/admin?t=${k}">${n}</a>`).join('')}</div>${body}</div>`;
 }
 let tmpImg='';
+let tmpImgs=[];
+function renderImgGrid(){
+  const g=$('#imggrid');if(!g)return;
+  g.innerHTML=tmpImgs.map((im,i)=>`<div class="imgslot"><img src="${im}" alt=""><button type="button" class="imgrm" data-act="imgRm" data-id="${i}" aria-label="حذف الصورة">×</button></div>`).join('')+(tmpImgs.length<4?`<div class="imgslot" style="display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:12px;text-align:center;background:var(--stone)">${4-tmpImgs.length} ${L('متبقٍ','left')}</div>`:'');
+}
 function prodForm(p){
-  const n=!p;p=p||{id:uid('p'),cat:(S.cats[0]||{}).id||'',name:'',name_en:'',price:0,old:0,type:'sofa',color:'#0E4A47',desc:'',desc_en:'',stock:10,img:'',src:'own',lead:'',supplier:'',supplierUrl:''};tmpImg=p.img||'';
+  const n=!p;p=p||{id:uid('p'),cat:(S.cats[0]||{}).id||'',name:'',name_en:'',price:0,old:0,type:'sofa',color:'#0E4A47',desc:'',desc_en:'',stock:10,img:'',imgs:[],src:'own',lead:'',supplier:'',supplierUrl:''};
+  tmpImgs=(p.imgs&&p.imgs.length?p.imgs.slice(0,4):(p.img&&safeImg(p.img)?[p.img]:[]));
   openModal(`<h2>${n?'منتج جديد':'تعديل المنتج'}</h2><form data-form="prod"><input type="hidden" name="id" value="${esc(p.id)}">
-  <img class="pv" id="pv" src="${imgOf(p)}" alt="معاينة"><label class="f"><span>صورة المنتج <small>(JPG أو PNG – تُصغَّر تلقائيًا)</small></span><input type="file" accept="image/jpeg,image/png,image/webp" data-file></label>
+  <label class="f"><span>صور المنتج <small>(حتى 4 صور، JPG أو PNG – تُصغَّر تلقائيًا)</small></span></label>
+  <div class="imggrid" id="imggrid"></div>
+  <input type="file" accept="image/jpeg,image/png,image/webp" multiple data-file>
   <div class="row2"><label class="f"><span>اسم المنتج (عربي)</span><input type="text" name="name" value="${esc(p.name)}" required maxlength="120"></label><label class="f"><span>Product name (English) <small>(اختياري)</small></span><input type="text" name="name_en" value="${esc(p.name_en||'')}" maxlength="120" dir="ltr" style="text-align:right"></label></div>
-  <label class="f"><span>القسم</span><select name="cat" style="width:100%" required>${S.cats.map(c=>`<option value="${esc(c.id)}" ${c.id===p.cat?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>
+  <label class="f"><span>القسم</span><select name="cat" style="width:100%" required>${topCats().map(top=>{const kids=childCats(top.id);const optTop=`<option value="${esc(top.id)}" ${top.id===p.cat?'selected':''}>${esc(top.name)}</option>`;return kids.length?`<optgroup label="${esc(top.name)}">${optTop}${kids.map(c=>`<option value="${esc(c.id)}" ${c.id===p.cat?'selected':''}>— ${esc(c.name)}</option>`).join('')}</optgroup>`:optTop}).join('')}</select></label>
   <div class="row2"><label class="f"><span>السعر الحالي (ج.م)</span><input type="number" name="price" min="1" step="1" value="${+p.price||''}" required></label><label class="f"><span>السعر قبل الخصم <small>(اختياري)</small></span><input type="number" name="old" min="0" step="1" value="${+p.old||''}"></label></div>
   <div class="row2"><label class="f"><span>الوصف (عربي)</span><textarea name="desc" maxlength="1000">${esc(p.desc)}</textarea></label><label class="f"><span>Description (English) <small>(اختياري)</small></span><textarea name="desc_en" maxlength="1000" dir="ltr">${esc(p.desc_en||'')}</textarea></label></div>
   <h3 style="font-size:16px;color:var(--tx);margin:18px 0 4px">مصدر المنتج</h3>
@@ -1096,6 +1171,7 @@ function prodForm(p){
   <label class="f"><span>مدة التوصيل لهذا المنتج <small>(اختياري، مثل 3-5 — اتركه فارغًا لاستخدام الإعداد العام)</small></span><input type="text" name="lead" value="${esc(p.lead||'')}" maxlength="20" dir="ltr" style="text-align:right"></label>
   <div class="row2"><label class="f"><span>رسم بديل عند عدم وجود صورة</span><select name="type" style="width:100%">${ART_TYPES.map(([k,v])=>`<option value="${k}" ${k===p.type?'selected':''}>${v}</option>`).join('')}</select></label><label class="f"><span>لون الرسم البديل</span><input type="color" name="color" value="${esc(p.color||'#0E4A47')}" style="width:80px;padding:2px"></label></div>
   <p class="err" role="alert"></p><button class="btn btn-teal btn-block" type="submit">حفظ المنتج</button></form>`,true);
+  renderImgGrid();
 }
 function resizeImage(file){
   return new Promise((res,rej)=>{
@@ -1114,7 +1190,7 @@ function authModal(tab='login',msg){
   <div class="shield">${IC.shield}<span>بياناتك محمية. كلمة المرور تُخزّن مشفّرة ولا يراها أحد.</span></div>${msg?`<p style="margin-top:0">${esc(msg)}</p>`:''}
   ${forgot?`<form data-form="forgot"><label class="f"><span>البريد الإلكتروني أو رقم الهاتف</span><input type="text" name="ident" autocomplete="username" required></label><p class="err" role="alert"></p><button class="btn btn-teal btn-block" type="submit">إرسال رابط الاستعادة</button><p style="text-align:center"><button type="button" class="link" data-act="login">العودة لتسجيل الدخول</button></p></form>`:`
   <div class="tabs" role="tablist"><button data-act="login" class="${login?'on':''}" role="tab">تسجيل الدخول</button><button data-act="signup" class="${login?'':'on'}" role="tab">إنشاء حساب</button></div>
-  <button class="soc-btn" data-act="social" data-id="google" type="button">${G_ICON}المتابعة بحساب جوجل</button><button class="soc-btn" data-act="social" data-id="facebook" type="button">${FB_ICON}المتابعة بحساب فيسبوك</button>
+  <button class="soc-btn google" data-act="social" data-id="google" type="button">${G_ICON}المتابعة بحساب جوجل</button>
   <div class="or">أو بالبريد / الهاتف</div>
   <form data-form="auth" data-mode="${tab}" novalidate>${login?'':`<label class="f"><span>الاسم</span><input type="text" name="name" autocomplete="name" required maxlength="60"></label>`}
   <label class="f"><span>البريد الإلكتروني أو رقم الهاتف</span><input type="text" name="ident" autocomplete="username" required dir="ltr" style="text-align:right"></label>
@@ -1145,8 +1221,10 @@ const ACT={
   adminOut(){S.isAdmin=false;loadLocalOrders();location.hash='#/';render()},
   prodNew(){prodForm(null)},
   prodEdit(el,id){prodForm(S.products.find(p=>p.id===id))},
+  imgRm(el,id){tmpImgs.splice(+id,1);renderImgGrid()},
+  swapImg(el,id){const m=$('#pdMain');if(m)m.src=id;el.parentElement.querySelectorAll('.gthumb').forEach(b=>b.classList.remove('on'));el.classList.add('on')},
   async prodDel(el,id){const p=S.products.find(x=>x.id===id);if(p&&confirm('حذف المنتج "'+p.name+'"؟'))await del('products',id),toast('تم حذف المنتج'),render()},
-  async catDel(el,id){if(S.products.some(p=>p.cat===id))return toast('هذا القسم به منتجات. انقلها أو احذفها أولًا.');if(confirm('حذف القسم؟'))await del('categories',id),toast('تم حذف القسم'),render()},
+  async catDel(el,id){if(S.products.some(p=>p.cat===id))return toast('هذا القسم به منتجات. انقلها أو احذفها أولًا.');if(S.cats.some(c=>c.parent===id))return toast('هذا القسم له أقسام فرعية. احذفها أولًا.');if(confirm('حذف القسم؟'))await del('categories',id),toast('تم حذف القسم'),render()},
   async seed(){await seed();toast('تم تحميل البيانات الافتراضية')}
 };
 document.addEventListener('click',async e=>{
@@ -1163,8 +1241,15 @@ document.addEventListener('change',async e=>{
     if(t.matches('[data-sort]')){const h=location.hash.split('?'),p=new URLSearchParams(h[1]||'');t.value?p.set('s',t.value):p.delete('s');location.hash='#/shop?'+p}
     else if(t.matches('[data-pf]')){const p=S.products.find(x=>x.id===t.dataset.id);if(!p)return;const v=Math.max(0,Math.round(+t.value||0));if(t.dataset.pf==='price'&&v<1){t.value=p.price;return toast('السعر يجب أن يكون أكبر من صفر')}p[t.dataset.pf]=v;await put('products',p);toast('تم حفظ السعر');render()}
     else if(t.matches('[data-cf]')){const c=S.cats.find(x=>x.id===t.dataset.cf),v=t.value.trim();if(c&&v){c.name=v;await put('categories',c);toast('تم حفظ اسم القسم');renderHeader()}}
+    else if(t.matches('[data-cfen]')){const c=S.cats.find(x=>x.id===t.dataset.cfen);if(c){c.name_en=t.value.trim();await put('categories',c);toast('تم حفظ الاسم الإنجليزي')}}
+    else if(t.matches('[data-cbg]')){const c=S.cats.find(x=>x.id===t.dataset.cbg);if(c){c.bg=t.value.trim();await put('categories',c);toast('تم حفظ خلفية القسم')}}
     else if(t.matches('[data-st]')){const o=S.orders.find(x=>x.id===t.dataset.st);if(!o)return;o.status=t.value;if(FB)await FB.db.doc('orders/'+o.id).update({status:o.status});else{const all=store.get('wd_orders',[]),i=all.findIndex(x=>x.id===o.id);if(i>=0){all[i].status=o.status;store.set('wd_orders',all)}}toast('تم تحديث حالة الطلب');render()}
-    else if(t.matches('[data-file]')&&t.files[0]){tmpImg=await resizeImage(t.files[0]);$('#pv').src=tmpImg}
+    else if(t.matches('[data-file]')&&t.files.length){
+      const room=4-tmpImgs.length,files=Array.from(t.files).slice(0,room);
+      if(t.files.length>room)toast(L(`أضيفت ${room} فقط، الحد الأقصى 4 صور`,`Only ${room} added — 4 images max`));
+      for(const file of files){try{tmpImgs.push(await resizeImage(file))}catch(err){toast(err.message)}}
+      t.value='';renderImgGrid();
+    }
     else if(t.matches('input[data-act-src]')){const own=$('#ownFields'),drop=$('#dropFields');if(own&&drop){const isDropSel=t.value==='drop';own.style.display=isDropSel?'none':'block';drop.style.display=isDropSel?'block':'none'}}
   }catch(err){toast(err.message||'حدث خطأ')}
 });
@@ -1216,7 +1301,7 @@ const FORM={
     if(!ok){lockFail(key);return showErr(f,'بيانات الدخول غير صحيحة.')}
     lockOk(key);S.isAdmin=true;loadLocalOrders();render();toast('مرحبًا بك في لوحة التحكم');
   },
-  async cat(f){const n=String(new FormData(f).get('name')).trim();if(!n)return;await put('categories',{id:uid('c'),name:n,ord:Date.now()});toast('تمت إضافة القسم');render()},
+  async cat(f){const d=Object.fromEntries(new FormData(f)),n=String(d.name||'').trim();if(!n)return;await put('categories',{id:uid('c'),name:n,name_en:String(d.name_en||'').trim(),parent:d.parent||null,bg:'',ord:Date.now()});toast('تمت إضافة القسم');render()},
   async store(f){
     const d=Object.fromEntries(new FormData(f)),ph=String(d.phone).replace(/\D/g,'');
     if(!/^20\d{10}$/.test(ph))return showErr(f,'رقم الواتساب بصيغة دولية مثل 201021776980');
@@ -1238,7 +1323,7 @@ const FORM={
     if(src==='drop'&&!String(d.supplier||'').trim())return showErr(f,'أدخل اسم المورّد لمنتجات الدروبشيبنج.');
     const leadOk=v=>v===''||/^\d+(\s*[-–]\s*\d+)?$/.test(String(v).trim());
     if(!leadOk(d.lead))return showErr(f,'صيغة مدة التوصيل غير صحيحة، مثل 3-5.');
-    await put('products',{id:d.id,cat:d.cat,name:String(d.name).trim(),name_en:String(d.name_en||'').trim(),price,old,desc:String(d.desc||'').trim(),desc_en:String(d.desc_en||'').trim(),stock:src==='drop'?null:Math.max(0,Math.round(+d.stock||0)),src,supplier:src==='drop'?String(d.supplier||'').trim():'',supplierUrl:src==='drop'?String(d.supplierUrl||'').trim():'',lead:String(d.lead||'').trim(),type:d.type,color:/^#[0-9a-f]{6}$/i.test(d.color)?d.color:'#0E4A47',img:tmpImg});
+    await put('products',{id:d.id,cat:d.cat,name:String(d.name).trim(),name_en:String(d.name_en||'').trim(),price,old,desc:String(d.desc||'').trim(),desc_en:String(d.desc_en||'').trim(),stock:src==='drop'?null:Math.max(0,Math.round(+d.stock||0)),src,supplier:src==='drop'?String(d.supplier||'').trim():'',supplierUrl:src==='drop'?String(d.supplierUrl||'').trim():'',lead:String(d.lead||'').trim(),type:d.type,color:/^#[0-9a-f]{6}$/i.test(d.color)?d.color:'#0E4A47',imgs:tmpImgs.slice(0,4),img:tmpImgs[0]||''});
     closeModal();toast('تم حفظ المنتج');render();
   }
 };
