@@ -1,51 +1,36 @@
 rules_version = '2';
-// الحماية 1/3 (جزء قاعدة البيانات): القراءة العامة للمحتوى فقط، والكتابة للمسؤولين فقط، والزوار يرسلون نماذج محققة الشكل
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    function signedIn() { return request.auth != null; }
     function isAdmin() {
-      return request.auth != null &&
-             exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+      return signedIn() &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
     }
-    function text(value, max) { return value is string && value.size() <= max; }
 
-    match /news/{id}     { allow read: if true; allow write: if isAdmin(); }
-    match /press/{id}    { allow read: if true; allow write: if isAdmin(); }
-    match /gallery/{id}  { allow read: if true; allow write: if isAdmin(); }
-    match /settings/{id} { allow read: if true; allow write: if isAdmin(); }
+    // الكتالوج والإعدادات: قراءة للجميع، كتابة للمسؤولين فقط
+    match /products/{id}   { allow read: if true; allow write: if isAdmin(); }
+    match /categories/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /settings/{id}   { allow read: if true; allow write: if isAdmin(); }
 
+    // سلة كل مستخدم: له وحده
+    match /users/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // المسؤولون: يُضافون يدويًا من لوحة Firebase فقط (uid المستخدم كمعرّف للمستند)
     match /admins/{uid} {
-      allow read: if request.auth != null && request.auth.uid == uid;
-      allow write: if false;   // تُضاف يدويًا من Firebase Console فقط
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if false;
     }
 
-    match /sections/{id} { allow read: if true; allow write: if isAdmin(); }
-
-    // المشتركون: الزائر يسجّل نفسه فقط ببياناته من حساب Google، والمسؤول يقرأ الكل
-    match /subscribers/{uid} {
-      allow create: if request.auth != null && request.auth.uid == uid
-        && request.resource.data.keys().hasOnly(['name','email','createdAt'])
-        && text(request.resource.data.name, 100)
-        && request.resource.data.email == request.auth.token.email
-        && request.resource.data.createdAt == request.time;
-      allow read, delete: if request.auth != null && (request.auth.uid == uid || isAdmin());
-      allow update: if false;
+    // الطلبات
+    match /orders/{id} {
+      // الإنشاء ممنوع من المتصفح تمامًا: الطلبات تُنشأ فقط من خادم Flask بعد إعادة حساب الأسعار
+      allow create: if false;
+      allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow update: if isAdmin();
+      allow delete: if false;
     }
-
-    match /messages/{id} {
-      allow create: if request.resource.data.keys().hasOnly(['type','name','phone','message','kind','district','status','createdAt'])
-        && request.resource.data.type in ['consultation','complaint','membership','contact']
-        && text(request.resource.data.name, 200) && request.resource.data.name.size() >= 2
-        && text(request.resource.data.phone, 20) && request.resource.data.phone.matches('^[0-9+ -]{7,20}$')
-        && request.resource.data.keys().hasAll(['type','name','phone','status','createdAt'])
-        && (!('message'  in request.resource.data) || text(request.resource.data.message, 2000))
-        && (!('kind'     in request.resource.data) || text(request.resource.data.kind, 50))
-        && (!('district' in request.resource.data) || text(request.resource.data.district, 200))
-        && request.resource.data.status == 'new'
-        && request.resource.data.createdAt == request.time;
-      allow read, update, delete: if isAdmin();
-    }
-
-    match /{document=**} { allow read, write: if false; }
   }
 }
