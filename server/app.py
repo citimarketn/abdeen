@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 """
-خادم الطلبات لمتجر وادي الديكور والمفروشات.
+خادم الطلبات لمتجر عابدين (Flask + Firebase Admin).
 
-المبدأ: العميل يرسل فقط (معرّف المنتج + الكمية) وبيانات التوصيل.
-الأسعار والإجمالي والشحن يقرؤها الخادم من Firestore ولا يثق بأي رقم قادم من المتصفح.
+المبدأ الأمني (Security principle): المتصفح يرسل فقط معرّف المنتج + الكمية + اللون/المقاس + بيانات التوصيل.
+الأسعار والشحن والمخزون والتحقق من الخيارات (اللون/المقاس) كلها تُقرأ وتُتحقق من Firestore داخل
+معاملة واحدة (Transaction)، فلا يمكن التلاعب بالسعر ولا بيع كمية أكبر من المخزون.
 """
 import os, re, json, time, secrets, threading
 from flask import Flask, request, jsonify
@@ -20,7 +22,7 @@ db = firestore.client()
 
 ALLOWED = [o.strip().rstrip("/") for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
 PHONE = re.compile(r"^01[0125]\d{8}$")
-MAX_LINES, MAX_QTY = 50, 20
+MAX_LINES, MAX_QTY, MAX_TOTAL = 50, 20, 1_000_000
 
 
 class Bad(Exception):
@@ -49,8 +51,9 @@ def limited(uid, limit=5, window=600):
         return False
 
 
-# ---------- بناء الطلب (دالة نقية قابلة للاختبار) ----------
+# ---------- بناء الطلب (دوال نقية قابلة للاختبار) ----------
 def parse_items(raw):
+    """يدمج الأسطر المتطابقة (منتج + لون + مقاس) ويتحقق من الشكل فقط."""
     if not isinstance(raw, list) or not raw:
         raise Bad("السلة فارغة.")
     merged = {}
@@ -62,16 +65,21 @@ def parse_items(raw):
             raise Bad("منتج غير صحيح في السلة.")
         if isinstance(q, bool) or not isinstance(q, int) or not (1 <= q <= MAX_QTY):
             raise Bad("الكمية غير صحيحة.")
-        merged[pid] = merged.get(pid, 0) + q
-        if merged[pid] > MAX_QTY:
+        key = (pid, clean(it.get("color"), 40), clean(it.get("size"), 40))
+        merged[key] = merged.get(key, 0) + q
+        if merged[key] > MAX_QTY:
             raise Bad("الحد الأقصى للكمية %d لكل منتج." % MAX_QTY)
     if len(merged) > MAX_LINES:
         raise Bad("عدد المنتجات في الطلب كبير.")
-    return merged
+    return [{"pid": k[0], "color": k[1], "size": k[2], "q": q} for k, q in merged.items()]
 
 
-def build_order(uid, data, products, shipping):
-    """products: {id: dict} من قاعدة البيانات فقط."""
+def _num(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def build_order(uid, data, items, products, shipping):
+    """products: {id: dict} من قاعدة البيانات فقط. يعيد (order, need) حيث need = الكميات المطلوب خصمها من المخزون."""
     if not isinstance(data, dict):
         raise Bad("طلب غير صحيح.")
     name, city = clean(data.get("name"), 80), clean(data.get("city"), 60)
@@ -85,29 +93,76 @@ def build_order(uid, data, products, shipping):
     if len(city) < 2 or len(address) < 5:
         raise Bad("أدخل المدينة والعنوان بالتفصيل.")
 
-    merged = parse_items(data.get("items"))
-    lines, total = [], 0
-    for pid, q in merged.items():
+    lines, total, need = [], 0, {}
+    for it in items:
+        pid, q = it["pid"], it["q"]
         p = products.get(pid)
         if not p:
             raise Bad("أحد المنتجات لم يعد متاحًا، حدّث السلة.")
+        pname = clean(p.get("name"), 120)
         price = p.get("price")
-        if isinstance(price, bool) or not isinstance(price, (int, float)) or price <= 0:
+        if not _num(price) or price <= 0:
             raise Bad("تعذر تسعير أحد المنتجات، تواصل مع المتجر.", 409)
+        # التحقق من اللون والمقاس: يجب أن يكونا من الخيارات المعرّفة للمنتج فقط
+        colors = [c.get("name") for c in (p.get("colors") or []) if isinstance(c, dict)]
+        sizes = [x for x in (p.get("sizes") or []) if isinstance(x, str)]
+        if colors:
+            if it["color"] not in colors:
+                raise Bad("اختر لونًا صحيحًا للمنتج «%s»." % pname)
+        elif it["color"]:
+            raise Bad("هذا المنتج بلا ألوان.")
+        if sizes:
+            if it["size"] not in sizes:
+                raise Bad("اختر مقاسًا صحيحًا للمنتج «%s»." % pname)
+        elif it["size"]:
+            raise Bad("هذا المنتج بلا مقاسات.")
+        src = "drop" if p.get("src") == "drop" else "own"
         stock = p.get("stock")
-        if isinstance(stock, (int, float)) and not isinstance(stock, bool) and stock < q:
-            raise Bad("المتاح من «%s» %d فقط." % (p.get("name", ""), max(0, int(stock))))
-        lines.append({"id": pid, "name": clean(p.get("name"), 120), "price": price, "q": q})
+        if src == "own" and _num(stock):
+            need[pid] = need.get(pid, 0) + q
+        lines.append({
+            "id": pid, "name": pname, "price": price, "q": q, "src": src,
+            "lead": clean(p.get("lead"), 20), "unit": p.get("unit") if p.get("unit") in ("kg", "m") else "piece",
+            "color": it["color"], "size": it["size"],
+        })
         total += price * q
+    for pid, qty in need.items():
+        have = products[pid].get("stock")
+        if have < qty:
+            raise Bad("المتاح من «%s» %d فقط." % (clean(products[pid].get("name"), 120), max(0, int(have))))
 
-    ship = shipping if isinstance(shipping, (int, float)) and shipping > 0 else 0
+    ship = shipping if _num(shipping) and shipping > 0 else 0
+    if total + ship > MAX_TOTAL:
+        raise Bad("قيمة الطلب كبيرة، تواصل مع المتجر.")
     now = time.gmtime()
-    oid = "WD-%02d%02d%02d-%s" % (now.tm_year % 100, now.tm_mon, now.tm_mday, "".join(secrets.choice("ABCDEFGHJKLMNPQRSTUVWXYZ23456789") for _ in range(4)))
-    return {
+    oid = "AB-%02d%02d%02d-%s" % (now.tm_year % 100, now.tm_mon, now.tm_mday,
+                                  "".join(secrets.choice("ABCDEFGHJKLMNPQRSTUVWXYZ23456789") for _ in range(5)))
+    order = {
         "id": oid, "uid": uid, "name": name, "phone": phone, "city": city, "address": address,
         "notes": notes, "pay": pay, "items": lines, "shipping": ship,
         "total": total + ship, "status": "new", "ts": int(time.time() * 1000),
     }
+    return order, need
+
+
+def place_order(uid, data):
+    items = parse_items(data.get("items") if isinstance(data, dict) else None)
+    refs = {p: db.collection("products").document(p) for p in sorted({i["pid"] for i in items})}
+    settings_ref = db.document("settings/store")
+
+    @firestore.transactional
+    def body(txn):
+        snaps = db.get_all(list(refs.values()), transaction=txn)
+        products = {s.id: s.to_dict() for s in snaps if s.exists}
+        st = settings_ref.get(transaction=txn)
+        shipping = (st.to_dict() or {}).get("shipping", 0) if st.exists else 0
+        order, need = build_order(uid, data, items, products, shipping)
+        for pid, qty in need.items():  # خصم المخزون ذريًا (كل القراءات قبل الكتابات)
+            txn.update(refs[pid], {"stock": products[pid]["stock"] - qty})
+        txn.create(db.collection("orders").document(order["id"]), order)
+        return order
+
+    return body(db.transaction())
 
 
 # ---------- المسارات ----------
@@ -121,6 +176,8 @@ def headers(resp):
         resp.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
         resp.headers["Access-Control-Max-Age"] = "600"
     resp.headers["X-Content-Type-Options"] = "nosniff"
+    resp.headers["Referrer-Policy"] = "no-referrer"
+    resp.headers["Content-Security-Policy"] = "default-src 'none'; frame-ancestors 'none'"
     resp.headers["Cache-Control"] = "no-store"
     return resp
 
@@ -144,16 +201,7 @@ def create_order():
             raise Bad("انتهت الجلسة، سجّل الدخول من جديد.", 401)
         if limited(uid):
             raise Bad("محاولات كثيرة، انتظر بضع دقائق ثم أعد المحاولة.", 429)
-
-        data = request.get_json(silent=True)
-        merged = parse_items((data or {}).get("items") if isinstance(data, dict) else None)
-        snaps = db.get_all([db.collection("products").document(i) for i in merged])
-        products = {s.id: s.to_dict() for s in snaps if s.exists}
-        st = db.document("settings/store").get()
-        shipping = (st.to_dict() or {}).get("shipping", 0) if st.exists else 0
-
-        order = build_order(uid, data, products, shipping)
-        db.collection("orders").document(order["id"]).create(order)
+        order = place_order(uid, request.get_json(silent=True))
         return jsonify(order=order), 201
     except Bad as e:
         return jsonify(error=e.msg), e.code
