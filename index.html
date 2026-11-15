@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https: wss:; frame-src https:; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.pythonanywhere.com; frame-src https://*.firebaseapp.com https://*.web.app https://accounts.google.com https://apis.google.com; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="description" content="Mazhar_Ali كنب وستائر وسجاد وإضاءة وديكور. السويس، مصر.">
-<title>Mazhar_Ali</title>
+<meta name="description" content="عابدين – سوق إلكتروني لكل ما يحتاجه بيتك وعائلتك: أثاث، مواد غذائية، ملابس، إلكترونيات، خدمات وأكثر. السويس، مصر.">
+<title>عابدين</title>
 <link rel="icon" href="images/logo.png">
 <link rel="apple-touch-icon" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--teal:#111214;--teal2:#000000;--brass:#8A7B6C;--bone:#F6F5F3;--stone:#ECE9E5;--sage:#DED8D0;--ink:#161514;--mute:#605A53;--sale:#A5473C;--ok:#2F6B4F;--line:#DFDAD3;--surface:#ffffff;--surface2:#eef0f2;--site-bg-img:none;--tx:#111214;--on-brand:#ffffff;--on-accent:#ffffff;--brand-rgb:17,18,20;--brand2-rgb:0,0,0}
-:root[data-theme="dark"]{--teal:#2A2826;--teal2:#000000;--brass:#B3A390;--bone:#15130F;--stone:#1d1b18;--sage:#29261f;--ink:#F3F1ED;--mute:#B2A89C;--sale:#E07A6E;--ok:#6FCB9B;--line:#332F28;--surface:#1d1b18;--surface2:#242019}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--teal:#2A2826;--teal2:#000000;--brass:#B3A390;--bone:#15130F;--stone:#1d1b18;--sage:#29261f;--ink:#F3F1ED;--mute:#B2A89C;--sale:#E07A6E;--ok:#6FCB9B;--line:#332F28;--surface:#1d1b18;--surface2:#242019}}
+:root{--teal:#0C4A45;--teal2:#07302C;--brass:#E8A93D;--bone:#F7F6F2;--stone:#EFEDE6;--sage:#DCE4DF;--ink:#17201E;--mute:#5B655F;--sale:#C0392B;--ok:#1E8E5A;--line:#DEE3DE;--surface:#ffffff;--surface2:#eef3f0;--site-bg-img:none;--tx:#0C4A45;--on-brand:#ffffff;--on-accent:#1b1407;--brand-rgb:12,74,69;--brand2-rgb:7,48,44}
+:root[data-theme="dark"]{--teal:#163F3B;--teal2:#0A2622;--brass:#E8B55A;--bone:#13201D;--stone:#1b2824;--sage:#223330;--ink:#EDF3F0;--mute:#9FB3AC;--sale:#E07A6E;--ok:#6FCB9B;--line:#2B3C37;--surface:#1b2824;--surface2:#213330}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--teal:#163F3B;--teal2:#0A2622;--brass:#E8B55A;--bone:#13201D;--stone:#1b2824;--sage:#223330;--ink:#EDF3F0;--mute:#9FB3AC;--sale:#E07A6E;--ok:#6FCB9B;--line:#2B3C37;--surface:#1b2824;--surface2:#213330}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;font:400 16px/1.75 'Tajawal','Segoe UI',Tahoma,sans-serif;color:var(--ink);background-color:var(--bone);background-image:linear-gradient(rgba(245,246,243,.93),rgba(245,246,243,.93)),var(--site-bg-img);background-size:cover;background-attachment:fixed;background-position:center;min-height:100vh;display:flex;flex-direction:column;transition:background-color .2s,color .2s}
@@ -160,9 +160,15 @@ label.f small{font-weight:400;color:var(--mute)}
 .cat-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .cat-card{display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;background:var(--surface);border:1px solid var(--line);text-align:start;transition:transform .2s,box-shadow .2s}
 .cat-card:hover{transform:translateY(-2px);box-shadow:0 14px 28px -20px rgba(0,0,0,.4)}
-.cat-badge{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;flex:none;font-size:22px}
-.cat-card h3{font-size:16px;margin-bottom:3px}
-.cat-card span{font-size:13px;color:var(--mute);display:block}
+.cat-badge{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;flex:none;font-size:22px;background:var(--surface2)}
+.cat-txt h3{font-size:16px;margin:0 0 3px}
+.cat-sub{font-size:13px;color:var(--mute);margin:0;line-height:1.5}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-inline-end:6px;border:1px solid var(--line);vertical-align:-1px}
+.flt{font-size:14px;margin-inline-end:4px}
+.feats{display:flex;gap:10px;flex-wrap:wrap}
+.chk{display:inline-flex;gap:4px;align-items:center;font-size:13px;white-space:nowrap}
+.chk input{width:auto;min-height:0}
+.hrs{margin-top:6px;line-height:1.7}
 @media (max-width:640px){.cat-cards{grid-template-columns:1fr 1fr}.cat-card{padding:12px;gap:10px}.cat-badge{width:40px;height:40px;font-size:18px}}
 .arch img{width:100%;height:100%;object-fit:cover;display:block}
 .pgbanner{background:linear-gradient(rgba(var(--brand-rgb),.80),rgba(var(--brand2-rgb),.80)),var(--pgimg) center/cover;background-size:cover;color:var(--on-brand);padding:34px 0}
@@ -384,7 +390,7 @@ const EN=new Map(Object.entries({
 'تعذر إرسال الطلب، حاول مرة أخرى.':'Could not submit the order, please try again.',
 'اضغط زر "إرسال الفاتورة على واتساب" لإتمام الطلب':'Tap "Send invoice on WhatsApp" to complete your order',
 'الصفحة غير موجودة':'Page not found','—':'—',
-'الوضع الليلي':'Dark mode','تفعيل الوضع النهاري':'Switch to light mode','تفعيل الوضع الليلي':'Switch to dark mode',
+'مواعيد العمل':'Working hours','الوضع الليلي':'Dark mode','تفعيل الوضع النهاري':'Switch to light mode','تفعيل الوضع الليلي':'Switch to dark mode',
 'لوحة التحكم':'Dashboard','دخول الإدارة':'Admin sign-in','رقم الواتساب':'WhatsApp number','الرقم السري (4 أرقام)':'4-digit PIN','بيانات الدخول غير صحيحة.':'Incorrect sign-in details.',
 'المنتجات':'Products','الأقسام':'Categories','بيانات المتجر':'Store Settings','الصفحات القانونية':'Legal Pages','الطلبات':'Orders',
 'منتج جديد':'New product','تعديل':'Edit','حذف':'Delete','السعر (ج.م)':'Price (EGP)','قبل الخصم':'Before discount','إجراءات':'Actions','المصدر':'Source',
@@ -438,7 +444,7 @@ const lum=h=>{const [r,g,b]=hex2(h).map(v=>{v/=255;return v<=.03928?v/12.92:Math
 const assetPath=(v,def)=>{v=String(v||'').trim();if(!v)return def;if(/^(https?:)?\/\//.test(v)||v.includes('/'))return v;return 'images/'+v};
 function applyBrand(){
   const s=S.settings,root=document.documentElement.style,ok=c=>/^#[0-9a-fA-F]{6}$/.test(c||'');
-  const P=ok(s.colorPrimary)?s.colorPrimary:'#111214',A=ok(s.colorAccent)?s.colorAccent:'#8A7B6C',dark=curTheme()==='dark';
+  const P=ok(s.colorPrimary)?s.colorPrimary:'#0C4A45',A=ok(s.colorAccent)?s.colorAccent:'#E8A93D',dark=curTheme()==='dark';
   const bg=dark?mix(P,'#ffffff',.22):P,bg2=mix(bg,'#000000',.38),tx=dark?mix(P,'#ffffff',.62):P,ac=dark?mix(A,'#ffffff',.12):A;
   root.setProperty('--teal',bg);root.setProperty('--teal2',bg2);root.setProperty('--tx',tx);root.setProperty('--brass',ac);
   root.setProperty('--on-brand',lum(bg)>.42?'#101418':'#ffffff');root.setProperty('--on-accent',lum(ac)>.35?'#1b1407':'#ffffff');
@@ -470,7 +476,6 @@ const G_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d
 
 const LOGO=`<svg viewBox="0 0 64 64" role="img" aria-label="شعار المتجر"><rect width="64" height="64" rx="14" fill="#0E4A47"/><path d="M14 54V30a18 18 0 0 1 36 0v24" fill="#0A3836" stroke="#B98A34" stroke-width="3.5"/><circle cx="32" cy="27" r="5" fill="#B98A34"/><path d="M14 44q9-9 18-3t18-3v16H14z" fill="#3F7A70"/><path d="M14 50q10-6 18-2t18-2v8H14z" fill="#1F5F58"/><rect x="21" y="43" width="22" height="7" rx="3" fill="#F5F6F3"/><rect x="19" y="45" width="4" height="7" rx="2" fill="#B98A34"/><rect x="41" y="45" width="4" height="7" rx="2" fill="#B98A34"/></svg>`;
 
-const HERO_SCENE=`<svg viewBox="0 0 480 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="hsk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FBAB3"/><stop offset=".62" stop-color="#EBD9A8"/><stop offset="1" stop-color="#F3E2B4"/></linearGradient></defs><rect width="480" height="560" fill="url(#hsk)"/><circle cx="340" cy="250" r="46" fill="#FFF4CF"/><path d="M0 330Q90 250 190 310T380 290T480 320V440H0z" fill="#6E9A8E"/><path d="M0 370Q120 300 240 360T480 350V440H0z" fill="#3F7A70"/><path d="M0 405Q160 355 300 405T480 392V450H0z" fill="#1F5F58"/><path d="M240 0V432M0 250H480" stroke="#0E4A47" stroke-opacity=".4" stroke-width="7"/><rect y="428" width="480" height="132" fill="#0A3836"/><rect y="424" width="480" height="10" fill="#B98A34"/><ellipse cx="240" cy="522" rx="210" ry="28" fill="#123F3C"/><ellipse cx="240" cy="522" rx="170" ry="20" fill="none" stroke="#3F7A70" stroke-width="3"/><rect x="92" y="392" width="296" height="84" rx="24" fill="#C39A4B"/><rect x="66" y="420" width="56" height="86" rx="20" fill="#A67C33"/><rect x="358" y="420" width="56" height="86" rx="20" fill="#A67C33"/><rect x="124" y="428" width="112" height="60" rx="12" fill="#D8B46A"/><rect x="244" y="428" width="112" height="60" rx="12" fill="#D8B46A"/><rect x="132" y="404" width="52" height="46" rx="10" fill="#F5F6F3" transform="rotate(-8 158 427)"/><rect x="300" y="404" width="52" height="46" rx="10" fill="#0E4A47" transform="rotate(8 326 427)"/><rect x="58" y="270" width="7" height="236" fill="#B98A34"/><path d="M30 270 42 226h44l12 44z" fill="#F5F6F3"/><ellipse cx="62" cy="290" rx="52" ry="30" fill="#FFE9A8" fill-opacity=".3"/><rect x="420" y="450" width="34" height="46" rx="6" fill="#B98A34"/><path d="M437 450Q400 400 410 350M437 450Q450 380 470 340M437 450Q430 390 425 330" stroke="#4d8a63" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="410" cy="345" rx="14" ry="26" fill="#5FA377"/><ellipse cx="468" cy="338" rx="12" ry="24" fill="#4d8a63"/><ellipse cx="425" cy="325" rx="11" ry="22" fill="#6DB585"/></svg>`;
 
 /* ===== رسومات المنتجات (بديل الصور إلى أن ترفع صورك الحقيقية) ===== */
 const PLACEHOLDER_IMG='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#EEECE8"/><g fill="none" stroke="#B9B2A8" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"><rect x="90" y="80" width="220" height="150" rx="10"/><circle cx="150" cy="130" r="16"/><path d="M90 205 160 150 210 190 250 150 310 205"/></g></svg>`);
@@ -478,49 +483,1953 @@ const imgOf=p=>{const g=(p.imgs||[]).find(safeImg);if(g)return g;return safeImg(
 const imgsOf=p=>{const g=(p.imgs||[]).filter(safeImg);return g.length?g:[imgOf(p)]};
 
 /* ===== البيانات الافتراضية (أسعار أمثلة قابلة للتعديل من لوحة التحكم) ===== */
-const P=(id,cat,name,name_en,price,old,type,color,desc,desc_en,src)=>({id,cat,name,name_en,price,old,type,color,desc,desc_en,stock:src==='drop'?null:10,img:'',src:src||'own',supplier:'',supplierUrl:'',lead:'',unit:'piece',colors:[],sizes:[]});
+const _P=null;
 const DEF={
-  settings:{name:'عابدين',name_en:'Abdeen',tagline:'سوق واحد لكل ما تحتاجه بيتك وعائلتك',tagline_en:'One marketplace for everything your home and family need',address:'مصر – السويس – الأربعين – شارع الجيش',address_en:'Al-Arbaeen St, Suez, Egypt',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0,leadOwn:'2-4',leadDrop:'7-14',heroImg:'images/hero-banner.jpg',heroTitle:'',heroTitle_en:'',heroSubtitle:'',heroSubtitle_en:'',siteBg:'images/hero-background.jpg',shopBg:'images/shop-header-bg.jpg',cartBg:'images/cart-bg.jpg',storeIcon:'images/logo.png',designLogo:'images/design-credit.png',designCredit:'تصميم وادي المدينة',colorPrimary:'#111214',colorAccent:'#8A7B6C'},
+  settings:{name:'عابدين',name_en:'Abdeen',tagline:'سوق واحد لكل ما تحتاجه بيتك وعائلتك',tagline_en:'One marketplace for everything your home and family need',address:'مصر – السويس – الأربعين – شارع الجيش',address_en:'Al-Arbaeen St, Suez, Egypt',phone:'201021776980',email:'city89229@gmail.com',fb:'https://www.facebook.com/3abde56/',ig:'https://www.instagram.com/wadi_almadinah',shipping:0,leadOwn:'2-4',leadDrop:'7-14',hours:'السبت – الخميس: 9 ص – 10 م\nالجمعة: 2 م – 10 م',hours_en:'Sat – Thu: 9 AM – 10 PM\nFri: 2 PM – 10 PM',heroImg:'images/hero-banner.jpg',heroTitle:'',heroTitle_en:'',heroSubtitle:'',heroSubtitle_en:'',siteBg:'images/hero-background.jpg',shopBg:'images/shop-header-bg.jpg',cartBg:'images/cart-bg.jpg',storeIcon:'images/logo.png',designLogo:'images/design-credit.png',designCredit:'تصميم وادي المدينة',colorPrimary:'#0C4A45',colorAccent:'#E8A93D'},
   cats:[
-    ['c0','مفروشات وديكور','Home & Decor',null],
-    ['c1','كنب وركنات','Sofas & Corner Units','c0'],['c2','غرف النوم','Bedroom','c0'],['c3','الستائر','Curtains','c0'],['c4','السجاد','Rugs','c0'],['c5','الإضاءة','Lighting','c0'],['c6','المفروشات ومفارش السرير','Bedding & Linens','c0'],['c7','ديكور الحائط والمرايا','Wall Décor & Mirrors','c0'],['c8','الطاولات ووحدات التلفزيون','Tables & TV Units','c0'],['c9','التحف والإكسسوارات','Décor & Accessories','c0'],
-    ['c10','أطفال وبيبي','Kids & Baby',null],['c11','موضة','Fashion',null],['c12','جمال','Beauty',null],['c13','المنزل','Home',null],['c14','المطبخ','Kitchen',null]
-  ].map(([id,name,name_en,parent],i)=>({id,name,name_en,parent:parent||null,bg:'',ord:i})),
+ {
+  "id": "c1",
+  "name": "أثاث وديكور ومفروشات",
+  "name_en": "Furniture, Décor & Furnishings",
+  "parent": null,
+  "bg": "",
+  "ord": 0,
+  "icon": "🛋️",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": true,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c11",
+  "name": "كنب وركنات",
+  "name_en": "Sofas & Corner Units",
+  "parent": "c1",
+  "bg": "",
+  "ord": 1,
+  "icon": ""
+ },
+ {
+  "id": "c12",
+  "name": "غرف النوم",
+  "name_en": "Bedroom",
+  "parent": "c1",
+  "bg": "",
+  "ord": 2,
+  "icon": ""
+ },
+ {
+  "id": "c13",
+  "name": "الستائر والأقمشة",
+  "name_en": "Curtains & Fabrics",
+  "parent": "c1",
+  "bg": "",
+  "ord": 3,
+  "icon": "",
+  "feat": {
+   "kg": false,
+   "m": true,
+   "colors": true,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c14",
+  "name": "السجاد والموكيت",
+  "name_en": "Rugs & Carpets",
+  "parent": "c1",
+  "bg": "",
+  "ord": 4,
+  "icon": "",
+  "feat": {
+   "kg": false,
+   "m": true,
+   "colors": true,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c15",
+  "name": "الإضاءة",
+  "name_en": "Lighting",
+  "parent": "c1",
+  "bg": "",
+  "ord": 5,
+  "icon": ""
+ },
+ {
+  "id": "c16",
+  "name": "مفارش وبياضات",
+  "name_en": "Bedding & Linens",
+  "parent": "c1",
+  "bg": "",
+  "ord": 6,
+  "icon": "",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": true,
+   "sizes": true
+  }
+ },
+ {
+  "id": "c17",
+  "name": "ديكور ومرايا",
+  "name_en": "Décor & Mirrors",
+  "parent": "c1",
+  "bg": "",
+  "ord": 7,
+  "icon": ""
+ },
+ {
+  "id": "c18",
+  "name": "طاولات ووحدات تلفزيون",
+  "name_en": "Tables & TV Units",
+  "parent": "c1",
+  "bg": "",
+  "ord": 8,
+  "icon": ""
+ },
+ {
+  "id": "c2",
+  "name": "مواد غذائية وسوبر ماركت وعطارة وأسماك",
+  "name_en": "Groceries, Spices & Fresh Fish",
+  "parent": null,
+  "bg": "",
+  "ord": 9,
+  "icon": "🧺",
+  "feat": {
+   "kg": true,
+   "m": false,
+   "colors": false,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c21",
+  "name": "خضروات وفاكهة",
+  "name_en": "Fruits & Vegetables",
+  "parent": "c2",
+  "bg": "",
+  "ord": 10,
+  "icon": ""
+ },
+ {
+  "id": "c22",
+  "name": "عطارة وتوابل",
+  "name_en": "Spices & Herbs",
+  "parent": "c2",
+  "bg": "",
+  "ord": 11,
+  "icon": ""
+ },
+ {
+  "id": "c23",
+  "name": "أسماك طازجة",
+  "name_en": "Fresh Fish & Seafood",
+  "parent": "c2",
+  "bg": "",
+  "ord": 12,
+  "icon": ""
+ },
+ {
+  "id": "c24",
+  "name": "سوبر ماركت",
+  "name_en": "Supermarket Essentials",
+  "parent": "c2",
+  "bg": "",
+  "ord": 13,
+  "icon": ""
+ },
+ {
+  "id": "c3",
+  "name": "ملابس وموضة وأحذية",
+  "name_en": "Clothing, Fashion & Shoes",
+  "parent": null,
+  "bg": "",
+  "ord": 14,
+  "icon": "👕",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": true,
+   "sizes": true
+  }
+ },
+ {
+  "id": "c31",
+  "name": "ملابس رجالي",
+  "name_en": "Men's Clothing",
+  "parent": "c3",
+  "bg": "",
+  "ord": 15,
+  "icon": ""
+ },
+ {
+  "id": "c32",
+  "name": "ملابس حريمي",
+  "name_en": "Women's Clothing",
+  "parent": "c3",
+  "bg": "",
+  "ord": 16,
+  "icon": ""
+ },
+ {
+  "id": "c33",
+  "name": "ملابس أطفال",
+  "name_en": "Kids' Clothing",
+  "parent": "c3",
+  "bg": "",
+  "ord": 17,
+  "icon": ""
+ },
+ {
+  "id": "c34",
+  "name": "أحذية",
+  "name_en": "Shoes",
+  "parent": "c3",
+  "bg": "",
+  "ord": 18,
+  "icon": ""
+ },
+ {
+  "id": "c35",
+  "name": "إكسسوارات وحقائب",
+  "name_en": "Accessories & Bags",
+  "parent": "c3",
+  "bg": "",
+  "ord": 19,
+  "icon": "",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": true,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c4",
+  "name": "إلكترونيات وأجهزة كهربائية وصيانة",
+  "name_en": "Electronics, Appliances & Repairs",
+  "parent": null,
+  "bg": "",
+  "ord": 20,
+  "icon": "💻",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": true,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c41",
+  "name": "هواتف وإكسسوارات",
+  "name_en": "Phones & Accessories",
+  "parent": "c4",
+  "bg": "",
+  "ord": 21,
+  "icon": ""
+ },
+ {
+  "id": "c42",
+  "name": "أجهزة منزلية",
+  "name_en": "Home Appliances",
+  "parent": "c4",
+  "bg": "",
+  "ord": 22,
+  "icon": ""
+ },
+ {
+  "id": "c43",
+  "name": "كابلات وقطع غيار",
+  "name_en": "Cables & Spare Parts",
+  "parent": "c4",
+  "bg": "",
+  "ord": 23,
+  "icon": "",
+  "feat": {
+   "kg": false,
+   "m": true,
+   "colors": false,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c5",
+  "name": "خدمات عامة ومهنية",
+  "name_en": "General & Professional Services",
+  "parent": null,
+  "bg": "",
+  "ord": 24,
+  "icon": "🛠️",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": false,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c51",
+  "name": "سباكة وكهرباء",
+  "name_en": "Plumbing & Electrical",
+  "parent": "c5",
+  "bg": "",
+  "ord": 25,
+  "icon": ""
+ },
+ {
+  "id": "c52",
+  "name": "مقاولات وتشطيبات",
+  "name_en": "Contracting & Finishing",
+  "parent": "c5",
+  "bg": "",
+  "ord": 26,
+  "icon": "",
+  "feat": {
+   "kg": false,
+   "m": true,
+   "colors": false,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c53",
+  "name": "نظافة وصيانة منزلية",
+  "name_en": "Cleaning & Home Care",
+  "parent": "c5",
+  "bg": "",
+  "ord": 27,
+  "icon": ""
+ },
+ {
+  "id": "c6",
+  "name": "خدمات ومستلزمات سيارات ودراجات",
+  "name_en": "Car & Bike Services & Supplies",
+  "parent": null,
+  "bg": "",
+  "ord": 28,
+  "icon": "🚗",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": true,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c61",
+  "name": "قطع غيار سيارات",
+  "name_en": "Car Spare Parts",
+  "parent": "c6",
+  "bg": "",
+  "ord": 29,
+  "icon": ""
+ },
+ {
+  "id": "c62",
+  "name": "زيوت وصيانة",
+  "name_en": "Oils & Maintenance",
+  "parent": "c6",
+  "bg": "",
+  "ord": 30,
+  "icon": ""
+ },
+ {
+  "id": "c63",
+  "name": "إكسسوارات سيارات",
+  "name_en": "Car Accessories",
+  "parent": "c6",
+  "bg": "",
+  "ord": 31,
+  "icon": ""
+ },
+ {
+  "id": "c64",
+  "name": "دراجات ومستلزماتها",
+  "name_en": "Bikes & Gear",
+  "parent": "c6",
+  "bg": "",
+  "ord": 32,
+  "icon": "",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": true,
+   "sizes": true
+  }
+ },
+ {
+  "id": "c7",
+  "name": "عطور وعناية وتجميل",
+  "name_en": "Perfume, Care & Beauty",
+  "parent": null,
+  "bg": "",
+  "ord": 33,
+  "icon": "💄",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": true,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c71",
+  "name": "عطور",
+  "name_en": "Perfumes",
+  "parent": "c7",
+  "bg": "",
+  "ord": 34,
+  "icon": ""
+ },
+ {
+  "id": "c72",
+  "name": "عناية بالبشرة والشعر",
+  "name_en": "Skin & Hair Care",
+  "parent": "c7",
+  "bg": "",
+  "ord": 35,
+  "icon": "",
+  "feat": {
+   "kg": false,
+   "m": false,
+   "colors": false,
+   "sizes": false
+  }
+ },
+ {
+  "id": "c73",
+  "name": "مكياج",
+  "name_en": "Makeup",
+  "parent": "c7",
+  "bg": "",
+  "ord": 36,
+  "icon": ""
+ }
+],
   products:[
-    P('p1','c1','كنبة ثلاثية مقاعد – قطيفة','3-Seat Velvet Sofa',18500,22000,'sofa','#0E4A47','كنبة ثلاثية المقاعد بتصميم عصري وجلسة مريحة، مناسبة لغرف المعيشة والاستقبال.','A 3-seat sofa with a modern design and comfortable seating, ideal for living and reception rooms.'),
-    P('p2','c1','ركنة حرف L – 5 مقاعد','L-Shaped Corner Sofa – 5 Seats',34900,39500,'corner','#55655F','ركنة واسعة تناسب العائلة الكبيرة وتوفر مساحة جلوس مريحة.','A spacious corner sofa that suits larger families and offers comfortable seating room.'),
-    P('p3','c1','فوتيه استقبال','Accent Armchair',6800,0,'armchair','#B98A34','فوتيه مفرد يضيف لمسة أنيقة لأي ركن في المنزل.','A single armchair that adds an elegant touch to any corner of your home.'),
-    P('p4','c2','سرير مقاس 180 سم','Bed Frame – 180cm',16500,19000,'bed','#7A8F86','سرير مزدوج بمقدمة عالية أنيقة ومساحة نوم مريحة.','A double bed with an elegant tall headboard and a comfortable sleeping space.'),
-    P('p5','c2','دولاب 4 ضلف','4-Door Wardrobe',21900,0,'wardrobe','#8A6A45','دولاب واسع بأربع ضلف لتنظيم الملابس والمفروشات.','A spacious 4-door wardrobe for organizing clothes and linens.'),
-    P('p6','c2','كومودينو بدُرجين','2-Drawer Nightstand',2450,2900,'nightstand','#0E4A47','كومودينو عملي بدُرجين بجانب السرير.','A practical 2-drawer nightstand for beside the bed.'),
-    P('p7','c3','ستارة بلاك أوت (طقم)','Blackout Curtain Set',1250,1600,'curtain','#3F5F5A','ستارة تحجب الضوء وتمنح غرفتك خصوصية وهدوءًا.','Light-blocking curtains that give your room privacy and calm.'),
-    P('p8','c3','ستارة قطيفة فاخرة (طقم)','Luxury Velvet Curtain Set',1890,0,'curtain','#7A2E3A','ستارة قطيفة بنسدلة فاخرة لغرف المعيشة.','Velvet curtains with a luxurious drape for living rooms.'),
-    P('p9','c3','ستارة شيفون شفافة','Sheer Chiffon Curtain',690,850,'sheer','#DDE6E2','ستارة خفيفة تسمح بدخول الضوء الطبيعي بنعومة.','A light curtain that lets natural light in softly.'),
-    P('p10','c4','سجادة 200×300 سم','Area Rug 200×300cm',3200,3900,'rugrect','#1F5F58','سجادة كبيرة بنقشة كلاسيكية تناسب غرف المعيشة.','A large rug with a classic pattern that suits living rooms.'),
-    P('p11','c4','سجادة دائرية 160 سم','Round Rug 160cm',1450,0,'ruground','#B98A34','سجادة دائرية تضيف حيوية لأي مساحة.','A round rug that adds character to any space.'),
-    P('p12','c4','ممر سجاد 80×250 سم','Runner Rug 80×250cm',850,1050,'runner','#55655F','ممر سجاد مناسب للطرقات والمداخل والمطبخ.','A runner rug suited to hallways, entryways and kitchens.'),
-    P('p13','c5','أباجورة أرضية','Floor Lamp',1750,0,'flamp','#B98A34','أباجورة أرضية بإضاءة دافئة لركن القراءة.','A floor lamp with warm lighting for a reading corner.'),
-    P('p14','c5','نجفة 6 شعلات','6-Light Chandelier',4900,5900,'chandelier','#B98A34','نجفة أنيقة تمنح الصالة إضاءة وطابعًا فخمًا.','An elegant chandelier that gives the living room light and a luxurious feel.'),
-    P('p15','c5','أباجورة كومودينو','Table Lamp',560,690,'tlamp','#0E4A47','أباجورة صغيرة مناسبة للكومودينو والمكتب.','A small lamp suited to a nightstand or desk.'),
-    P('p16','c6','طقم مفرش سرير 3 قطع',"3-Piece Bed Cover Set",1650,0,'bedding','#3F7A70','طقم مفرش سرير كامل بألوان هادئة.','A complete bed cover set in calm colors.'),
-    P('p17','c6','لحاف مبطن – طقم 6 قطع','Padded Comforter – 6-Piece Set',2350,2800,'bedding','#B98A34','طقم لحاف مبطن كامل لغرفة النوم.','A complete padded comforter set for the bedroom.'),
-    P('p18','c6','طقم 6 وسادات ديكور','6 Decorative Cushions Set',780,950,'cushions','#0E4A47','ست وسادات ديكور لتنسيق الكنب والسرير.','Six decorative cushions to style your sofa or bed.'),
-    P('p19','c7','مرآة قوس كبيرة','Large Arch Mirror',2100,0,'mirror','#8A6A45','مرآة بشكل قوس بإطار أنيق للمداخل وغرف النوم.','An arch-shaped mirror with an elegant frame for entryways and bedrooms.'),
-    P('p20','c7','لوحات حائط – 3 قطع','3-Piece Wall Art Set',890,1100,'wallart','#3F7A70','طقم ثلاث لوحات بإطارات جاهزة للتعليق.','A set of three framed art pieces, ready to hang.'),
-    P('p21','c7','ساعة حائط خشبية','Wooden Wall Clock',640,0,'clock','#8A6A45','ساعة حائط بتصميم بسيط وأنيق.','A wall clock with a simple, elegant design.'),
-    P('p22','c8','ترابيزة وسط','Coffee Table',3600,0,'coffee','#8A6A45','ترابيزة وسط بسطح واسع لغرفة المعيشة.','A coffee table with a wide top for the living room.'),
-    P('p23','c8','وحدة تلفزيون','TV Unit',5400,6300,'tvunit','#0E4A47','وحدة تلفزيون بمساحات تخزين متعددة.','A TV unit with multiple storage spaces.'),
-    P('p24','c8','سفرة 6 كراسي','6-Chair Dining Set',24900,28500,'dining','#8A6A45','سفرة عائلية كاملة بستة كراسي.','A complete family dining set with six chairs.'),
-    P('p25','c9','طقم فازات سيراميك','Ceramic Vase Set',720,0,'vase','#0E4A47','طقم فازات لتزيين الطاولات والرفوف.','A vase set for styling tables and shelves.'),
-    P('p26','c9','وعاء ديكور للطاولة','Decorative Table Bowl',380,450,'bowl','#B98A34','وعاء ديكور يناسب ترابيزة الوسط أو السفرة.','A decorative bowl that suits a coffee table or dining table.'),
-    P('p27','c9','طقم شمعدانات','Candle Holder Set',450,0,'candles','#3F7A70','ثلاثة شمعدانات بأحجام مختلفة لجلسة هادئة.','Three candle holders in different sizes for a cozy setting.'),
-    P('p28','c9','طقم أواني نباتات معدني','3-Piece Metal Planter Set',540,0,'vase','#3F7A70','ثلاثة أواني نباتات معدنية بمقاسات متدرجة، مناسبة للتيراس أو زاوية الاستقبال.','Three metal planters in graduated sizes, suited to a terrace or living-room corner.','drop')
+ {
+  "id": "p1",
+  "cat": "c11",
+  "name": "كنبة ثلاثية مقاعد – قطيفة",
+  "name_en": "3-Seat Velvet Sofa",
+  "price": 18500,
+  "old": 22000,
+  "desc": "كنبة ثلاثية المقاعد بتصميم عصري وجلسة مريحة.",
+  "desc_en": "A 3-seat sofa with a modern design and comfortable seating.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "رمادي",
+    "hex": "#8D9499"
+   },
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   },
+   {
+    "name": "أخضر",
+    "hex": "#2E7D4F"
+   }
   ],
+  "sizes": []
+ },
+ {
+  "id": "p2",
+  "cat": "c11",
+  "name": "ركنة حرف L – 5 مقاعد",
+  "name_en": "L-Shaped Corner Sofa – 5 Seats",
+  "price": 34900,
+  "old": 39500,
+  "desc": "ركنة واسعة تناسب العائلة الكبيرة.",
+  "desc_en": "A spacious corner sofa for larger families.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "رمادي",
+    "hex": "#8D9499"
+   },
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p3",
+  "cat": "c11",
+  "name": "فوتيه استقبال",
+  "name_en": "Accent Armchair",
+  "price": 6800,
+  "old": 0,
+  "desc": "فوتيه مفرد يضيف لمسة أنيقة لأي ركن.",
+  "desc_en": "A single armchair that adds an elegant touch to any corner.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أزرق",
+    "hex": "#2E5C8A"
+   },
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p4",
+  "cat": "c12",
+  "name": "سرير مقاس 180 سم",
+  "name_en": "Bed Frame – 180cm",
+  "price": 16500,
+  "old": 19000,
+  "desc": "سرير مزدوج بمقدمة عالية ومساحة نوم مريحة.",
+  "desc_en": "A double bed with a tall headboard and comfortable sleeping space.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p5",
+  "cat": "c12",
+  "name": "دولاب 4 ضلف",
+  "name_en": "4-Door Wardrobe",
+  "price": 21900,
+  "old": 0,
+  "desc": "دولاب واسع بأربع ضلف لتنظيم الملابس.",
+  "desc_en": "A spacious 4-door wardrobe for organizing clothes.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p6",
+  "cat": "c12",
+  "name": "كومودينو بدُرجين",
+  "name_en": "2-Drawer Nightstand",
+  "price": 2450,
+  "old": 2900,
+  "desc": "كومودينو عملي بدُرجين بجانب السرير.",
+  "desc_en": "A practical 2-drawer nightstand.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p7",
+  "cat": "c13",
+  "name": "ستارة بلاك أوت (طقم)",
+  "name_en": "Blackout Curtain Set",
+  "price": 1250,
+  "old": 1600,
+  "desc": "ستارة تحجب الضوء وتمنح غرفتك خصوصية.",
+  "desc_en": "Light-blocking curtains for privacy and calm.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "رمادي",
+    "hex": "#8D9499"
+   },
+   {
+    "name": "كحلي",
+    "hex": "#1F2A44"
+   },
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p8",
+  "cat": "c13",
+  "name": "قماش ستائر قطيفة بالمتر",
+  "name_en": "Velvet Curtain Fabric (per meter)",
+  "price": 180,
+  "old": 0,
+  "desc": "قماش قطيفة فاخر بعرض 280 سم يُباع بالمتر الطولي.",
+  "desc_en": "Premium velvet fabric, 280cm wide, sold per running meter.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "m",
+  "colors": [
+   {
+    "name": "عنابي",
+    "hex": "#7A2E3A"
+   },
+   {
+    "name": "أخضر",
+    "hex": "#2E7D4F"
+   },
+   {
+    "name": "كحلي",
+    "hex": "#1F2A44"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p9",
+  "cat": "c14",
+  "name": "سجادة 200×300 سم",
+  "name_en": "Area Rug 200×300cm",
+  "price": 3200,
+  "old": 3900,
+  "desc": "سجادة كبيرة بنقشة كلاسيكية لغرف المعيشة.",
+  "desc_en": "A large rug with a classic pattern for living rooms.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   },
+   {
+    "name": "رمادي",
+    "hex": "#8D9499"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p10",
+  "cat": "c14",
+  "name": "موكيت ممرات بالمتر",
+  "name_en": "Hallway Carpet Runner (per meter)",
+  "price": 95,
+  "old": 0,
+  "desc": "موكيت ممرات عرض 100 سم مقاوم للاستخدام اليومي.",
+  "desc_en": "Hard-wearing 100cm-wide hallway carpet, sold per meter.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "m",
+  "colors": [
+   {
+    "name": "رمادي",
+    "hex": "#8D9499"
+   },
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p11",
+  "cat": "c15",
+  "name": "أباجورة أرضية",
+  "name_en": "Floor Lamp",
+  "price": 1750,
+  "old": 0,
+  "desc": "أباجورة أرضية بإضاءة دافئة لركن القراءة.",
+  "desc_en": "A floor lamp with warm lighting for a reading corner.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p12",
+  "cat": "c15",
+  "name": "نجفة 6 شعلات",
+  "name_en": "6-Light Chandelier",
+  "price": 4900,
+  "old": 5900,
+  "desc": "نجفة أنيقة تمنح الصالة إضاءة فاخرة.",
+  "desc_en": "An elegant chandelier that lights up the living room.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p13",
+  "cat": "c16",
+  "name": "طقم مفرش سرير 3 قطع",
+  "name_en": "3-Piece Bed Cover Set",
+  "price": 1650,
+  "old": 0,
+  "desc": "طقم مفرش سرير كامل بألوان هادئة.",
+  "desc_en": "A complete bed cover set in calm colors.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أبيض",
+    "hex": "#F5F5F5"
+   },
+   {
+    "name": "رمادي",
+    "hex": "#8D9499"
+   },
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   }
+  ],
+  "sizes": [
+   "مفرد",
+   "مزدوج",
+   "كينج"
+  ]
+ },
+ {
+  "id": "p14",
+  "cat": "c17",
+  "name": "مرآة قوس كبيرة",
+  "name_en": "Large Arch Mirror",
+  "price": 2100,
+  "old": 0,
+  "desc": "مرآة بشكل قوس بإطار أنيق.",
+  "desc_en": "An arch-shaped mirror with an elegant frame.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p15",
+  "cat": "c17",
+  "name": "لوحات حائط – 3 قطع",
+  "name_en": "3-Piece Wall Art Set",
+  "price": 890,
+  "old": 1100,
+  "desc": "طقم ثلاث لوحات بإطارات جاهزة للتعليق.",
+  "desc_en": "Three framed pieces, ready to hang.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p16",
+  "cat": "c18",
+  "name": "ترابيزة وسط",
+  "name_en": "Coffee Table",
+  "price": 3600,
+  "old": 0,
+  "desc": "ترابيزة وسط بسطح واسع.",
+  "desc_en": "A coffee table with a wide top.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p17",
+  "cat": "c18",
+  "name": "وحدة تلفزيون",
+  "name_en": "TV Unit",
+  "price": 5400,
+  "old": 6300,
+  "desc": "وحدة تلفزيون بمساحات تخزين متعددة.",
+  "desc_en": "A TV unit with multiple storage spaces.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p20",
+  "cat": "c21",
+  "name": "طماطم طازجة",
+  "name_en": "Fresh Tomatoes",
+  "price": 18,
+  "old": 0,
+  "desc": "طماطم بلدي طازجة تُباع بالكيلو.",
+  "desc_en": "Fresh local tomatoes, sold per kg.",
+  "stock": 300,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p21",
+  "cat": "c21",
+  "name": "بطاطس",
+  "name_en": "Potatoes",
+  "price": 22,
+  "old": 0,
+  "desc": "بطاطس مصرية للطبخ والتحمير.",
+  "desc_en": "Egyptian potatoes for cooking and frying.",
+  "stock": 300,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p22",
+  "cat": "c21",
+  "name": "موز بلدي",
+  "name_en": "Local Bananas",
+  "price": 35,
+  "old": 0,
+  "desc": "موز بلدي ناضج.",
+  "desc_en": "Ripe local bananas.",
+  "stock": 200,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p23",
+  "cat": "c21",
+  "name": "تفاح أحمر",
+  "name_en": "Red Apples",
+  "price": 60,
+  "old": 70,
+  "desc": "تفاح أحمر مستورد.",
+  "desc_en": "Imported red apples.",
+  "stock": 150,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p24",
+  "cat": "c22",
+  "name": "كمون مطحون",
+  "name_en": "Ground Cumin",
+  "price": 280,
+  "old": 0,
+  "desc": "كمون مطحون طازج يُباع بالكيلو.",
+  "desc_en": "Freshly ground cumin, sold per kg.",
+  "stock": 40,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p25",
+  "cat": "c22",
+  "name": "فلفل أسود مطحون",
+  "name_en": "Ground Black Pepper",
+  "price": 420,
+  "old": 0,
+  "desc": "فلفل أسود مطحون عالي الجودة.",
+  "desc_en": "High-quality ground black pepper.",
+  "stock": 30,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p26",
+  "cat": "c22",
+  "name": "ينسون",
+  "name_en": "Anise",
+  "price": 190,
+  "old": 0,
+  "desc": "ينسون بلدي للمشروبات الساخنة.",
+  "desc_en": "Local anise for hot drinks.",
+  "stock": 30,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p27",
+  "cat": "c23",
+  "name": "بلطي طازج",
+  "name_en": "Fresh Tilapia",
+  "price": 95,
+  "old": 0,
+  "desc": "سمك بلطي طازج يُباع بالكيلو، يُنظف عند الطلب.",
+  "desc_en": "Fresh tilapia sold per kg, cleaned on request.",
+  "stock": 80,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "1-2",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p28",
+  "cat": "c23",
+  "name": "جمبري متوسط",
+  "name_en": "Medium Shrimp",
+  "price": 380,
+  "old": 420,
+  "desc": "جمبري متوسط الحجم طازج.",
+  "desc_en": "Fresh medium-size shrimp.",
+  "stock": 40,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "1-2",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p29",
+  "cat": "c23",
+  "name": "سمك دنيس",
+  "name_en": "Sea Bream",
+  "price": 260,
+  "old": 0,
+  "desc": "سمك دنيس طازج.",
+  "desc_en": "Fresh sea bream.",
+  "stock": 40,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "1-2",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p30",
+  "cat": "c24",
+  "name": "أرز أبيض مصري",
+  "name_en": "Egyptian White Rice",
+  "price": 34,
+  "old": 0,
+  "desc": "أرز أبيض مصري يُباع بالكيلو.",
+  "desc_en": "Egyptian white rice, sold per kg.",
+  "stock": 500,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p31",
+  "cat": "c24",
+  "name": "سكر",
+  "name_en": "Sugar",
+  "price": 30,
+  "old": 0,
+  "desc": "سكر أبيض ناعم.",
+  "desc_en": "Fine white sugar.",
+  "stock": 500,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "kg",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p32",
+  "cat": "c24",
+  "name": "زيت عباد الشمس 1 لتر",
+  "name_en": "Sunflower Oil 1L",
+  "price": 72,
+  "old": 80,
+  "desc": "زيت عباد الشمس للطبخ.",
+  "desc_en": "Sunflower cooking oil.",
+  "stock": 200,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p33",
+  "cat": "c24",
+  "name": "مكرونة 400 جم",
+  "name_en": "Pasta 400g",
+  "price": 14,
+  "old": 0,
+  "desc": "مكرونة مصرية.",
+  "desc_en": "Egyptian pasta.",
+  "stock": 400,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p40",
+  "cat": "c31",
+  "name": "تيشيرت قطن رجالي",
+  "name_en": "Men's Cotton T-Shirt",
+  "price": 250,
+  "old": 320,
+  "desc": "تيشيرت قطن 100% بقصة مريحة.",
+  "desc_en": "100% cotton t-shirt with a comfortable fit.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   },
+   {
+    "name": "أبيض",
+    "hex": "#F5F5F5"
+   },
+   {
+    "name": "كحلي",
+    "hex": "#1F2A44"
+   }
+  ],
+  "sizes": [
+   "S",
+   "M",
+   "L",
+   "XL",
+   "XXL"
+  ]
+ },
+ {
+  "id": "p41",
+  "cat": "c31",
+  "name": "قميص كلاسيك رجالي",
+  "name_en": "Men's Classic Shirt",
+  "price": 420,
+  "old": 0,
+  "desc": "قميص كلاسيك بخامة ناعمة.",
+  "desc_en": "A classic shirt in a soft fabric.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أبيض",
+    "hex": "#F5F5F5"
+   },
+   {
+    "name": "أزرق",
+    "hex": "#2E5C8A"
+   }
+  ],
+  "sizes": [
+   "M",
+   "L",
+   "XL",
+   "XXL"
+  ]
+ },
+ {
+  "id": "p42",
+  "cat": "c31",
+  "name": "بنطلون جينز رجالي",
+  "name_en": "Men's Jeans",
+  "price": 550,
+  "old": 0,
+  "desc": "بنطلون جينز بقصة مستقيمة.",
+  "desc_en": "Straight-cut denim jeans.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أزرق",
+    "hex": "#2E5C8A"
+   },
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   }
+  ],
+  "sizes": [
+   "30",
+   "32",
+   "34",
+   "36",
+   "38"
+  ]
+ },
+ {
+  "id": "p43",
+  "cat": "c32",
+  "name": "فستان صيفي حريمي",
+  "name_en": "Women's Summer Dress",
+  "price": 680,
+  "old": 850,
+  "desc": "فستان صيفي خفيف.",
+  "desc_en": "A light summer dress.",
+  "stock": null,
+  "img": "",
+  "imgs": [],
+  "src": "drop",
+  "lead": "5-9",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أحمر",
+    "hex": "#C0392B"
+   },
+   {
+    "name": "أخضر",
+    "hex": "#2E7D4F"
+   },
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   }
+  ],
+  "sizes": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ]
+ },
+ {
+  "id": "p44",
+  "cat": "c32",
+  "name": "عباية سادة",
+  "name_en": "Plain Abaya",
+  "price": 750,
+  "old": 0,
+  "desc": "عباية سادة بقصة واسعة.",
+  "desc_en": "A plain abaya with a relaxed cut.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   },
+   {
+    "name": "كحلي",
+    "hex": "#1F2A44"
+   }
+  ],
+  "sizes": [
+   "52",
+   "54",
+   "56",
+   "58"
+  ]
+ },
+ {
+  "id": "p45",
+  "cat": "c33",
+  "name": "طقم أطفال قطن",
+  "name_en": "Kids' Cotton Set",
+  "price": 320,
+  "old": 400,
+  "desc": "طقم أطفال قطن ناعم.",
+  "desc_en": "A soft cotton set for kids.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أزرق",
+    "hex": "#2E5C8A"
+   },
+   {
+    "name": "أحمر",
+    "hex": "#C0392B"
+   }
+  ],
+  "sizes": [
+   "2 سنة",
+   "4 سنوات",
+   "6 سنوات",
+   "8 سنوات"
+  ]
+ },
+ {
+  "id": "p46",
+  "cat": "c34",
+  "name": "حذاء رياضي",
+  "name_en": "Running Shoes",
+  "price": 950,
+  "old": 1200,
+  "desc": "حذاء رياضي خفيف للجري.",
+  "desc_en": "Lightweight running shoes.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   },
+   {
+    "name": "رمادي",
+    "hex": "#8D9499"
+   }
+  ],
+  "sizes": [
+   "40",
+   "41",
+   "42",
+   "43",
+   "44",
+   "45"
+  ]
+ },
+ {
+  "id": "p47",
+  "cat": "c34",
+  "name": "صندل حريمي",
+  "name_en": "Women's Sandals",
+  "price": 380,
+  "old": 0,
+  "desc": "صندل حريمي مريح.",
+  "desc_en": "Comfortable women's sandals.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   },
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   }
+  ],
+  "sizes": [
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ]
+ },
+ {
+  "id": "p48",
+  "cat": "c35",
+  "name": "حقيبة يد حريمي",
+  "name_en": "Women's Handbag",
+  "price": 620,
+  "old": 0,
+  "desc": "حقيبة يد أنيقة.",
+  "desc_en": "An elegant handbag.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   },
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   },
+   {
+    "name": "أحمر",
+    "hex": "#C0392B"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p49",
+  "cat": "c35",
+  "name": "ساعة يد",
+  "name_en": "Wrist Watch",
+  "price": 780,
+  "old": 0,
+  "desc": "ساعة يد بتصميم كلاسيكي.",
+  "desc_en": "A classic-design wrist watch.",
+  "stock": null,
+  "img": "",
+  "imgs": [],
+  "src": "drop",
+  "lead": "6-10",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   },
+   {
+    "name": "بني",
+    "hex": "#6B4A2F"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p50",
+  "cat": "c41",
+  "name": "جراب هاتف شفاف",
+  "name_en": "Clear Phone Case",
+  "price": 90,
+  "old": 120,
+  "desc": "جراب شفاف مقاوم للصدمات.",
+  "desc_en": "A shock-resistant clear case.",
+  "stock": null,
+  "img": "",
+  "imgs": [],
+  "src": "drop",
+  "lead": "5-9",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "شفاف",
+    "hex": "#E8EEF2"
+   },
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p51",
+  "cat": "c41",
+  "name": "شاحن سريع 25 وات",
+  "name_en": "25W Fast Charger",
+  "price": 260,
+  "old": 0,
+  "desc": "شاحن سريع بمنفذ USB-C.",
+  "desc_en": "25W USB-C fast charger.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p52",
+  "cat": "c41",
+  "name": "سماعة بلوتوث",
+  "name_en": "Bluetooth Earbuds",
+  "price": 480,
+  "old": 650,
+  "desc": "سماعة لاسلكية بعلبة شحن.",
+  "desc_en": "Wireless earbuds with a charging case.",
+  "stock": null,
+  "img": "",
+  "imgs": [],
+  "src": "drop",
+  "lead": "6-10",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   },
+   {
+    "name": "أبيض",
+    "hex": "#F5F5F5"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p53",
+  "cat": "c41",
+  "name": "باور بانك 20000",
+  "name_en": "20,000 mAh Power Bank",
+  "price": 520,
+  "old": 0,
+  "desc": "باور بانك بسعة 20000 مللي أمبير.",
+  "desc_en": "A 20,000 mAh power bank.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   },
+   {
+    "name": "أبيض",
+    "hex": "#F5F5F5"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p54",
+  "cat": "c42",
+  "name": "خلاط كهربائي 600 وات",
+  "name_en": "600W Blender",
+  "price": 950,
+  "old": 0,
+  "desc": "خلاط بقوة 600 وات وإبريق زجاجي.",
+  "desc_en": "A 600W blender with a glass jug.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p55",
+  "cat": "c42",
+  "name": "مروحة استاند",
+  "name_en": "Stand Fan",
+  "price": 1100,
+  "old": 1300,
+  "desc": "مروحة استاند بثلاث سرعات.",
+  "desc_en": "A stand fan with three speeds.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p56",
+  "cat": "c43",
+  "name": "كابل HDMI بالمتر",
+  "name_en": "HDMI Cable (per meter)",
+  "price": 35,
+  "old": 0,
+  "desc": "كابل HDMI عالي السرعة يُباع بالمتر.",
+  "desc_en": "High-speed HDMI cable sold per meter.",
+  "stock": 300,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "m",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p57",
+  "cat": "c43",
+  "name": "سلك كهرباء 2.5 ملم بالمتر",
+  "name_en": "2.5mm Electric Wire (per meter)",
+  "price": 22,
+  "old": 0,
+  "desc": "سلك نحاس معزول يُباع بالمتر.",
+  "desc_en": "Insulated copper wire sold per meter.",
+  "stock": 500,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "m",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p60",
+  "cat": "c51",
+  "name": "معاينة وإصلاح سباكة",
+  "name_en": "Plumbing Visit & Repair",
+  "price": 250,
+  "old": 0,
+  "desc": "زيارة فني سباكة للمعاينة وإصلاح الأعطال البسيطة.",
+  "desc_en": "A plumber's visit for inspection and minor repairs.",
+  "stock": 999,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "1-2",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p61",
+  "cat": "c51",
+  "name": "تركيب نجفة وإضاءة",
+  "name_en": "Chandelier & Lighting Installation",
+  "price": 200,
+  "old": 0,
+  "desc": "تركيب نجفة أو إضاءة بواسطة فني كهرباء.",
+  "desc_en": "Installation of a chandelier or lighting by an electrician.",
+  "stock": 999,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "1-2",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p62",
+  "cat": "c52",
+  "name": "تركيب سيراميك (المتر المسطح)",
+  "name_en": "Tile Installation (per m)",
+  "price": 120,
+  "old": 0,
+  "desc": "أجرة تركيب السيراميك للمتر المسطح بدون خامات.",
+  "desc_en": "Tile-laying labour per square meter, materials not included.",
+  "stock": 999,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "2-5",
+  "unit": "m",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p63",
+  "cat": "c52",
+  "name": "دهان حوائط (المتر المسطح)",
+  "name_en": "Wall Painting (per m)",
+  "price": 45,
+  "old": 0,
+  "desc": "أجرة الدهان للمتر المسطح بدون خامات.",
+  "desc_en": "Painting labour per square meter, materials not included.",
+  "stock": 999,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "2-5",
+  "unit": "m",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p64",
+  "cat": "c53",
+  "name": "تنظيف شقة بالكامل",
+  "name_en": "Full Apartment Cleaning",
+  "price": 600,
+  "old": 0,
+  "desc": "تنظيف شامل لشقة حتى 120 متر.",
+  "desc_en": "A full clean for apartments up to 120 sqm.",
+  "stock": 999,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "1-3",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p65",
+  "cat": "c53",
+  "name": "مكافحة حشرات",
+  "name_en": "Pest Control",
+  "price": 450,
+  "old": 0,
+  "desc": "رش مبيدات آمنة لشقة حتى 120 متر.",
+  "desc_en": "Safe pesticide treatment for apartments up to 120 sqm.",
+  "stock": 999,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "1-3",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p70",
+  "cat": "c61",
+  "name": "فلتر زيت",
+  "name_en": "Oil Filter",
+  "price": 120,
+  "old": 0,
+  "desc": "فلتر زيت أصلي لمعظم السيارات.",
+  "desc_en": "Oil filter for most cars.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p71",
+  "cat": "c61",
+  "name": "طقم تيل فرامل",
+  "name_en": "Brake Pad Set",
+  "price": 650,
+  "old": 0,
+  "desc": "طقم تيل فرامل أمامي.",
+  "desc_en": "Front brake pad set.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p72",
+  "cat": "c62",
+  "name": "زيت محرك 4 لتر 5W-30",
+  "name_en": "Engine Oil 4L 5W-30",
+  "price": 980,
+  "old": 1100,
+  "desc": "زيت محرك صناعي بالكامل.",
+  "desc_en": "Fully synthetic engine oil.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p73",
+  "cat": "c62",
+  "name": "سائل تبريد 1 لتر",
+  "name_en": "Coolant 1L",
+  "price": 85,
+  "old": 0,
+  "desc": "سائل تبريد جاهز للاستخدام.",
+  "desc_en": "Ready-to-use coolant.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p74",
+  "cat": "c63",
+  "name": "كفر مقاعد سيارة",
+  "name_en": "Car Seat Covers",
+  "price": 1450,
+  "old": 0,
+  "desc": "طقم كفر مقاعد كامل.",
+  "desc_en": "A full car seat cover set.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   },
+   {
+    "name": "بيج",
+    "hex": "#D9C6A5"
+   },
+   {
+    "name": "رمادي",
+    "hex": "#8D9499"
+   }
+  ],
+  "sizes": []
+ },
+ {
+  "id": "p75",
+  "cat": "c63",
+  "name": "حامل هاتف للسيارة",
+  "name_en": "Car Phone Holder",
+  "price": 110,
+  "old": 0,
+  "desc": "حامل هاتف مغناطيسي.",
+  "desc_en": "A magnetic phone holder.",
+  "stock": null,
+  "img": "",
+  "imgs": [],
+  "src": "drop",
+  "lead": "5-9",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p76",
+  "cat": "c64",
+  "name": "خوذة دراجة نارية",
+  "name_en": "Motorcycle Helmet",
+  "price": 900,
+  "old": 0,
+  "desc": "خوذة كاملة بزجاج مضاد للخدش.",
+  "desc_en": "Full-face helmet with a scratch-resistant visor.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أسود",
+    "hex": "#1B1B1B"
+   },
+   {
+    "name": "أحمر",
+    "hex": "#C0392B"
+   }
+  ],
+  "sizes": [
+   "M",
+   "L",
+   "XL"
+  ]
+ },
+ {
+  "id": "p80",
+  "cat": "c71",
+  "name": "عطر رجالي 100 مل",
+  "name_en": "Men's Perfume 100ml",
+  "price": 750,
+  "old": 900,
+  "desc": "عطر رجالي برائحة خشبية.",
+  "desc_en": "A woody men's fragrance.",
+  "stock": 60,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p81",
+  "cat": "c71",
+  "name": "عطر حريمي 100 مل",
+  "name_en": "Women's Perfume 100ml",
+  "price": 720,
+  "old": 0,
+  "desc": "عطر حريمي برائحة زهرية.",
+  "desc_en": "A floral women's fragrance.",
+  "stock": 60,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p82",
+  "cat": "c72",
+  "name": "كريم ترطيب للبشرة",
+  "name_en": "Skin Moisturizer",
+  "price": 160,
+  "old": 0,
+  "desc": "كريم ترطيب يومي.",
+  "desc_en": "A daily moisturizing cream.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p83",
+  "cat": "c72",
+  "name": "شامبو للشعر 400 مل",
+  "name_en": "Hair Shampoo 400ml",
+  "price": 95,
+  "old": 0,
+  "desc": "شامبو للعناية اليومية.",
+  "desc_en": "Daily-care shampoo.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [],
+  "sizes": []
+ },
+ {
+  "id": "p84",
+  "cat": "c73",
+  "name": "أحمر شفاه",
+  "name_en": "Lipstick",
+  "price": 140,
+  "old": 0,
+  "desc": "أحمر شفاه بتغطية عالية.",
+  "desc_en": "High-coverage lipstick.",
+  "stock": 25,
+  "img": "",
+  "imgs": [],
+  "src": "own",
+  "lead": "",
+  "unit": "piece",
+  "colors": [
+   {
+    "name": "أحمر",
+    "hex": "#C0392B"
+   },
+   {
+    "name": "وردي",
+    "hex": "#D96B8A"
+   },
+   {
+    "name": "نيود",
+    "hex": "#B77B6A"
+   }
+  ],
+  "sizes": []
+ }
+],
   pages:{
 about:`# من نحن
 عابدين سوق إلكتروني واحد لكل ما يحتاجه بيتك وعائلتك، ومقره السويس – الأربعين – شارع الجيش.
 
-نوفر المفروشات والديكور، ومستلزمات الأطفال والبيبي، والموضة، والجمال، وأدوات المنزل والمطبخ، بأسعار واضحة وخصومات على أصناف مختارة.
+نوفر الأثاث والمفروشات، والمواد الغذائية والخضروات والأسماك والعطارة، والملابس والأحذية، والإلكترونيات والأجهزة، والخدمات المنزلية والمهنية، ومستلزمات السيارات والدراجات، والعطور والتجميل، بأسعار واضحة وخصومات على أصناف مختارة.
 
 معظم المنتجات متوفرة في مخزننا الخاص ونجهزها للشحن مباشرة، وبعض الأصناف (يُشار إليها بوضوح على صفحة المنتج) تصل عبر موردين شركاء ونعرضها بنفس مستوى الوضوح في السعر والمواصفات ومدة التوصيل.
 
@@ -533,7 +2442,7 @@ about:`# من نحن
 about_en:`# About Us
 Abdeen is a single online marketplace for everything your home and family need, based in Al-Arbaeen St, Suez, Egypt.
 
-We offer home furnishings and décor, kids & baby essentials, fashion, beauty, and home & kitchen goods, with clear pricing and discounts on selected items.
+We offer furniture and furnishings, groceries, produce, fresh fish and spices, clothing and shoes, electronics and appliances, home and professional services, car and bike supplies, and perfume and beauty — with clear pricing and discounts on selected items.
 
 Most products are held in our own stock and dispatched directly. Some items (clearly marked on the product page) ship from partner suppliers, and we show the same clarity for their price, specifications and delivery time.
 
@@ -734,23 +2643,23 @@ const stName=k=>k==='cancelled'?'ملغي':(ST.find(s=>s[0]===k)||[0,k])[1];
 
 /* ===== الحالة ===== */
 const S={settings:{},pages:{},cats:[],products:[],priv:{},user:null,isAdmin:false,cart:[],orders:[],ready:false,menu:false};
-let FB=null,unsubOrders=null;
+let FB=null,unsubOrders=null,unsubPriv=null;
 function loadLocal(){
   const d=store.get('wd_data',null),b=JSON.parse(JSON.stringify(DEF));
   S.settings={...b.settings,...(d&&d.settings)};S.pages={...b.pages,...(d&&d.pages)};
   S.cats=(d&&d.cats)||b.cats;S.products=(d&&d.products)||b.products;S.ready=true;
 }
 const persist=()=>{if(!FB)store.set('wd_data',{settings:S.settings,pages:S.pages,cats:S.cats,products:S.products})};
-const DEN={p:{},c:{}};
-const cn=c=>!c?'':(LANG==='en'?(c.name_en||DEN.c[c.id]||c.name):c.name)||'';
+const cn=c=>!c?'':(LANG==='en'?(c.name_en||c.name):c.name)||'';
 const catById=id=>S.cats.find(c=>c.id===id);
 const catName=id=>cn(catById(id));
+const catFeat=id=>{let c=catById(id);while(c){if(c.feat)return{kg:!!c.feat.kg,m:!!c.feat.m,colors:!!c.feat.colors,sizes:!!c.feat.sizes};c=c.parent?catById(c.parent):null}return{kg:true,m:true,colors:true,sizes:true}};
 const topCats=()=>S.cats.filter(c=>!c.parent).sort((a,b)=>a.ord-b.ord);
 const childCats=id=>S.cats.filter(c=>c.parent===id).sort((a,b)=>a.ord-b.ord);
 const catMatch=(productCat,filterCat)=>{if(!filterCat)return true;if(productCat===filterCat)return true;const pc=catById(productCat);return !!pc&&pc.parent===filterCat};
 const catBg=id=>{const c=catById(id);if(!c)return'';if(c.bg)return c.bg;return c.parent?catBg(c.parent):''};
-const pn=p=>LANG==='en'?(p.name_en||(DEN.p[p.id]||{}).n||p.name):p.name;
-const pdsc=p=>LANG==='en'?(p.desc_en||(DEN.p[p.id]||{}).d||p.desc):p.desc;
+const pn=p=>LANG==='en'?(p.name_en||p.name):p.name;
+const pdsc=p=>LANG==='en'?(p.desc_en||p.desc):p.desc;
 const sv=k=>LANG==='en'&&S.settings[k+'_en']?S.settings[k+'_en']:S.settings[k];
 const pageText=k=>LANG==='en'?(S.pages[k+'_en']||S.pages[k]):S.pages[k];
 const isDrop=p=>p&&p.src==='drop';
@@ -842,7 +2751,7 @@ const AUTH={
   },
   async social(kind){
     if(!FB)throw new Error('الدخول بـ '+(kind==='google'?'جوجل':'فيسبوك')+' يعمل بعد ربط المتجر بمشروع Firebase (راجع ملف الإعداد).');
-    const pr=kind==='google'?new firebase.auth.GoogleAuthProvider():new firebase.auth.FacebookAuthProvider();
+    if(kind!=='google')throw new Error('طريقة الدخول غير مدعومة');const pr=new firebase.auth.GoogleAuthProvider();
     await FB.auth.signInWithPopup(pr);
   },
   async reset(ident){
@@ -878,11 +2787,13 @@ async function initFirebase(){
 }
 async function onFbUser(u){
   if(unsubOrders){unsubOrders();unsubOrders=null}
+  if(unsubPriv){unsubPriv();unsubPriv=null}
   if(!u){S.user=null;S.isAdmin=false;S.orders=[];loadCart();render();return}
   const em=u.email||'';
   S.user={id:u.uid,name:u.displayName||(em&&!em.endsWith('@phone.wadi.local')?em:'عميل'),ident:em.endsWith('@phone.wadi.local')?em.split('@')[0]:em,type:em.endsWith('@phone.wadi.local')?'phone':'email'};
   try{S.isAdmin=(await FB.db.doc('admins/'+u.uid).get()).exists}catch{S.isAdmin=false}
   try{const c=await FB.db.doc('users/'+u.uid).get();const guest=store.get('wd_cart_guest',[]);S.cart=[];mergeCart([...(c.exists?c.data().cart||[]:[]),...guest]);store.set('wd_cart_guest',[]);saveCart()}catch{loadCart()}
+  if(S.isAdmin)unsubPriv=FB.db.collection('productPrivate').onSnapshot(sn=>{S.priv={};sn.docs.forEach(d=>S.priv[d.id]=d.data());softRender()},console.warn);else S.priv={};
   const q=S.isAdmin?FB.db.collection('orders'):FB.db.collection('orders').where('uid','==',u.uid);
   unsubOrders=q.onSnapshot(s=>{S.orders=s.docs.map(x=>x.data()).sort((a,b)=>b.ts-a.ts);softRender()},console.warn);
   closeModal();render();
@@ -890,6 +2801,14 @@ async function onFbUser(u){
 let raf=0;const softRender=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(render)};
 
 /* ===== عمليات البيانات ===== */
+async function putPriv(id,obj){
+  if(FB){await FB.db.collection('productPrivate').doc(id).set(obj);return}
+  S.priv[id]=obj;store.set('wd_priv',S.priv);
+}
+async function delPriv(id){
+  if(FB){try{await FB.db.collection('productPrivate').doc(id).delete()}catch(e){console.warn(e)}return}
+  delete S.priv[id];store.set('wd_priv',S.priv);
+}
 async function put(col,obj){
   if(FB){await FB.db.collection(col).doc(obj.id).set(obj);return}
   const arr=col==='products'?S.products:S.cats,i=arr.findIndex(x=>x.id===obj.id);
@@ -971,7 +2890,7 @@ function renderFooter(){
     <div><h4>${esc(s.name)}</h4><p>${esc(sv('tagline'))}</p><div class="soc">${soc('fb',FB_ICON,'فيسبوك')}${soc('ig',IG_ICON,'إنستجرام')}</div></div>
     <div><h4>المتجر</h4><ul><li><a href="#/shop">كل المنتجات</a></li><li><a href="#/cart">السلة</a></li><li><a href="#/account">حسابي</a></li></ul></div>
     <div><h4>معلومات</h4><ul><li><a href="#/page/about">من نحن</a></li><li><a href="#/page/support">خدمة العملاء</a></li><li><a href="#/page/returns">سياسة الاسترجاع</a></li><li><a href="#/page/privacy">سياسة الخصوصية</a></li><li><a href="#/page/terms">شروط الاستخدام</a></li></ul></div>
-    <div><h4>تواصل معنا</h4><ul><li>${esc(sv('address'))}</li><li><a href="tel:+${esc(s.phone)}" dir="ltr">${esc(phoneShow())}</a></li><li><a href="mailto:${esc(s.email)}">${esc(s.email)}</a></li><li>الدفع: فودافون كاش أو عند الاستلام</li></ul></div>
+    <div><h4>تواصل معنا</h4><ul><li>${esc(sv('address'))}</li><li class="hrs"><b>مواعيد العمل</b><br>${esc(sv('hours')||'').split('\n').join('<br>')}</li><li><a href="tel:+${esc(s.phone)}" dir="ltr">${esc(phoneShow())}</a></li><li><a href="mailto:${esc(s.email)}">${esc(s.email)}</a></li><li>الدفع: فودافون كاش أو عند الاستلام</li></ul></div>
   </div><div class="cp">جميع الحقوق محفوظة © ${new Date().getFullYear()} ${esc(s.name)} · <a href="#/admin">الإدارة</a></div></div></footer>
   <nav class="bnav" aria-label="التنقل السريع">
     <a href="#/" class="${r==='#/'?'on':''}">${IC.home}<span>الرئيسية</span></a>
@@ -984,9 +2903,10 @@ function renderFooter(){
 /* ===== الصفحات ===== */
 function vHome(){
   const md=maxDisc(),deals=S.products.filter(p=>disc(p)>0).sort((a,b)=>disc(b)-disc(a)).slice(0,8),s=S.settings;
-  const tiles=topCats().map(c=>{const p=S.products.find(x=>catMatch(x.cat,c.id));return `<a class="tile" href="#/shop?c=${esc(c.id)}">${p?`<img src="${imgOf(p)}" alt="" loading="lazy">`:''}<span>${esc(cn(c))}</span></a>`}).join('');
-  const hT=LANG==='en'?(s.heroTitle_en||'Make your home more beautiful,\nat prices that suit you'):(s.heroTitle||'خلّي بيتك أجمل\nبأسعار تناسبك');
-  const hS=LANG==='en'?(s.heroSubtitle_en||`Sofas, curtains, rugs, lighting and décor for every corner of your home${md?', with discounts on selected items':''}.`):(s.heroSubtitle||`كنب وستائر وسجاد وإضاءة وديكور لكل ركن في البيت${md?'، مع خصومات على أصناف مختارة':''}.`);
+  const TONES=['#E6F0FF','#FDE9F2','#FFF3D6','#E3F6EC','#E1F5F8','#EFE9FF','#FFEBDD'];const catSub=c=>childCats(c.id).map(cn).slice(0,4).join(L('، ',', '));
+  const tiles=topCats().map((c,i)=>`<a class="cat-card" href="#/shop?c=${esc(c.id)}"><div class="cat-badge" style="background:${TONES[i%TONES.length]}">${esc(c.icon||'🛍️')}</div><div class="cat-txt"><h3>${esc(cn(c))}</h3><p class="cat-sub">${esc(catSub(c))}</p></div></a>`).join('');
+  const hT=LANG==='en'?(s.heroTitle_en||'Everything you need,\nin one place'):(s.heroTitle||'كل ما تحتاجه\nفي مكان واحد');
+  const hS=LANG==='en'?(s.heroSubtitle_en||'Furniture, groceries, fashion, electronics, services and more — clear prices, delivered to your door.'):(s.heroSubtitle||'أثاث، مواد غذائية، ملابس، إلكترونيات، خدمات وأكثر — بأسعار واضحة وتوصيل لباب بيتك.');
   return `<section class="hero"><div class="wrap hero-in">
     <div class="hero-txt"><h1>${hT.split('\n').map(x=>esc(x)).join('<br>')}</h1><p>${esc(hS)}</p>
     <div class="cta"><a class="btn btn-brass" href="#/shop">تسوّق الآن</a><a class="btn btn-white" href="${esc(wa('مرحبًا، أريد الاستفسار عن منتجات '+s.name))}" target="_blank" rel="noopener noreferrer">${IC.wa} اسأل عبر واتساب</a></div></div>
@@ -998,23 +2918,33 @@ function vHome(){
     <div>${IC.back}<span><b>سياسة استرجاع واضحة</b><span>مكتوبة ومعلنة للجميع</span></span></div>
     <div>${IC.chat}<span><b>دعم على واتساب</b><span>نرد على استفساراتك مباشرة</span></span></div>
   </div></div>
-  <section class="blk"><div class="wrap"><div class="sh"><h2>تسوّق حسب القسم</h2></div><div class="tiles">${tiles}</div></div></section>
+  <section class="blk"><div class="wrap"><div class="sh"><h2>تسوّق حسب القسم</h2></div><div class="cat-cards">${tiles}</div></div></section>
   ${deals.length?`<section class="blk" style="padding-top:0"><div class="wrap"><div class="sh"><h2>عروض وخصومات</h2><a href="#/shop?s=disc">عرض الكل</a></div><div class="grid">${deals.map(card).join('')}</div></div></section>`:''}
   <section class="blk" style="padding-top:0"><div class="wrap"><div class="sh"><h2>وصل حديثًا</h2><a href="#/shop">كل المنتجات</a></div><div class="grid">${S.products.slice(-8).reverse().map(card).join('')||'<p class="empty">لا توجد منتجات بعد.</p>'}</div></div></section>`;
 }
 function vShop(q){
-  let list=S.products.slice();const c=q.c,term=(q.q||'').trim().toLowerCase(),sort=q.s||'';
+  let list=S.products.slice();const c=q.c,term=(q.q||'').trim().toLowerCase(),sort=q.s||'',fc=q.col||'',fs=q.sz||'',fu=q.un||'';
   if(c)list=list.filter(p=>catMatch(p.cat,c));
-  if(term)list=list.filter(p=>[p.name,p.name_en,(DEN.p[p.id]||{}).n,p.desc,pdsc(p),catName(p.cat)].join(' ').toLowerCase().includes(term));
+  if(term)list=list.filter(p=>[p.name,p.name_en,p.desc,pdsc(p),catName(p.cat)].join(' ').toLowerCase().includes(term));
+  const colMap=new Map(),szSet=new Set(),unSet=new Set();
+  list.forEach(p=>{(p.colors||[]).forEach(x=>{if(!colMap.has(x.name))colMap.set(x.name,x.hex||'')});(p.sizes||[]).forEach(x=>szSet.add(x));if(p.unit&&p.unit!=='piece')unSet.add(p.unit)});
+  if(fc)list=list.filter(p=>(p.colors||[]).some(x=>x.name===fc));
+  if(fs)list=list.filter(p=>(p.sizes||[]).includes(fs));
+  if(fu)list=list.filter(p=>(p.unit||'piece')===fu);
   if(sort==='asc')list.sort((a,b)=>a.price-b.price);else if(sort==='desc')list.sort((a,b)=>b.price-a.price);else if(sort==='disc')list=list.filter(p=>disc(p)>0).sort((a,b)=>disc(b)-disc(a));
-  const url=(o)=>'#/shop?'+new URLSearchParams(Object.fromEntries(Object.entries({c,q:q.q,s:sort,...o}).filter(([,v])=>v))).toString();
+  const url=(o)=>'#/shop?'+new URLSearchParams(Object.fromEntries(Object.entries({c,q:q.q,s:sort,col:fc,sz:fs,un:fu,...o}).filter(([,v])=>v))).toString();
   const curCat=c?catById(c):null,title=curCat?cn(curCat):(term?`نتائج البحث عن "${q.q}"`:'كل المنتجات');
   const kids=curCat&&!curCat.parent?childCats(curCat.id):[];
-  const bannerImg=curCat?(catBg(curCat.id)||assetPath(S.settings.shopBg,'images/shop-header-bg.jpg')):assetPath(S.settings.shopBg,'images/shop-header-bg.jpg');
+  const shopImg=assetPath(S.settings.shopBg,'images/shop-header-bg.jpg'),bannerImg=curCat?(catBg(curCat.id)||shopImg):shopImg;
+  const chip=(on,href,inner)=>`<a class="chip ${on?'on':''}" href="${href}">${inner}</a>`;
+  const hexOk=h=>/^#[0-9a-fA-F]{6}$/.test(h||'');
   return pageBanner(bannerImg,title)+`<div class="wrap" style="padding:20px 0 8px">
-  <div class="filters"><a class="chip ${!c?'on':''}" href="${url({c:''})}">الكل</a>${topCats().map(k=>`<a class="chip ${c===k.id?'on':''}" href="${url({c:k.id})}">${esc(cn(k))}</a>`).join('')}
+  <div class="filters"><a class="chip ${!c?'on':''}" href="${url({c:'',col:'',sz:'',un:''})}">الكل</a>${topCats().map(k=>`<a class="chip ${c===k.id?'on':''}" href="${url({c:k.id,col:'',sz:'',un:''})}">${esc(cn(k))}</a>`).join('')}
   <label style="margin-inline-start:auto">الترتيب <select data-sort aria-label="الترتيب"><option value="">الأحدث</option><option value="asc" ${sort==='asc'?'selected':''}>الأقل سعرًا</option><option value="desc" ${sort==='desc'?'selected':''}>الأعلى سعرًا</option><option value="disc" ${sort==='disc'?'selected':''}>الأعلى خصمًا</option></select></label></div>
-  ${kids.length?`<div class="filters">${kids.map(k=>`<a class="chip ${c===k.id?'on':''}" href="${url({c:k.id})}">${esc(cn(k))}</a>`).join('')}</div>`:''}
+  ${kids.length?`<div class="filters">${kids.map(k=>`<a class="chip ${c===k.id?'on':''}" href="${url({c:k.id,col:'',sz:'',un:''})}">${esc(cn(k))}</a>`).join('')}</div>`:''}
+  ${colMap.size?`<div class="filters"><b class="flt">${L('اللون','Color')}</b>${[...colMap].map(([n,h])=>chip(fc===n,url({col:fc===n?'':n}),`${hexOk(h)?`<i class="dot" style="background:${h}"></i>`:''}${esc(n)}`)).join('')}</div>`:''}
+  ${szSet.size?`<div class="filters"><b class="flt">${L('المقاس','Size')}</b>${[...szSet].map(n=>chip(fs===n,url({sz:fs===n?'':n}),esc(n))).join('')}</div>`:''}
+  ${unSet.size?`<div class="filters"><b class="flt">${L('البيع','Sold')}</b>${[...unSet].map(u=>chip(fu===u,url({un:fu===u?'':u}),u==='kg'?L('بالكيلو','Per kg'):L('بالمتر','Per meter'))).join('')}</div>`:''}
   ${list.length?`<div class="grid">${list.map(card).join('')}</div>`:`<div class="empty">${IC.search.replace('class="ico"','class="ico" style="width:48px;height:48px;margin:0 auto 12px;color:var(--brass)"')}<p>لا توجد منتجات مطابقة. جرّب قسمًا آخر أو كلمة بحث مختلفة.</p></div>`}</div>`;
 }
 function vProduct(id){
@@ -1029,7 +2959,7 @@ function vProduct(id){
   <p>${esc(pdsc(p))}</p>
   <p style="color:${outOf(p)?'var(--sale)':'var(--ok)'};font-weight:700;margin-bottom:6px">${outOf(p)?'غير متوفر حاليًا':'متوفر'}</p>
   <p style="margin:6px 0">${srcBadge(p)}</p>
-  ${p.colors&&p.colors.length?`<div class="varblock"><span class="varlabel">${L('اللون','Color')}: <b id="selColorLbl">${esc(selColor)}</b></span><div class="swatches">${p.colors.map((c,i)=>`<button type="button" class="swatch ${i===0?'on':''}" data-act="pickColor" data-id="${esc(c.name)}" title="${esc(c.name)}" aria-label="${esc(c.name)}" style="${c.hex?`background:${c.hex}`:''}">${c.hex?'':esc(c.name.slice(0,2))}</button>`).join('')}</div></div>`:''}
+  ${p.colors&&p.colors.length?`<div class="varblock"><span class="varlabel">${L('اللون','Color')}: <b id="selColorLbl">${esc(selColor)}</b></span><div class="swatches">${p.colors.map((c,i)=>`<button type="button" class="swatch ${i===0?'on':''}" data-act="pickColor" data-id="${esc(c.name)}" title="${esc(c.name)}" aria-label="${esc(c.name)}" style="${/^#[0-9a-fA-F]{6}$/.test(c.hex||'')?`background:${c.hex}`:''}">${c.hex?'':esc(c.name.slice(0,2))}</button>`).join('')}</div></div>`:''}
   ${p.sizes&&p.sizes.length?`<div class="varblock"><span class="varlabel">${L('المقاس','Size')}</span><div class="sizechips">${p.sizes.map((sz,i)=>`<button type="button" class="szchip ${i===0?'on':''}" data-act="pickSize" data-id="${esc(sz)}">${esc(sz)}</button>`).join('')}</div></div>`:''}
   <p class="note">${L(`التوصيل المتوقع خلال <b>${ld}</b> عمل من تأكيد الطلب`,`Estimated delivery: <b>${ld}</b> after order confirmation`)}</p>
   <div class="cta" style="margin-top:16px"><span class="qty"><button data-act="pq" data-d="-1" aria-label="أقل">−</button><span id="pq">1</span><button data-act="pq" data-d="1" aria-label="أكثر">+</button></span>
@@ -1116,11 +3046,13 @@ function vAdmin(q){
     <p style="color:var(--mute);font-size:14px">لعرض خصم: اكتب السعر الحالي في "السعر" والسعر الأعلى في "قبل الخصم" وسيظهر الخصم تلقائيًا. غيّر الأسعار مباشرة من الجدول. لتغيير المصدر (مخزننا / دروبشيبنج) افتح "تعديل".</p>`;
   }else if(t==='cats'){
     const topOpts=topCats().map(k=>`<option value="${esc(k.id)}">${esc(k.name)}</option>`).join('');
+    const FL=[['kg','كيلو'],['m','متر'],['colors','ألوان'],['sizes','مقاسات']];
+    const feats=c=>{const f=catFeat(c.id);return `<div class="feats">${FL.map(([k,l])=>`<label class="chk"><input type="checkbox" data-cfeat="${esc(c.id)}|${k}" ${f[k]?'checked':''}>${l}</label>`).join('')}</div>`};
     const rows=[];
     topCats().forEach(top=>{
-      rows.push(`<tr style="background:var(--surface2)"><td colspan="2"><input type="text" value="${esc(top.name)}" data-cf="${esc(top.id)}" aria-label="اسم القسم" maxlength="60" style="font-weight:700"></td><td><input type="text" value="${esc(top.name_en||'')}" data-cfen="${esc(top.id)}" placeholder="English name" dir="ltr" style="text-align:right"></td><td><input type="text" value="${esc(top.bg||'')}" data-cbg="${esc(top.id)}" placeholder="images/section-bg.jpg" dir="ltr" style="text-align:right"></td><td>${nf.format(S.products.filter(p=>catMatch(p.cat,top.id)).length)} منتج</td><td><button class="btn btn-danger btn-sm" data-act="catDel" data-id="${esc(top.id)}">حذف</button></td></tr>`);
+      rows.push(`<tr style="background:var(--surface2)"><td><input type="text" value="${esc(top.name)}" data-cf="${esc(top.id)}" aria-label="اسم القسم" maxlength="60" style="font-weight:700"></td><td><input type="text" value="${esc(top.name_en||'')}" data-cfen="${esc(top.id)}" placeholder="English name" dir="ltr" style="text-align:right"></td><td><input type="text" value="${esc(top.icon||'')}" data-cicon="${esc(top.id)}" maxlength="4" style="width:64px;text-align:center" aria-label="أيقونة"></td><td><input type="text" value="${esc(top.bg||'')}" data-cbg="${esc(top.id)}" placeholder="images/section-bg.jpg" dir="ltr" style="text-align:right"></td><td>${feats(top)}</td><td>${nf.format(S.products.filter(p=>catMatch(p.cat,top.id)).length)}</td><td><button class="btn btn-danger btn-sm" data-act="catDel" data-id="${esc(top.id)}">حذف</button></td></tr>`);
       childCats(top.id).forEach(c=>{
-        rows.push(`<tr><td style="padding-inline-start:28px">↳ <input type="text" value="${esc(c.name)}" data-cf="${esc(c.id)}" aria-label="اسم القسم الفرعي" maxlength="60"></td><td><input type="text" value="${esc(c.name_en||'')}" data-cfen="${esc(c.id)}" placeholder="English name" dir="ltr" style="text-align:right"></td><td colspan="2" style="color:var(--mute);font-size:13px">فرعي من ${esc(top.name)}</td><td>${nf.format(S.products.filter(p=>p.cat===c.id).length)} منتج</td><td><button class="btn btn-danger btn-sm" data-act="catDel" data-id="${esc(c.id)}">حذف</button></td></tr>`);
+        rows.push(`<tr><td style="padding-inline-start:28px">↳ <input type="text" value="${esc(c.name)}" data-cf="${esc(c.id)}" aria-label="اسم القسم الفرعي" maxlength="60"></td><td><input type="text" value="${esc(c.name_en||'')}" data-cfen="${esc(c.id)}" placeholder="English name" dir="ltr" style="text-align:right"></td><td></td><td></td><td>${feats(c)}</td><td>${nf.format(S.products.filter(p=>p.cat===c.id).length)}</td><td><button class="btn btn-danger btn-sm" data-act="catDel" data-id="${esc(c.id)}">حذف</button></td></tr>`);
       });
     });
     body=`<div class="sh"><h2 style="font-size:22px">الأقسام</h2></div>
@@ -1129,8 +3061,8 @@ function vAdmin(q){
     <input type="text" name="name_en" placeholder="English name (optional)" maxlength="60" dir="ltr" style="flex:1;min-width:160px;text-align:right">
     <select name="parent" style="min-width:200px"><option value="">— بدون (قسم رئيسي) —</option>${topOpts}</select>
     <button class="btn btn-brass" type="submit">إضافة</button></form>
-    <div class="scroll"><table class="tbl"><thead><tr><th>الاسم</th><th>English</th><th>خلفية القسم</th><th>المنتجات</th><th></th></tr></thead><tbody>${rows.join('')}</tbody></table></div>
-    <p style="color:var(--mute);font-size:14px">الأقسام الرئيسية (بلا قسم أب) تظهر في شريط التصنيفات وبلاطات الصفحة الرئيسية، ولها خلفية خاصة تظهر عند تصفحها. الأقسام الفرعية تظهر كخيارات إضافية داخل قسمها الرئيسي فقط. لا يمكن حذف قسم به منتجات أو أقسام فرعية؛ انقلها أو احذفها أولًا.</p>`;
+    <div class="scroll"><table class="tbl"><thead><tr><th>الاسم</th><th>English</th><th>أيقونة</th><th>خلفية القسم</th><th>الخصائص المتاحة لمنتجات القسم</th><th>منتجات</th><th></th></tr></thead><tbody>${rows.join('')}</tbody></table></div>
+    <p style="color:var(--mute);font-size:14px">الخصائص (كيلو / متر / ألوان / مقاسات) تحدد الحقول التي تظهر عند إضافة منتج لهذا القسم وفلاتر المتجر. القسم الفرعي بلا اختيار خاص يرث خصائص قسمه الرئيسي، وتعديل أي خانة فيه يجعله مستقلًا. لا يمكن حذف قسم به منتجات أو أقسام فرعية.</p>`;
   }else if(t==='store'){
     const s=S.settings;
     body=`<form class="panel" data-form="store"><h2 style="font-size:22px;margin-bottom:12px">بيانات المتجر</h2>
@@ -1140,6 +3072,7 @@ function vAdmin(q){
     <div class="row2"><label class="f"><span>رقم واتساب (بصيغة دولية بدون +)</span><input type="tel" name="phone" value="${esc(s.phone)}" dir="ltr" style="text-align:right" required></label><label class="f"><span>البريد الإلكتروني</span><input type="email" name="email" value="${esc(s.email)}" dir="ltr" style="text-align:right" required></label></div>
     <div class="row2"><label class="f"><span>رابط صفحة فيسبوك</span><input type="text" name="fb" value="${esc(s.fb)}" dir="ltr" placeholder="https://facebook.com/..." style="text-align:right"></label><label class="f"><span>رابط حساب إنستجرام</span><input type="text" name="ig" value="${esc(s.ig)}" dir="ltr" placeholder="https://instagram.com/..." style="text-align:right"></label></div>
     <label class="f"><span>رسوم الشحن (ج.م) <small>اتركها 0 ليظهر "يُحدد عند التأكيد"</small></span><input type="number" name="shipping" min="0" step="1" value="${+s.shipping||0}"></label>
+    <h3 style="font-size:17px;color:var(--tx);margin:22px 0 4px">مواعيد العمل</h3><div class="row2"><label class="f"><span>مواعيد العمل (عربي)</span><textarea name="hours" maxlength="200" style="min-height:70px">${esc(s.hours||'')}</textarea></label><label class="f"><span>Working hours (English)</span><textarea name="hours_en" maxlength="200" style="min-height:70px" dir="ltr">${esc(s.hours_en||'')}</textarea></label></div>
     <h3 style="font-size:17px;color:var(--tx);margin:22px 0 4px">مدة التوصيل الافتراضية</h3>
     <p style="color:var(--mute);font-size:14px;margin:0 0 10px">بصيغة "من-إلى" بالأيام، مثل 2-4. يمكن تخصيص مدة مختلفة لكل منتج من نافذة تعديل المنتج.</p>
     <div class="row2"><label class="f"><span>منتجات مخزننا</span><input type="text" name="leadOwn" value="${esc(s.leadOwn||'2-4')}" maxlength="20" dir="ltr" style="text-align:right"></label><label class="f"><span>منتجات الدروبشيبنج</span><input type="text" name="leadDrop" value="${esc(s.leadDrop||'7-14')}" maxlength="20" dir="ltr" style="text-align:right"></label></div>
@@ -1164,7 +3097,6 @@ function vAdmin(q){
   ${FB?'':'<div class="hint">النسخة المحلية: التعديلات تُحفظ في هذا المتصفح فقط ولا يراها الزوار الآخرون. لنشر التعديلات لكل الزوار فعّل Firebase.</div>'}
   <div class="adm-tabs">${tabs.map(([k,n])=>`<a class="chip ${t===k?'on':''}" href="#/admin?t=${k}">${n}</a>`).join('')}</div>${body}</div>`;
 }
-let tmpImg='';
 let tmpImgs=[];
 let selColor='',selSize='';
 function renderImgGrid(){
@@ -1172,38 +3104,44 @@ function renderImgGrid(){
   g.innerHTML=tmpImgs.map((im,i)=>`<div class="imgslot"><img src="${im}" alt=""><button type="button" class="imgrm" data-act="imgRm" data-id="${i}" aria-label="حذف الصورة">×</button></div>`).join('')+(tmpImgs.length<4?`<div class="imgslot" style="display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:12px;text-align:center;background:var(--stone)">${4-tmpImgs.length} ${L('متبقٍ','left')}</div>`:'');
 }
 function prodForm(p){
-  const n=!p;p=p||{id:uid('p'),cat:(S.cats[0]||{}).id||'',name:'',name_en:'',price:0,old:0,type:'sofa',color:'#0E4A47',desc:'',desc_en:'',stock:10,img:'',imgs:[],src:'own',lead:'',supplier:'',supplierUrl:'',unit:'piece',colors:[],sizes:[]};
+  const n=!p;p=p||{id:uid('p'),cat:((childCats((topCats()[0]||{}).id)[0])||topCats()[0]||{}).id||'',name:'',name_en:'',price:0,old:0,desc:'',desc_en:'',stock:10,img:'',imgs:[],src:'own',lead:'',unit:'piece',colors:[],sizes:[]};
+  const pr=S.priv[p.id]||{},ft=catFeat(p.cat);
   tmpImgs=(p.imgs&&p.imgs.length?p.imgs.slice(0,4):(p.img&&safeImg(p.img)?[p.img]:[]));
   openModal(`<h2>${n?'منتج جديد':'تعديل المنتج'}</h2><form data-form="prod"><input type="hidden" name="id" value="${esc(p.id)}">
   <label class="f"><span>صور المنتج <small>(حتى 4 صور، JPG أو PNG – تُصغَّر تلقائيًا)</small></span></label>
   <div class="imggrid" id="imggrid"></div>
   <input type="file" accept="image/jpeg,image/png,image/webp" multiple data-file>
   <div class="row2"><label class="f"><span>اسم المنتج (عربي)</span><input type="text" name="name" value="${esc(p.name)}" required maxlength="120"></label><label class="f"><span>Product name (English) <small>(اختياري)</small></span><input type="text" name="name_en" value="${esc(p.name_en||'')}" maxlength="120" dir="ltr" style="text-align:right"></label></div>
-  <label class="f"><span>القسم</span><select name="cat" style="width:100%" required>${topCats().map(top=>{const kids=childCats(top.id);const optTop=`<option value="${esc(top.id)}" ${top.id===p.cat?'selected':''}>${esc(top.name)}</option>`;return kids.length?`<optgroup label="${esc(top.name)}">${optTop}${kids.map(c=>`<option value="${esc(c.id)}" ${c.id===p.cat?'selected':''}>— ${esc(c.name)}</option>`).join('')}</optgroup>`:optTop}).join('')}</select></label>
+  <label class="f"><span>القسم</span><select name="cat" id="pfCat" style="width:100%" required>${topCats().map(top=>{const kids=childCats(top.id);const optTop=`<option value="${esc(top.id)}" ${top.id===p.cat?'selected':''}>${esc(top.name)}</option>`;return kids.length?`<optgroup label="${esc(top.name)}">${optTop}${kids.map(c=>`<option value="${esc(c.id)}" ${c.id===p.cat?'selected':''}>— ${esc(c.name)}</option>`).join('')}</optgroup>`:optTop}).join('')}</select></label>
   <div class="row2"><label class="f"><span>السعر الحالي (ج.م)</span><input type="number" name="price" min="1" step="1" value="${+p.price||''}" required></label><label class="f"><span>السعر قبل الخصم <small>(اختياري)</small></span><input type="number" name="old" min="0" step="1" value="${+p.old||''}"></label></div>
   <div class="row2"><label class="f"><span>الوصف (عربي)</span><textarea name="desc" maxlength="1000">${esc(p.desc)}</textarea></label><label class="f"><span>Description (English) <small>(اختياري)</small></span><textarea name="desc_en" maxlength="1000" dir="ltr">${esc(p.desc_en||'')}</textarea></label></div>
   <h3 style="font-size:16px;color:var(--tx);margin:18px 0 4px">مصدر المنتج</h3>
   <div class="pay" role="radiogroup" aria-label="مصدر المنتج">
-    <label><input type="radio" name="src" value="own" ${p.src!=='drop'?'checked':''} data-act-src="own"><span><b>متوفر في مخزننا</b><br><small>نتحكم بالكمية ونحدد المخزون بأنفسنا.</small></span></label>
+    <label><input type="radio" name="src" value="own" ${p.src!=='drop'?'checked':''} data-act-src="own"><span><b>متوفر في مخزننا</b><br><small>نتحكم بالكمية ويُخصم المخزون تلقائيًا مع كل طلب.</small></span></label>
     <label><input type="radio" name="src" value="drop" ${p.src==='drop'?'checked':''} data-act-src="drop"><span><b>دروبشيبنج (مورد خارجي)</b><br><small>يُشحن من مورد شريك عند وصول الطلب؛ لا يُعرض له نفاد مخزون.</small></span></label>
   </div>
   <div id="ownFields" style="display:${p.src==='drop'?'none':'block'}"><label class="f"><span>المتاح بالمخزون <small>(0 = غير متوفر)</small></span><input type="number" name="stock" min="0" step="1" value="${p.stock==null?10:+p.stock}"></label></div>
-  <div id="dropFields" style="display:${p.src==='drop'?'block':'none'}"><div class="row2"><label class="f"><span>اسم المورّد <small>(داخلي، لا يظهر للعميل)</small></span><input type="text" name="supplier" value="${esc(p.supplier||'')}" maxlength="80"></label><label class="f"><span>رابط المنتج عند المورّد <small>(اختياري)</small></span><input type="text" name="supplierUrl" value="${esc(p.supplierUrl||'')}" placeholder="https://" dir="ltr" style="text-align:right"></label></div></div>
+  <div id="dropFields" style="display:${p.src==='drop'?'block':'none'}"><div class="row2"><label class="f"><span>اسم المورّد <small>(سري، لا يظهر للعملاء)</small></span><input type="text" name="supplier" value="${esc(pr.supplier||'')}" maxlength="80"></label><label class="f"><span>رابط المنتج عند المورّد <small>(سري)</small></span><input type="text" name="supplierUrl" value="${esc(pr.url||'')}" placeholder="https://" dir="ltr" style="text-align:right"></label></div></div>
   <label class="f"><span>مدة التوصيل لهذا المنتج <small>(اختياري، مثل 3-5 — اتركه فارغًا لاستخدام الإعداد العام)</small></span><input type="text" name="lead" value="${esc(p.lead||'')}" maxlength="20" dir="ltr" style="text-align:right"></label>
-  <h3 style="font-size:16px;color:var(--tx);margin:18px 0 4px">خصائص اختيارية حسب القسم</h3>
-  <p style="color:var(--mute);font-size:14px;margin:0 0 10px">فعّل فقط ما يحتاجه هذا المنتج، واترك الباقي فارغًا.</p>
-  <label class="f"><span>وحدة البيع</span><select name="unit" style="width:100%"><option value="piece" ${!p.unit||p.unit==='piece'?'selected':''}>بالقطعة</option><option value="kg" ${p.unit==='kg'?'selected':''}>بالكيلوجرام</option><option value="m" ${p.unit==='m'?'selected':''}>بالمتر</option></select></label>
-  <label class="f"><span>الألوان المتاحة <small>(اختياري — افصل بينها بفاصلة، ويمكن إضافة اللون السداسي هكذا: أحمر|#C0392B)</small></span><input type="text" name="colors" value="${esc(colorsToStr(p.colors))}" placeholder="أحمر|#C0392B, أزرق|#2E4C6D, أسود" dir="ltr" style="text-align:right"></label>
-  <label class="f"><span>المقاسات المتاحة <small>(اختياري — افصل بينها بفاصلة)</small></span><input type="text" name="sizes" value="${esc(sizesToStr(p.sizes))}" placeholder="S, M, L, XL" dir="ltr" style="text-align:right"></label>
+  <h3 style="font-size:16px;color:var(--tx);margin:18px 0 4px">خصائص حسب القسم</h3>
+  <p style="color:var(--mute);font-size:14px;margin:0 0 10px">تظهر هنا الخصائص المفعّلة لقسم المنتج فقط (تُدار من تبويب الأقسام).</p>
+  <div id="ftUnit" style="display:${ft.kg||ft.m||p.unit!=='piece'?'block':'none'}"><label class="f"><span>وحدة البيع</span><select name="unit" id="pfUnit" style="width:100%"><option value="piece" ${!p.unit||p.unit==='piece'?'selected':''}>بالقطعة</option><option value="kg" ${p.unit==='kg'?'selected':''}>بالكيلوجرام</option><option value="m" ${p.unit==='m'?'selected':''}>بالمتر</option></select></label></div>
+  <div id="ftColors" style="display:${ft.colors?'block':'none'}"><label class="f"><span>الألوان المتاحة <small>(افصل بفاصلة، ويمكن إضافة اللون السداسي هكذا: أحمر|#C0392B)</small></span><input type="text" name="colors" value="${esc(colorsToStr(p.colors))}" placeholder="أحمر|#C0392B, أزرق|#2E4C6D, أسود" dir="ltr" style="text-align:right"></label></div>
+  <div id="ftSizes" style="display:${ft.sizes?'block':'none'}"><label class="f"><span>المقاسات المتاحة <small>(افصل بفاصلة)</small></span><input type="text" name="sizes" value="${esc(sizesToStr(p.sizes))}" placeholder="S, M, L, XL" dir="ltr" style="text-align:right"></label></div>
   <p class="err" role="alert"></p><button class="btn btn-teal btn-block" type="submit">حفظ المنتج</button></form>`,true);
   renderImgGrid();
+}
+function syncFeat(){
+  const sel=$('#pfCat');if(!sel)return;const ft=catFeat(sel.value),u=$('#pfUnit');
+  $('#ftUnit').style.display=(ft.kg||ft.m||(u&&u.value!=='piece'))?'block':'none';
+  $('#ftColors').style.display=ft.colors?'block':'none';$('#ftSizes').style.display=ft.sizes?'block':'none';
 }
 function resizeImage(file){
   return new Promise((res,rej)=>{
     if(!/^image\/(jpeg|png|webp)$/.test(file.type))return rej(new Error('نوع الصورة غير مدعوم'));
     if(file.size>8*1024*1024)return rej(new Error('حجم الصورة كبير (الحد 8 ميجا)'));
     const url=URL.createObjectURL(file),im=new Image();
-    im.onload=()=>{const m=760,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',.8))};
+    im.onload=()=>{const m=700,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',.72))};
     im.onerror=()=>{URL.revokeObjectURL(url);rej(new Error('تعذر قراءة الصورة'))};im.src=url;
   });
 }
@@ -1251,7 +3189,7 @@ const ACT={
   prodEdit(el,id){prodForm(S.products.find(p=>p.id===id))},
   imgRm(el,id){tmpImgs.splice(+id,1);renderImgGrid()},
   swapImg(el,id){const m=$('#pdMain');if(m)m.src=id;el.parentElement.querySelectorAll('.gthumb').forEach(b=>b.classList.remove('on'));el.classList.add('on')},
-  async prodDel(el,id){const p=S.products.find(x=>x.id===id);if(p&&confirm('حذف المنتج "'+p.name+'"؟'))await del('products',id),toast('تم حذف المنتج'),render()},
+  async prodDel(el,id){const p=S.products.find(x=>x.id===id);if(p&&confirm('حذف المنتج "'+p.name+'"؟'))await del('products',id),await delPriv(id),toast('تم حذف المنتج'),render()},
   async catDel(el,id){if(S.products.some(p=>p.cat===id))return toast('هذا القسم به منتجات. انقلها أو احذفها أولًا.');if(S.cats.some(c=>c.parent===id))return toast('هذا القسم له أقسام فرعية. احذفها أولًا.');if(confirm('حذف القسم؟'))await del('categories',id),toast('تم حذف القسم'),render()},
   async seed(){await seed();toast('تم تحميل البيانات الافتراضية')}
 };
@@ -1278,6 +3216,9 @@ document.addEventListener('change',async e=>{
       for(const file of files){try{tmpImgs.push(await resizeImage(file))}catch(err){toast(err.message)}}
       t.value='';renderImgGrid();
     }
+    else if(t.matches('#pfCat,#pfUnit')){syncFeat()}
+    else if(t.matches('[data-cicon]')){const c=S.cats.find(x=>x.id===t.dataset.cicon);if(c){c.icon=t.value.trim().slice(0,4);await put('categories',c);toast('تم حفظ الأيقونة')}}
+    else if(t.matches('[data-cfeat]')){const[id,k]=t.dataset.cfeat.split('|'),c=S.cats.find(x=>x.id===id);if(c){c.feat={...catFeat(id),[k]:t.checked};await put('categories',c);toast('تم حفظ الخصائص');render()}}
     else if(t.matches('input[data-act-src]')){const own=$('#ownFields'),drop=$('#dropFields');if(own&&drop){const isDropSel=t.value==='drop';own.style.display=isDropSel?'none':'block';drop.style.display=isDropSel?'block':'none'}}
   }catch(err){toast(err.message||'حدث خطأ')}
 });
@@ -1304,17 +3245,17 @@ const FORM={
     if(String(d.city).trim().length<2||String(d.address).trim().length<5)return showErr(f,'أدخل المدينة والعنوان بالتفصيل.');
     const items=cartLines().map(({p,q,color,size})=>({id:p.id,name:p.name,price:p.price,q,src:p.src||'own',lead:p.lead||'',color:color||'',size:size||''}));if(!items.length)return showErr(f,'السلة فارغة.');
     const ship=+S.settings.shipping||0;
-    let o={id:'WD-'+new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase(),uid:S.user.id,name:String(d.name).trim(),phone:'0'+ph.v.slice(2),city:String(d.city).trim(),address:String(d.address).trim(),notes:String(d.notes||'').trim(),pay:d.pay==='cod'?'cod':'vodafone',items,shipping:ship,total:items.reduce((a,i)=>a+i.price*i.q,0)+ship,status:'new',ts:Date.now()};
+    let o={id:'AB-'+new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase(),uid:S.user.id,name:String(d.name).trim(),phone:'0'+ph.v.slice(2),city:String(d.city).trim(),address:String(d.address).trim(),notes:String(d.notes||'').trim(),pay:d.pay==='cod'?'cod':'vodafone',items,shipping:ship,total:items.reduce((a,i)=>a+i.price*i.q,0)+ship,status:'new',ts:Date.now()};
     if(FB){
       if(!CFG.api)throw new Error('خادم الطلبات غير مُعدّ بعد. تواصل مع المتجر على واتساب.');
       const tok=await FB.auth.currentUser.getIdToken(),ac=new AbortController(),tm=setTimeout(()=>ac.abort(),45000);
       let r;
-      try{r=await fetch(CFG.api.replace(/\/$/,'')+'/api/orders',{method:'POST',signal:ac.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:JSON.stringify({items:items.map(i=>({id:i.id,q:i.q})),name:o.name,phone:o.phone,city:o.city,address:o.address,notes:o.notes,pay:o.pay})})}
+      try{r=await fetch(CFG.api.replace(/\/$/,'')+'/api/orders',{method:'POST',signal:ac.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:JSON.stringify({items:items.map(i=>({id:i.id,q:i.q,color:i.color||'',size:i.size||''})),name:o.name,phone:o.phone,city:o.city,address:o.address,notes:o.notes,pay:o.pay})})}
       catch{throw new Error('تعذر الوصول لخادم الطلبات. أعد المحاولة بعد لحظات.')}
       finally{clearTimeout(tm)}
       const j=await r.json().catch(()=>({}));
       if(!r.ok||!j.order)throw new Error(j.error||'تعذر إرسال الطلب، حاول مرة أخرى.');
-      o=j.order;o.items=items.map(it=>({...it,...(o.items.find(x=>x.id===it.id)||{})}));if(!S.orders.some(x=>x.id===o.id))S.orders.unshift(o);
+      o=j.order;if(!S.orders.some(x=>x.id===o.id))S.orders.unshift(o);
     }else{const all=store.get('wd_orders',[]);all.push(o);store.set('wd_orders',all);loadLocalOrders()}
     S.cart=[];saveCart();renderHeader();
     const w=window.open(wa(invoiceText(o)),'_blank','noopener');
@@ -1339,7 +3280,7 @@ const FORM={
     if(!hexOk(d.colorPrimary)||!hexOk(d.colorAccent))return showErr(f,'اختر لونًا صحيحًا.');
     const leadOk=v=>v===''||/^\d+(\s*[-–]\s*\d+)?$/.test(String(v).trim());
     if(!leadOk(d.leadOwn)||!leadOk(d.leadDrop))return showErr(f,'صيغة مدة التوصيل غير صحيحة، مثل 2-4.');
-    await putDoc('store',{name:String(d.name).trim(),tagline:String(d.tagline).trim(),tagline_en:String(d.tagline_en||'').trim(),address:String(d.address).trim(),address_en:String(d.address_en||'').trim(),phone:ph,email:String(d.email).trim(),fb:String(d.fb).trim(),ig:String(d.ig).trim(),shipping:Math.max(0,+d.shipping||0),leadOwn:String(d.leadOwn||'2-4').trim(),leadDrop:String(d.leadDrop||'7-14').trim(),heroImg:String(d.heroImg||'').trim(),siteBg:String(d.siteBg||'').trim(),shopBg:String(d.shopBg||'').trim(),cartBg:String(d.cartBg||'').trim(),heroTitle:String(d.heroTitle||'').trim(),heroTitle_en:String(d.heroTitle_en||'').trim(),heroSubtitle:String(d.heroSubtitle||'').trim(),heroSubtitle_en:String(d.heroSubtitle_en||'').trim(),storeIcon:String(d.storeIcon||'').trim(),designLogo:String(d.designLogo||'').trim(),designCredit:String(d.designCredit||'').trim(),colorPrimary:d.colorPrimary,colorAccent:d.colorAccent});
+    await putDoc('store',{name:String(d.name).trim(),tagline:String(d.tagline).trim(),tagline_en:String(d.tagline_en||'').trim(),address:String(d.address).trim(),address_en:String(d.address_en||'').trim(),phone:ph,email:String(d.email).trim(),fb:String(d.fb).trim(),ig:String(d.ig).trim(),shipping:Math.max(0,+d.shipping||0),hours:String(d.hours||'').trim(),hours_en:String(d.hours_en||'').trim(),leadOwn:String(d.leadOwn||'2-4').trim(),leadDrop:String(d.leadDrop||'7-14').trim(),heroImg:String(d.heroImg||'').trim(),siteBg:String(d.siteBg||'').trim(),shopBg:String(d.shopBg||'').trim(),cartBg:String(d.cartBg||'').trim(),heroTitle:String(d.heroTitle||'').trim(),heroTitle_en:String(d.heroTitle_en||'').trim(),heroSubtitle:String(d.heroSubtitle||'').trim(),heroSubtitle_en:String(d.heroSubtitle_en||'').trim(),storeIcon:String(d.storeIcon||'').trim(),designLogo:String(d.designLogo||'').trim(),designCredit:String(d.designCredit||'').trim(),colorPrimary:d.colorPrimary,colorAccent:d.colorAccent});
     toast('تم حفظ بيانات المتجر');render();
   },
   async pages(f){const d=Object.fromEntries(new FormData(f)),o={...S.pages};Object.keys(PAGE_TITLES).forEach(k=>{o[k]=String(d[k]||'');o[k+'_en']=String(d[k+'_en']||'')});await putDoc('pages',o);toast('تم حفظ الصفحات');render()},
@@ -1351,7 +3292,11 @@ const FORM={
     if(src==='drop'&&!String(d.supplier||'').trim())return showErr(f,'أدخل اسم المورّد لمنتجات الدروبشيبنج.');
     const leadOk=v=>v===''||/^\d+(\s*[-–]\s*\d+)?$/.test(String(v).trim());
     if(!leadOk(d.lead))return showErr(f,'صيغة مدة التوصيل غير صحيحة، مثل 3-5.');
-    await put('products',{id:d.id,cat:d.cat,name:String(d.name).trim(),name_en:String(d.name_en||'').trim(),price,old,desc:String(d.desc||'').trim(),desc_en:String(d.desc_en||'').trim(),stock:src==='drop'?null:Math.max(0,Math.round(+d.stock||0)),src,supplier:src==='drop'?String(d.supplier||'').trim():'',supplierUrl:src==='drop'?String(d.supplierUrl||'').trim():'',lead:String(d.lead||'').trim(),unit:['piece','kg','m'].includes(d.unit)?d.unit:'piece',colors:parseColors(d.colors),sizes:parseSizes(d.sizes),imgs:tmpImgs.slice(0,4),img:tmpImgs[0]||''});
+    const surl=String(d.supplierUrl||'').trim();if(surl&&!/^https:\/\//.test(surl))return showErr(f,'رابط المورّد يجب أن يبدأ بـ https://');
+    if(tmpImgs.join('').length>850000)return showErr(f,'حجم الصور كبير جدًا، قلّل عددها أو استخدم صورًا أصغر.');
+    const ft=catFeat(d.cat),unit=['piece','kg','m'].includes(d.unit)?d.unit:'piece';
+    await put('products',{id:d.id,cat:d.cat,name:String(d.name).trim(),name_en:String(d.name_en||'').trim(),price,old,desc:String(d.desc||'').trim(),desc_en:String(d.desc_en||'').trim(),stock:src==='drop'?null:Math.max(0,Math.round(+d.stock||0)),src,lead:String(d.lead||'').trim(),unit,colors:ft.colors?parseColors(d.colors):[],sizes:ft.sizes?parseSizes(d.sizes):[],imgs:tmpImgs.slice(0,4),img:tmpImgs[0]||''});
+    if(src==='drop')await putPriv(d.id,{supplier:String(d.supplier||'').trim(),url:surl});else await delPriv(d.id);
     closeModal();toast('تم حفظ المنتج');render();
   }
 };
@@ -1395,7 +3340,7 @@ window.addEventListener('hashchange',()=>{S.menu=false;closeCartDrawer();render(
   if(!FB){
     const sid=store.get('wd_session',null),u=sid&&store.get('wd_users',[]).find(x=>x.id===sid);
     if(u){S.user={id:u.id,name:u.name,ident:u.ident,type:u.type}}
-    loadCart();loadLocalOrders();
+    loadCart();loadLocalOrders();S.priv=store.get('wd_priv',{});
   }
   render();
   render();

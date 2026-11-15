@@ -13,23 +13,31 @@ service cloud.firestore {
     match /categories/{id} { allow read: if true; allow write: if isAdmin(); }
     match /settings/{id}   { allow read: if true; allow write: if isAdmin(); }
 
-    // سلة كل مستخدم: له وحده
+    // بيانات الموردين (سرية): للمسؤولين فقط قراءةً وكتابة
+    match /productPrivate/{id} { allow read, write: if isAdmin(); }
+
+    // سلة كل مستخدم: له وحده، وبحقل cart فقط وبحجم محدود
     match /users/{uid} {
-      allow read, write: if signedIn() && request.auth.uid == uid;
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['cart'])
+        && request.resource.data.cart is list
+        && request.resource.data.cart.size() <= 100;
+      allow delete: if false;
     }
 
-    // المسؤولون: يُضافون يدويًا من لوحة Firebase فقط (uid المستخدم كمعرّف للمستند)
+    // المسؤولون: يُضافون يدويًا من لوحة Firebase فقط (معرّف المستند = uid)
     match /admins/{uid} {
       allow read: if signedIn() && request.auth.uid == uid;
       allow write: if false;
     }
 
-    // الطلبات
+    // الطلبات: تُنشأ من الخادم فقط (Admin SDK يتجاوز القواعد)
     match /orders/{id} {
-      // الإنشاء ممنوع من المتصفح تمامًا: الطلبات تُنشأ فقط من خادم Flask بعد إعادة حساب الأسعار
       allow create: if false;
       allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
-      allow update: if isAdmin();
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
       allow delete: if false;
     }
   }

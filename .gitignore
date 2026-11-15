@@ -1,6 +1,18 @@
-# لا ترفع أبدًا مفتاح الخادم (Service Account) ولا أي أسرار
-*.json
+# أسرار (Secrets) — لا تُرفع أبدًا
+*key*.json
+*serviceaccount*.json
+*adminsdk*.json
 .env
+*.pem
+# Firebase
+.firebase/
+*.cache
+firebase-debug.log
+# Python
 __pycache__/
 *.pyc
+# ملفات بناء قديمة
+base.html
+build.py
+catalog.py
 .DS_Store
