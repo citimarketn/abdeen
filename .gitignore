@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+dist/
+
+# Environment — contains secrets (DATABASE_URL etc.) — NEVER commit
+.env
+.env.local
+.env.*.local
+
+# User uploads (go to object storage, not git)
+public/uploads/
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
+
+# Python (keep your PA files separate)
+__pycache__/
+*.pyc
+.python_history

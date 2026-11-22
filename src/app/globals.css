@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+:root {
+  --sf-bg: #f6f4ee;
+  --sf-paper: #fffef9;
+  --sf-ink: #101f3c;
+  --sf-line: #e5e1d6;
+  --sf-mint: #e6f4ea;
+  --sf-mint-deep: #c4e6d2;
+}
+
+.dark {
+  --sf-bg: #0c1220;
+  --sf-paper: #141d33;
+  --sf-ink: #e9edf7;
+  --sf-line: #26334f;
+  --sf-mint: #14291f;
+  --sf-mint-deep: #235c42;
+}
+
+@theme {
+  --color-cream: var(--sf-bg);
+  --color-paper: var(--sf-paper);
+  --color-ink: var(--sf-ink);
+  --color-navy: #16337e;
+  --color-navy-deep: #0b1a3e;
+  --color-leaf: #1da463;
+  --color-leaf-bright: #2ecc71;
+  --color-mint: var(--sf-mint);
+  --color-mint-deep: var(--sf-mint-deep);
+  --color-gold: #e9b23c;
+  --color-line: var(--sf-line);
+  --color-clay: #b0483d;
+
+  --font-sans: "Tajawal", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-display: "Cairo", "Tajawal", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-fade-up: fade-up 0.7s ease-out both;
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-pop: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-slide-in: slide-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-spin-slow: spin 14s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pop {
+  0% {
+    transform: scale(0.5);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes bg-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+@keyframes bg-pan {
+  from {
+    transform: translateX(-2.5%) scale(1.08);
+  }
+  to {
+    transform: translateX(2.5%) scale(1.08);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-leaf);
+  color: #fff;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.28'/%3E%3C/svg%3E");
+}
+
+.dot-grid {
+  background-image: radial-gradient(
+    rgba(22, 51, 126, 0.14) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 22px 22px;
+}
+
+.bg-motion-zoom {
+  animation: bg-zoom 16s ease-in-out infinite alternate;
+}
+.bg-motion-pan {
+  animation: bg-pan 16s ease-in-out infinite alternate;
+}
+
+.gold-hairline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(233, 178, 60, 0.75),
+    transparent
+  );
+}
+
+/* Dark mode: lift accent text colors for contrast on dark surfaces */
+.dark .text-navy {
+  color: #a9baff;
+}
+.dark .text-clay {
+  color: #f0947f;
+}
+.dark .text-leaf {
+  color: #37d383;
+}
+.dark .text-gold {
+  color: #f2c063;
+}
+.dark .dot-grid {
+  background-image: radial-gradient(
+    rgba(169, 186, 255, 0.12) 1.2px,
+    transparent 1.2px
+  );
+}
+
+.input-base {
+  @apply w-full rounded-xl border border-line bg-paper/60 px-4 py-3 text-sm text-ink placeholder:text-ink/35 outline-none transition focus:border-leaf focus:ring-2 focus:ring-leaf/25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
