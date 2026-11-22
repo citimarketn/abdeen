@@ -35,6 +35,71 @@ function publicCustomer(c: {
 export async function POST(req: Request) {
   try {
     const b = await req.json();
+
+    // 1) Google sign-in (auto-register on first use) — runs before manual email validation
+    if (b?.action === "google") {
+      const idToken = String(b?.idToken ?? b?.credential ?? "").trim();
+      if (!idToken) {
+        return NextResponse.json(
+          { error: "رمز تحقق جوجل مفقود" },
+          { status: 400 }
+        );
+      }
+
+      const settings = await getSettings();
+      const clientId =
+        String(settings?.googleClientId ?? "").trim() ||
+        String(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ?? "").trim();
+
+      const google = await verifyGoogleIdToken(idToken, clientId);
+      if (!google?.email) {
+        return NextResponse.json(
+          {
+            error:
+              "تعذر التحقق من حساب جوجل — تأكد من تفعيل Google Client ID في الإعدادات",
+          },
+          { status: 401 }
+        );
+      }
+
+      const googleEmail = String(google.email).trim().toLowerCase();
+      const [existing] = await db
+        .select()
+        .from(customers)
+        .where(eq(customers.email, googleEmail));
+
+      let row = existing;
+      if (!row) {
+        const fallbackName = googleEmail.split("@")[0] || "عميل";
+        const [created] = await db
+          .insert(customers)
+          .values({
+            name: String(google.name ?? fallbackName).trim().slice(0, 60),
+            email: googleEmail,
+            passwordHash: hashPassword(newSessionToken()),
+          })
+          .returning();
+        row = created;
+
+        const s = await getSettings();
+        const w = welcomeEmailHtml(row.name, s);
+        sendEmail(row.email, w.subject, w.html).catch(() => {});
+      }
+
+      const token = newSessionToken();
+      await db
+        .update(customers)
+        .set({ sessionToken: token })
+        .where(eq(customers.id, row.id));
+
+      return NextResponse.json({
+        ok: true,
+        token,
+        customer: publicCustomer(row),
+      });
+    }
+
+    // 2) Manual register / login email validation
     const email = String(b?.email ?? "").trim().toLowerCase();
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       return NextResponse.json(
@@ -80,58 +145,14 @@ export async function POST(req: Request) {
           sessionToken: token,
         })
         .returning();
-      // Welcome email (fire & forget)
+
       const s = await getSettings();
       const w = welcomeEmailHtml(name, s);
       sendEmail(email, w.subject, w.html).catch(() => {});
       return NextResponse.json({ ok: true, token, customer: publicCustomer(row) });
     }
 
-    // Google sign-in (auto-register on first use)
-    if (b?.action === "google") {
-      const settings = await getSettings();
-      const google = await verifyGoogleIdToken(
-        String(b?.idToken ?? ""),
-        settings.googleClientId
-      );
-      if (!google) {
-        return NextResponse.json(
-          { error: "تعذر التحقق من حساب جوجل — تأكد من تفعيل Google Client ID في الإعدادات" },
-          { status: 401 }
-        );
-      }
-      const [existing] = await db
-        .select()
-        .from(customers)
-        .where(eq(customers.email, google.email));
-      let row = existing;
-      if (!row) {
-        const [created] = await db
-          .insert(customers)
-          .values({
-            name: (google.name ?? email.split("@")[0]).slice(0, 60),
-            email: google.email,
-            passwordHash: hashPassword(newSessionToken()),
-          })
-          .returning();
-        row = created;
-        const s = await getSettings();
-        const w = welcomeEmailHtml(row.name, s);
-        sendEmail(row.email, w.subject, w.html).catch(() => {});
-      }
-      const token = newSessionToken();
-      await db
-        .update(customers)
-        .set({ sessionToken: token })
-        .where(eq(customers.id, row.id));
-      return NextResponse.json({
-        ok: true,
-        token,
-        customer: publicCustomer(row),
-      });
-    }
-
-    // login
+    // 3) Manual login
     const [row] = await db
       .select()
       .from(customers)
@@ -142,11 +163,13 @@ export async function POST(req: Request) {
         { status: 401 }
       );
     }
+
     const token = newSessionToken();
     await db
       .update(customers)
       .set({ sessionToken: token })
       .where(eq(customers.id, row.id));
+
     return NextResponse.json({ ok: true, token, customer: publicCustomer(row) });
   } catch (e) {
     console.error(e);
@@ -185,10 +208,18 @@ export async function PATCH(req: Request) {
     }
     const b = await req.json();
     const patch: Record<string, unknown> = {};
-    if (typeof b.name === "string" && b.name.trim()) patch.name = b.name.trim().slice(0, 60);
-    if (typeof b.phone === "string") patch.phone = b.phone.trim().slice(0, 20);
-    if (typeof b.city === "string") patch.city = b.city.trim().slice(0, 40);
-    if (typeof b.address === "string") patch.address = b.address.trim().slice(0, 300);
+    if (typeof b.name === "string" && b.name.trim()) {
+      patch.name = b.name.trim().slice(0, 60);
+    }
+    if (typeof b.phone === "string") {
+      patch.phone = b.phone.trim().slice(0, 20);
+    }
+    if (typeof b.city === "string") {
+      patch.city = b.city.trim().slice(0, 40);
+    }
+    if (typeof b.address === "string") {
+      patch.address = b.address.trim().slice(0, 300);
+    }
     if (typeof b.password === "string" && b.password.length >= 6) {
       patch.passwordHash = hashPassword(b.password);
     }
