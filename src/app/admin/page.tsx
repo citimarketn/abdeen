@@ -29,6 +29,7 @@ import CategoriesPanel from "./panels/Categories";
 import TeamPanel from "./panels/Team";
 import StaffTeamPanel from "./panels/StaffTeam";
 import OutboxPanel from "./panels/Outbox";
+import LegalPanel from "./panels/Legal";
 import SettingsPanel from "./panels/Settings";
 
 type Perm =
@@ -462,6 +463,7 @@ export default function AdminPage() {
           {active === "staff" && <StaffTeamPanel />}
           {active === "team" && <TeamPanel />}
           {active === "outbox" && <OutboxPanel />}
+          {active === "legal" && <LegalPanel />}
           {active === "settings" && <SettingsPanel />}
         </main>
       </div>

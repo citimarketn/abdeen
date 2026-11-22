@@ -143,6 +143,21 @@ export default function Footer({
                 <T k="faqLink" />
               </Link>
             </li>
+            <li>
+              <Link href="/terms" className="transition hover:text-leaf-bright">
+                <T k="termsUse" />
+              </Link>
+            </li>
+            <li>
+              <Link href="/returns" className="transition hover:text-leaf-bright">
+                <T k="retPolicy" />
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy" className="transition hover:text-leaf-bright">
+                <T k="privPolicy" />
+              </Link>
+            </li>
           </ul>
         </div>
 

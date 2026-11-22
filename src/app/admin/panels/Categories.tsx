@@ -148,7 +148,7 @@ export default function CategoriesPanel() {
             </span>
 
             <div className="min-w-40 flex-1">
-              {editing[c.id] !== undefined && editing[c.id] !== c.name ? (
+              {editing[c.id] !== undefined ? (
                 <div className="flex items-center gap-2">
                   <input
                     value={editing[c.id]}
@@ -166,11 +166,27 @@ export default function CategoriesPanel() {
                   >
                     <IconCheck className="h-4 w-4" />
                   </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setEditing((prev) => {
+                        const next = { ...prev };
+                        delete next[c.id];
+                        return next;
+                      })
+                    }
+                    aria-label="إلغاء التعديل"
+                    className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-cream text-ink/50 ring-1 ring-line transition hover:text-clay"
+                  >
+                    ✕
+                  </button>
                 </div>
               ) : (
                 <button
                   type="button"
-                  onClick={() => setEditing((prev) => ({ ...prev, [c.id]: c.name }))}
+                  onClick={() =>
+                    setEditing((prev) => ({ ...prev, [c.id]: c.name }))
+                  }
                   className="group flex items-center gap-2"
                 >
                   <span className="text-sm font-extrabold transition group-hover:text-navy">

@@ -16,6 +16,11 @@ import {
 } from "@/db/schema";
 import { ensureSeeded } from "@/db/seed";
 import {
+  DEFAULT_PRIVACY,
+  DEFAULT_RETURNS,
+  DEFAULT_TERMS,
+} from "./legalDefaults";
+import {
   and,
   asc,
   desc,
@@ -94,6 +99,10 @@ export const DEFAULT_SETTINGS: Record<string, string> = {
   firebaseProject: "",
   paMailUrl: "",
   paMailKey: "",
+  legalTerms: DEFAULT_TERMS,
+  legalReturns: DEFAULT_RETURNS,
+  legalPrivacy: DEFAULT_PRIVACY,
+  legalUpdated: "2026",
 };
 
 export interface StoreSettings {
@@ -154,6 +163,10 @@ export interface StoreSettings {
   firebaseProject: string;
   paMailUrl: string;
   paMailKey: string;
+  legalTerms: string;
+  legalReturns: string;
+  legalPrivacy: string;
+  legalUpdated: string;
 }
 
 export function parseSettings(rows: Record<string, string>): StoreSettings {
@@ -223,6 +236,10 @@ export function parseSettings(rows: Record<string, string>): StoreSettings {
     firebaseProject: s.firebaseProject,
     paMailUrl: s.paMailUrl,
     paMailKey: s.paMailKey,
+    legalTerms: s.legalTerms || DEFAULT_TERMS,
+    legalReturns: s.legalReturns || DEFAULT_RETURNS,
+    legalPrivacy: s.legalPrivacy || DEFAULT_PRIVACY,
+    legalUpdated: s.legalUpdated || "2026",
   };
 }
 
