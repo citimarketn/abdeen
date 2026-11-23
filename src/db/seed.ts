@@ -11,8 +11,11 @@ import {
 } from "@/db/schema";
 import { sql } from "drizzle-orm";
 
-export const OWNER_EMAIL = "abdeenali520@gmail.com";
-export const OWNER_DEFAULT_PASSWORD = "abdeen2024";
+import { randomBytes } from "crypto";
+
+export const OWNER_EMAIL = process.env.OWNER_EMAIL || "abdeenali520@gmail.com";
+export const OWNER_DEFAULT_PASSWORD =
+  process.env.OWNER_PASSWORD || randomBytes(16).toString("hex");
 export const ALL_PERMISSIONS = [
   "dashboard",
   "products",
@@ -300,7 +303,7 @@ const SEED_SETTINGS: Record<string, string> = {
   heroCtaSecondary: "شاهد العروض",
   whatsapp: "01021776980",
   phone: "01021776980",
-  email: "abdeen.store@gmail.com",
+  email: "abdeenali520@gmail.com",
   address: "الأسويس — مصر",
   freeShippingOver: "1000",
   shippingFee: "50",
@@ -309,9 +312,9 @@ const SEED_SETTINGS: Record<string, string> = {
   aboutText:
     "عابدين متجر مصري يجمع بين الأناقة والموثوقية — نختار كل قطعة بعناية لنصل بها إليك في أفضل حال.",
   adminEmail: OWNER_EMAIL,
-  secCode1: "2468",
-  secCode2: "1357",
-  secCode3: "8090",
+  secCode1: process.env.ADMIN_SEC_CODE_1 || "",
+  secCode2: process.env.ADMIN_SEC_CODE_2 || "",
+  secCode3: process.env.ADMIN_SEC_CODE_3 || "",
   googleClientId: "",
   socialFacebook: "https://www.facebook.com/share/1JdCm2pCsT/",
   socialInstagram: "https://www.instagram.com/wadi_almadinah",

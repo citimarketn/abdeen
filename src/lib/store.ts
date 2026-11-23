@@ -59,9 +59,9 @@ export const DEFAULT_SETTINGS: Record<string, string> = {
   aboutText:
     "عابدين متجر مصري يجمع بين الأناقة والموثوقية — نختار كل قطعة بعناية لنصل بها إليك في أفضل حال.",
   adminEmail: "abdeenali520@gmail.com",
-  secCode1: "2468",
-  secCode2: "1357",
-  secCode3: "8090",
+  secCode1: process.env.ADMIN_SEC_CODE_1 || "",
+  secCode2: process.env.ADMIN_SEC_CODE_2 || "",
+  secCode3: process.env.ADMIN_SEC_CODE_3 || "",
   googleClientId: "",
   socialFacebook: "https://www.facebook.com/share/1JdCm2pCsT/",
   socialInstagram: "https://www.instagram.com/wadi_almadinah",

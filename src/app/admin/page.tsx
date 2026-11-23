@@ -290,23 +290,7 @@ export default function AdminPage() {
                 </div>
               )}
 
-              {config && (
-                <div className="rounded-xl bg-mint/70 px-4 py-3 text-[11px] leading-6 text-ink/60">
-                  <p>
-                    <span className="font-extrabold text-leaf">بيانات المالك (افتراضية):</span>{" "}
-                    <span dir="ltr" className="font-mono font-bold">{config.ownerEmail}</span>
-                    {" — "}
-                    <span dir="ltr" className="font-mono font-bold">{config.demoPassword}</span>
-                  </p>
-                  <p>
-                    <span className="font-extrabold text-leaf">أكواد الحماية الثلاثة:</span>{" "}
-                    <span dir="ltr" className="font-mono font-bold">
-                      {config.demoCodes.join(" / ")}
-                    </span>{" "}
-                    — غيّرها فورًا من الإعدادات.
-                  </p>
-                </div>
-              )}
+            
             </form>
           ) : (
             <form onSubmit={sendCodes} className="mt-7 space-y-4">

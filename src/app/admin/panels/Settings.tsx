@@ -400,7 +400,7 @@ export default function SettingsPanel() {
       >
         <div className="grid gap-4 sm:grid-cols-3">
           <Field label="إيميل المالك (حساب المسؤول)">
-            <input value={form.adminEmail} onChange={set("adminEmail")} className="input-base" dir="ltr" />
+            <input value={form.adminEmail} onChange={set("abdeenEmail")} className="input-base" dir="ltr" />
           </Field>
           <Field label="معرّف Google Client ID (للدخول بحساب جوجل — اختياري)">
             <input value={form.googleClientId} onChange={set("googleClientId")} dir="ltr" className="input-base font-mono text-[10px]" placeholder="xxxxxxxx.apps.googleusercontent.com" />
