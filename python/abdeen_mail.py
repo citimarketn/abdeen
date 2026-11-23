@@ -1,28 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
-متجر عابدين — خدمة البريد (تُرفع على PythonAnywhere)
------------------------------------------------------
-1) ارفع هذا الملف + requirements.txt إلى PythonAnywhere
-2) في Web → Add a new web app → Manual configuration → Flask
-3) في الـ WSGI config شغّل السطر:
-     import abdeen_mail as app
-   (اسم الملف بدون .py)
-4) فعّل Gmail: حسابك على جوجل → الأمان → تسجيل الدخول بخطوتين →
-   ثم: كلمات مرور التطبيق → أنشئ كلمة → ضعها في Environment
-   (GMAIL_USER و GMAIL_APP_PASS) في Web → WSGI configuration
-5) من لوحة المتجر: الإعدادات ← البريد ← المزود: PythonAnywhere
-   وضع رابطك: https://abdeenali.pythonanywhere.com/send
-   وسر مشاركة: أي كلمة طويلة (نفسها في Environment: MAIL_SECRET)
-
-المتجر يرسل POST إلى /send بهذا الشكل:
-   { "to": "user@mail.com", "subject": "...", "html": "<div>...</div>" }
-ويعتمد التشفير على رأس X-Abdeen-Key.
-"""
 import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.headerregistry import Address
+from email.utils import formataddr
 
 from flask import Flask, request, jsonify
 
@@ -48,7 +29,7 @@ def send():
         return jsonify(ok=False, error="Gmail not configured"), 500
 
     msg = MIMEMultipart("alternative")
-    msg["From"] = Address(FROM_NAME, GMAIL_USER)
+    msg["From"] = formataddr((FROM_NAME, GMAIL_USER))
     msg["To"] = to
     msg["Subject"] = subject
     msg.attach(MIMEText(html, "html", "utf-8"))

@@ -103,8 +103,8 @@ export function welcomeEmailHtml(name: string, s: StoreSettings): {
             ✓ أولوية في العروض الجديدة
           </div>
         </div>
-        <a href="/" style="display:block; background:#1da463; color:#fff; text-align:center; padding:14px; border-radius:14px; font-size:15px; font-weight:700; text-decoration:none;">
-          يلا نبدأ التسوق
+        <a href="https://abdeen.vercel.app/" style="display:block; background:#1da463; color:#fff; text-align:center; padding:14px; border-radius:14px; font-size:1
+          
         </a>
         <p style="margin:24px 0 0; font-size:13px; line-height:1.9; color:#101f3c99;">
           لو عندك أي سؤال، فريقنا على واتساب ${s.whatsapp} جاهز يخدمك.
