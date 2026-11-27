@@ -257,7 +257,7 @@ export default async function OrderPage({
                   <span className="grid h-9 w-9 place-items-center rounded-xl bg-leaf/20 text-leaf-bright">
                     <IconWhatsApp className="h-4.5 w-4.5" />
                   </span>
-                  طلبك في صندوق وارد الفريق — فريقنا على واتساب جاهز يتابع طلبك
+                 سنتواصل معكم قريبا _ فريق عابدين جاهز يتابع طلبك
                 </h2>
                 <p className="mt-2 max-w-lg text-xs leading-6 text-white/60">
                   طلبك بانتظار استلامه من أحد أعضاء الفريق. يمكنك التواصل مع
