@@ -7,7 +7,7 @@ import {
   orders,
   staff,
 } from "@/db/schema";
-import { and, desc, eq, inArray } from "drizzle-orm";
+import { and, desc, eq, inArray, isNull, or } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
@@ -34,11 +34,25 @@ export async function GET(req: Request) {
     );
   }
 
+  // Get all orders - show unclaimed (team inbox) + orders assigned to me
   const list = await db
     .select()
     .from(orders)
+    .where(
+      // Show orders that are either unclaimed OR assigned to me
+      // Exclude orders assigned to other staff
+      and(
+        eq(orders.status, "new"), // Only new orders in inbox
+        // unclaimed OR claimed by me
+        or(
+          isNull(orders.assignedToStaffId),
+          eq(orders.assignedToStaffId, me.id)
+        )
+      )
+    )
     .orderBy(desc(orders.createdAt))
     .limit(60);
+
   if (list.length === 0) {
     return NextResponse.json({
       me,
@@ -47,6 +61,7 @@ export async function GET(req: Request) {
       onDutyTeammates: [],
     });
   }
+
   const ids = list.map((o) => o.id);
   const [items, handoffs, teammates] = await Promise.all([
     db.select().from(orderItems).where(inArray(orderItems.orderId, ids)),
@@ -91,6 +106,7 @@ export async function GET(req: Request) {
       assignedToStaffId: o.assignedToStaffId,
       assignedToName: o.assignedToName,
       waNumber: o.waNumber,
+      claimedAt: o.claimedAt,
       createdAt: o.createdAt,
       itemsCount: counts.get(o.id)?.count ?? 0,
       items: (itemsByOrder.get(o.id) ?? []).map((it) => ({
@@ -99,6 +115,8 @@ export async function GET(req: Request) {
         price: it.price,
         qty: it.qty,
       })),
+      // Claimable if unclaimed (assignedToStaffId is null)
+      claimable: o.assignedToStaffId === null,
     })),
     handoffs,
     onDutyTeammates: teammates,

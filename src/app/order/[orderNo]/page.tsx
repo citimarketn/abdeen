@@ -42,6 +42,34 @@ export default async function OrderPage({
   const stepIndex = STEPS.findIndex((s) => s.key === order.status);
   const cancelled = order.status === "cancelled";
 
+  // Determine if order is assigned to a staff member (claimed)
+  const hasAssignedStaff = order.assignedToStaffId !== null && order.assignedToName !== null;
+  const assignedStaffName = order.assignedToName;
+  const assignedStaffWa = order.waNumber;
+
+  // Build WhatsApp message
+  const waMessage = buildOrderMessage(
+    {
+      orderNo: order.orderNo,
+      customerName: order.customerName,
+      phone: order.phone,
+      city: order.city,
+      address: order.address,
+      payment: order.payment,
+      notes: order.notes,
+      subtotal: order.subtotal,
+      shippingFee: order.shippingFee,
+      total: order.total,
+      items: items.map((it) => ({
+        productName: it.productName,
+        options: it.options,
+        price: it.price,
+        qty: it.qty,
+      })),
+    },
+    { currency: settings.currency, storeName: settings.storeName }
+  );
+
   return (
     <StoreShell>
       <div className="mx-auto max-w-4xl px-4 pt-12 sm:px-6">
@@ -188,8 +216,40 @@ export default async function OrderPage({
           </div>
         </Reveal>
 
-        {/* WhatsApp handoff */}
-        {!cancelled && order.waNumber && (
+        {/* Assigned Staff Info Card - Shows who's handling the order */}
+        {!cancelled && hasAssignedStaff && assignedStaffWa && (
+          <Reveal delay={140}>
+            <div className="grain relative mt-6 overflow-hidden rounded-3xl bg-navy-deep p-6 text-white sm:p-8">
+              <div className="relative">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="grid h-9 w-9 place-items-center rounded-xl bg-leaf/20 text-leaf-bright">
+                    <IconUser className="h-4.5 w-4.5" />
+                  </span>
+                  <h2 className="font-display text-lg font-black">
+                    طلبك مع <span className="text-leaf-bright">{assignedStaffName}</span> — يتابعك مباشرة على واتساب
+                  </h2>
+                </div>
+                <p className="mt-2 max-w-lg text-xs leading-6 text-white/60">
+                  {assignedStaffName} هو المسؤول عن تجهيز ومتابعة طلبك.
+                  اضغط الزر للتواصل معه مباشرة على واتسابه الشخصي مع رسالة جاهزة
+                  فيها كل تفاصيل طلبك.
+                </p>
+                <a
+                  href={waLink(assignedStaffWa, waMessage)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-leaf-bright px-7 py-3.5 font-display text-sm font-black text-ink shadow-2xl shadow-leaf-bright/30 transition-all hover:-translate-y-0.5 hover:bg-paper"
+                >
+                  <IconWhatsApp className="h-4.5 w-4.5" />
+                  التحدث مع {assignedStaffName} على واتساب
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        )}
+
+        {/* Fallback: Store/Owner WhatsApp if no staff assigned yet */}
+        {!cancelled && !hasAssignedStaff && order.waNumber && (
           <Reveal delay={140}>
             <div className="grain relative mt-6 overflow-hidden rounded-3xl bg-navy-deep p-6 text-white sm:p-8">
               <div className="relative">
@@ -197,46 +257,20 @@ export default async function OrderPage({
                   <span className="grid h-9 w-9 place-items-center rounded-xl bg-leaf/20 text-leaf-bright">
                     <IconWhatsApp className="h-4.5 w-4.5" />
                   </span>
-                  {order.assignedToName
-                    ? `طلبك مع ${order.assignedToName} — جاهز يتابعك على واتساب`
-                    : "فريقنا على واتساب جاهز يتابع طلبك"}
+                  طلبك في صندوق وارد الفريق — فريقنا على واتساب جاهز يتابع طلبك
                 </h2>
                 <p className="mt-2 max-w-lg text-xs leading-6 text-white/60">
-                  اضغط الزر وهيتم فتح محادثة واتساب برسالة جاهزة فيها كل تفاصيل
-                  طلبك — رقم الطلب، المحتويات، العنوان، والإجمالي — عشان تتأكد
-                  منها فورًا بدون ما تكتب حاجة.
+                  طلبك بانتظار استلامه من أحد أعضاء الفريق. يمكنك التواصل مع
+                  رقم المتجر الرئيسي للاستفسارات العامة.
                 </p>
                 <a
-                  href={waLink(
-                    order.waNumber,
-                    buildOrderMessage(
-                      {
-                        orderNo: order.orderNo,
-                        customerName: order.customerName,
-                        phone: order.phone,
-                        city: order.city,
-                        address: order.address,
-                        payment: order.payment,
-                        notes: order.notes,
-                        subtotal: order.subtotal,
-                        shippingFee: order.shippingFee,
-                        total: order.total,
-                        items: items.map((it) => ({
-                          productName: it.productName,
-                          options: it.options,
-                          price: it.price,
-                          qty: it.qty,
-                        })),
-                      },
-                      { currency: settings.currency, storeName: settings.storeName }
-                    )
-                  )}
+                  href={waLink(order.waNumber, waMessage)}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-leaf-bright px-7 py-3.5 font-display text-sm font-black text-ink shadow-2xl shadow-leaf-bright/30 transition-all hover:-translate-y-0.5 hover:bg-paper"
                 >
                   <IconWhatsApp className="h-4.5 w-4.5" />
-                  فتح محادثة واتساب بالتفاصيل كاملة
+                  فتح محادثة واتساب المتجر بالتفاصيل
                 </a>
               </div>
             </div>

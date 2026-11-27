@@ -28,6 +28,7 @@ import {
   gte,
   inArray,
   isNotNull,
+  isNull,
   lte,
   or,
   sql,
@@ -538,6 +539,11 @@ export async function createOrder(input: {
         shippingFee,
         total,
         status: "new",
+        // Order starts unclaimed in team inbox; waNumber is owner's for initial notification
+        waNumber: input.ownerWa,
+        assignedToStaffId: null,
+        assignedToName: null,
+        claimedAt: null,
       })
       .returning();
 
@@ -563,56 +569,122 @@ export async function createOrder(input: {
         .where(eq(products.id, item.product.id));
     }
 
-    // ---- Auto-assign: on-duty field staff → manager → owner ----
-    let assign: { staffId: number | null; name: string; wa: string } = {
-      staffId: null,
-      name: `${input.storeName} — المالك`,
-      wa: input.ownerWa,
-    };
-    const onDuty = await db
-      .select()
-      .from(staff)
-      .where(and(eq(staff.active, true), eq(staff.onDuty, true)));
-    const fields = onDuty.filter((s) => s.role === "field");
-    const managers = onDuty.filter((s) => s.role === "manager");
-    if (fields.length > 0) {
-      const counts = await db
-        .select({
-          sid: staff.id,
-          n: sql<number>`count(${orders.id})::int`,
-        })
-        .from(orders)
-        .innerJoin(staff, eq(staff.id, orders.assignedToStaffId))
-        .where(isNotNull(orders.assignedToStaffId))
-        .groupBy(staff.id);
-      const countMap = new Map(counts.map((c) => [c.sid, c.n]));
-      fields.sort(
-        (a, b) => (countMap.get(a.id) ?? 0) - (countMap.get(b.id) ?? 0)
-      );
-      const pick: Staff = fields[0];
-      assign = { staffId: pick.id, name: pick.name, wa: pick.whatsapp };
-    } else if (managers.length > 0) {
-      const pick = managers[0];
-      assign = { staffId: pick.id, name: pick.name, wa: pick.whatsapp };
-    }
-    await db
-      .update(orders)
-      .set({
-        assignedToStaffId: assign.staffId,
-        assignedToName: assign.name,
-        waNumber: assign.wa,
-      })
-      .where(eq(orders.id, orderRow.id));
-
+    // Order is now in team inbox, unclaimed
+    // Staff will claim it via /api/staff/claim
     return {
       ok: true,
       orderNo,
-      assignedToName: assign.name,
-      waNumber: assign.wa,
+      assignedToName: undefined,
+      waNumber: input.ownerWa,
     };
   } catch (e) {
     console.error("createOrder failed", e);
     return { ok: false, error: "تعذر إنشاء الطلب، حاول مجددًا" };
+  }
+}
+
+/**
+ * Atomically claim an order for a staff member.
+ * Uses a WHERE clause to prevent race conditions (double-claiming).
+ * Returns the claimed order details or an error if already claimed.
+ */
+export async function claimOrder(
+  orderId: number,
+  staffId: number,
+  staffName: string,
+  staffWhatsApp: string
+): Promise<{
+  ok: boolean;
+  orderNo?: string;
+  assignedToName?: string;
+  waNumber?: string;
+  error?: string;
+}> {
+  try {
+    await ensureSeeded();
+
+    // Atomic claim: only update if not already assigned
+    const result = await db
+      .update(orders)
+      .set({
+        assignedToStaffId: staffId,
+        assignedToName: staffName,
+        waNumber: staffWhatsApp,
+        claimedAt: new Date(),
+      })
+      .where(and(eq(orders.id, orderId), isNull(orders.assignedToStaffId)))
+      .returning({ orderNo: orders.orderNo });
+
+    if (result.length === 0) {
+      // Check if it was already claimed
+      const [existing] = await db
+        .select()
+        .from(orders)
+        .where(eq(orders.id, orderId));
+
+      if (!existing) {
+        return { ok: false, error: "الطلب غير موجود" };
+      }
+      if (existing.assignedToStaffId) {
+        return { ok: false, error: "تم استلام هذا الطلب بالفعل من قبل زميل آخر" };
+      }
+      return { ok: false, error: "تعذر استلام الطلب، حاول مجددًا" };
+    }
+
+    return {
+      ok: true,
+      orderNo: result[0].orderNo,
+      assignedToName: staffName,
+      waNumber: staffWhatsApp,
+    };
+  } catch (e) {
+    console.error("claimOrder failed", e);
+    return { ok: false, error: "حدث خطأ أثناء استلام الطلب" };
+  }
+}
+
+/**
+ * Release an order back to the team inbox.
+ * Resets assignment to owner's WhatsApp for notifications.
+ */
+export async function releaseOrder(
+  orderId: number,
+  staffId: number,
+  ownerWa: string,
+  reason?: string
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    await ensureSeeded();
+
+    const [order] = await db
+      .select()
+      .from(orders)
+      .where(eq(orders.id, orderId));
+
+    if (!order) {
+      return { ok: false, error: "الطلب غير موجود" };
+    }
+
+    if (order.assignedToStaffId !== staffId) {
+      return { ok: false, error: "لا يمكنك إرجاع طلب لم تستلمه" };
+    }
+
+    await db
+      .update(orders)
+      .set({
+        assignedToStaffId: null,
+        assignedToName: null,
+        waNumber: ownerWa,
+        claimedAt: null,
+        releasedAt: new Date(),
+        releaseReason: reason || null,
+      })
+      .where(eq(orders.id, orderId));
+
+    return { ok: true };
+  } catch (e) {
+    console.error("releaseOrder failed", e);
+    return { ok: false, error: "حدث خطأ أثناء إرجاع الطلب" };
   }
 }
 

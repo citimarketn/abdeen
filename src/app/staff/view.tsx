@@ -38,6 +38,7 @@ interface OrderLite {
   assignedToStaffId: number | null;
   assignedToName: string | null;
   waNumber: string | null;
+  claimedAt: string | null;
   createdAt: string;
   itemsCount: number;
   items: Array<{
@@ -46,6 +47,7 @@ interface OrderLite {
     price: number;
     qty: number;
   }>;
+  claimable: boolean;
 }
 
 interface Inbox {
@@ -130,6 +132,39 @@ export default function StaffView() {
       body: JSON.stringify({ mode }),
     });
     flash(mode === "request" ? "تم إرسال طلب التواجد — بانتظار موافقة المالك" : "تمت مغادرة الدوام");
+    load();
+  };
+
+  const claim = async (o: OrderLite) => {
+    const token = window.localStorage.getItem("abdeen_cust_token");
+    const res = await fetch("/api/staff/claim", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-customer-token": token ?? "" },
+      body: JSON.stringify({ orderId: o.id }),
+    });
+    const d = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      flash(d.error ?? "تعذر استلام الطلب");
+      return;
+    }
+    flash(`تم استلام الطلب ${d.orderNo} — هو الآن في مسؤوليتك`);
+    load();
+  };
+
+  const release = async (o: OrderLite) => {
+    const reason = prompt("سبب الإرجاع (اختياري):");
+    const token = window.localStorage.getItem("abdeen_cust_token");
+    const res = await fetch("/api/staff/release", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-customer-token": token ?? "" },
+      body: JSON.stringify({ orderId: o.id, reason }),
+    });
+    const d = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      flash(d.error ?? "تعذر إرجاع الطلب");
+      return;
+    }
+    flash(`تم إرجاع الطلب ${o.orderNo} إلى صندوق الوارد`);
     load();
   };
 
@@ -277,12 +312,14 @@ export default function StaffView() {
         {orders.map((o) => {
           const open = openOrder === o.id;
           const mine = o.assignedToStaffId === me.id;
+          const unclaimed = o.assignedToStaffId === null;
+
           return (
             <div
               key={o.id}
               className={cn(
                 "overflow-hidden rounded-2xl bg-paper ring-1 transition",
-                mine ? "ring-leaf/50" : "ring-line"
+                mine ? "ring-leaf/50" : unclaimed ? "ring-navy/30" : "ring-line"
               )}
             >
               <button
@@ -312,14 +349,19 @@ export default function StaffView() {
                 >
                   {ORDER_STATUS_LABELS[o.status] ?? o.status}
                 </span>
-                {o.assignedToName && (
+                {unclaimed && (
+                  <span className="rounded-full px-2.5 py-1 text-[10px] font-extrabold bg-navy/10 text-navy">
+                    غير مستلم — صندوق الوارد
+                  </span>
+                )}
+                {o.assignedToName && !unclaimed && (
                   <span
                     className={cn(
                       "rounded-full px-2.5 py-1 text-[10px] font-extrabold",
                       mine ? "bg-leaf text-white" : "bg-cream text-ink/55 ring-1 ring-line"
                     )}
                   >
-                    استلمه: {o.assignedToName}
+                    {mine ? "مستلم من قبلك" : `مستلم: ${o.assignedToName}`}
                   </span>
                 )}
               </button>
@@ -372,10 +414,34 @@ export default function StaffView() {
                         className="inline-flex items-center gap-2 rounded-xl bg-leaf px-4 py-2.5 text-xs font-extrabold text-white transition hover:bg-leaf/90"
                       >
                         <IconWhatsApp className="h-4 w-4" />
-                        إرسال التفاصيل على واتساب {o.assignedToName ?? ""}
+                        {unclaimed
+                          ? "فتح واتساب المالك للتفاصيل"
+                          : `إرسال التفاصيل على واتساب ${o.assignedToName ?? ""}`}
                       </a>
                     )}
-                    {teammates.length > 0 && (
+
+                    {/* Claim button for unclaimed orders */}
+                    {unclaimed && me.onDuty && (
+                      <button
+                        onClick={() => claim(o)}
+                        className="inline-flex items-center gap-2 rounded-xl bg-navy px-4 py-2.5 text-xs font-extrabold text-white transition hover:bg-navy-deep"
+                      >
+                        استلام الطلب
+                      </button>
+                    )}
+
+                    {/* Release button for orders claimed by me */}
+                    {mine && !unclaimed && (
+                      <button
+                        onClick={() => release(o)}
+                        className="inline-flex items-center gap-2 rounded-xl bg-cream px-4 py-2.5 text-xs font-extrabold text-ink/60 ring-1 ring-line transition hover:text-clay"
+                      >
+                        إرجاع للصندوق
+                      </button>
+                    )}
+
+                    {/* Transfer button for orders claimed by me */}
+                    {mine && !unclaimed && teammates.length > 0 && (
                       <div className="flex items-center gap-2">
                         <select
                           value={transferTarget[o.id] ?? ""}

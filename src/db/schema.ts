@@ -67,6 +67,9 @@ export const orders = pgTable("orders", {
   assignedToStaffId: integer("assigned_to_staff_id"),
   assignedToName: text("assigned_to_name"),
   waNumber: text("wa_number"),
+  claimedAt: timestamp("claimed_at"),
+  releasedAt: timestamp("released_at"),
+  releaseReason: text("release_reason"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 

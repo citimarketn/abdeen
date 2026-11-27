@@ -5,22 +5,33 @@ import { IconBot, IconClose, IconWhatsApp } from "./icons";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
+interface OnDutyStaff {
+  id: number;
+  name: string;
+  whatsapp: string;
+  role: string;
+}
+
 export default function SmartAssistant({ whatsapp }: { whatsapp: string }) {
   const [open, setOpen] = useState(false);
   const { t } = useI18n();
-  const [onDuty, setOnDuty] = useState<{ name: string | null; wa: string }>({
-    name: null,
-    wa: whatsapp,
-  });
+  const [config, setConfig] = useState<{
+    onDutyStaff: OnDutyStaff[];
+    storeWa: string;
+  } | null>(null);
 
   useEffect(() => {
     fetch("/api/config")
       .then((r) => r.json())
-      .then((d) =>
-        setOnDuty({ name: d.onDutyName ?? null, wa: d.onDutyWa ?? whatsapp })
-      )
+      .then((d) => setConfig(d))
       .catch(() => {});
   }, [whatsapp]);
+
+  // Always use storeWa (owner's WhatsApp) for AI assistant / general store contact
+  const storeWa = config?.storeWa ?? whatsapp;
+  const onDutyStaff = config?.onDutyStaff ?? [];
+  const firstOnDuty = onDutyStaff[0] ?? null;
+
   return (
     <>
       <button
@@ -51,8 +62,8 @@ export default function SmartAssistant({ whatsapp }: { whatsapp: string }) {
               </span>
               <span className="flex items-center gap-1.5 text-[10px] font-bold text-leaf-bright">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-leaf-bright" />
-                {onDuty.name
-                  ? `متواجد الآن: ${onDuty.name}`
+                {firstOnDuty
+                  ? `فريق العمل متاح: ${firstOnDuty.name}${onDutyStaff.length > 1 ? ` +${onDutyStaff.length - 1} آخرون` : ""}`
                   : t("aiStatus")}
               </span>
             </span>
@@ -68,8 +79,9 @@ export default function SmartAssistant({ whatsapp }: { whatsapp: string }) {
             <div className="max-w-[90%] rounded-2xl rounded-tr-sm bg-mint px-4 py-3 text-xs leading-6 text-ink/75">
               {t("aiMsg")}
             </div>
+            {/* Main store WhatsApp (owner's) - fixed for AI assistant */}
             <a
-              href={`https://wa.me/${onDuty.wa.replace(/[^0-9]/g, "")}`}
+              href={`https://wa.me/${storeWa.replace(/[^0-9]/g, "")}`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-leaf px-5 py-2.5 text-xs font-extrabold text-white transition hover:bg-leaf/90"
